@@ -21,7 +21,9 @@
     <script>
       $(function(){
         $("#account").tooltip({content: "<b>請輸入帳號</b>"});
-        $("#password").tooltip({content: "<i>請輸入密碼(英數字)</i>"});
+        $("#password").tooltip({
+          content: function() {return "<i>請輸入密碼(英數字)</i>";}        
+          });
         });
     </script>
   </body>
