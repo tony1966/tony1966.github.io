@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <link href="https://code.jquery.com/ui/1.12.1/themes/hot-sneaks/jquery-ui.css" rel="stylesheet">
+    <style>
+      body {font-family: Arial, Helvetica, sans-serif;}
+      .ui-widget {font-size:80%;}
+    </style>
+  </head>
+  <body>
+    <button id="load">載入</button>
+    <div class="ui-state-highlight ui-corner-all" id="content"></div>
+    <script>
+      $(function(){
+        $("#load").on("click", function(e){
+          $("#content").load("ajax1.htm");
+          })
+        });
+    </script>
+  </body>
+</html>
