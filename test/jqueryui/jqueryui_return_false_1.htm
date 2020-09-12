@@ -14,10 +14,11 @@
     </style>
   </head>
   <body>
-    <button id="load">載入</button>
+    <a id="load">載入</a>
     <div id="content"></div>
     <script>
       $(function(){
+        $("#load").button();
         $("#load").on("click", function(e){
           $("#content").load("ajax1.htm");
           })
