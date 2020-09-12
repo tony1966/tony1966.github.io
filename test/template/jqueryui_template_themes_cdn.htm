@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <link id="theme" href="https://code.jquery.com/ui/1.12.1/themes/hot-sneaks/jquery-ui.css" rel="stylesheet">
+    <style>
+      body {font-family: Arial, Helvetica, sans-serif;}
+      .ui-widget {font-size:80%;}
+    </style>
+  </head>
+  <body>
+    <!-- 主題佈景選擇器 -->
+    <select id="themes">
+      <option value="base">base</option>
+      <option value="black-tie">black-tie</option>
+      <option value="blitzer">blitzer</option>
+      <option value="cupertino">cupertino</option>
+      <option value="dark-hive">dark-hive</option>
+      <option value="dot-luv">dot-luv</option>
+      <option value="eggplant">eggplant</option>
+      <option value="excite-bike">excite-bike</option>
+      <option value="flick">flick</option>
+      <option value="hot-sneaks">hot-sneaks</option>
+      <option value="humanity">humanity</option>
+      <option value="le-frog">le-frog</option>
+      <option value="mint-choc">mint-choc</option>
+      <option value="overcast">overcast</option>
+      <option value="pepper-grinder">pepper-grinder</option>
+      <option value="redmond">redmond</option>
+      <option value="smoothness">smoothness</option>
+      <option value="south-street">south-street</option>
+      <option value="start">start</option>
+      <option value="sunny">sunny</option>
+      <option value="swanky-purse">swanky-purse</option>
+      <option value="trontastic">trontastic</option>
+      <option value="ui-darkness">ui-darkness</option>
+      <option value="ui-lightness">ui-lightness</option>
+      <option value="vader">vader</option>
+    </select>
+    <script>
+      $(function(){
+        $("#themes").selectmenu();
+        $("#themes").val("hot-sneaks");
+        $("#themes").selectmenu("refresh");
+        $('#themes').on('selectmenuchange', function() {
+          var theme=$(this).val();
+          var href="https://code.jquery.com/ui/1.12.1/themes/" + theme + 
+                   "/jquery-ui.min.css";
+          $("#theme").attr("href", href);
+          });
+        });    
+    </script>
+    <!-- 頁嵌面板 -->
+    <div id="tabs">
+      <ul>
+        <li><a href="#tabs-1">tab1</a></li>
+        <li><a href="#tabs-2">tab2</a></li>
+        <li><a href="#tabs-3">tab3</a></li>
+      </ul>
+      <div id="tabs-1">tab1</div>
+      <div id="tabs-2">tab2</div>
+      <div id="tabs-3">tab3</div>
+    </div>
+    <script>
+      $(function(){
+        $("#tabs" ).tabs();
+        }); 
+    </script>
+  </body>
+</html>
