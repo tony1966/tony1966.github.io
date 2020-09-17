@@ -14,24 +14,14 @@
   </div>
   <script>
     var ctx=$('#myChart');
+    //var ctx=$('#myChart')[0].getContext("2d");
     var myChart=new Chart(ctx, {
       type: 'bar',
       data: {
         labels: ['一月', '二月', '三月'],
         datasets: [{
           label: '銷售業績(百萬)',
-          data: [60, 49, 72],
-          backgroundColor: [
-            "#FF0000",
-            "#00FF00",
-            "#0000FF"
-          ],
-          borderColor: [
-            "#000000",
-            "#000000",
-            "#000000"
-          ],
-          borderWidth: 1
+          data: [60, 49, 72]
           }]
         }
       });
