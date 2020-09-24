@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <link href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <section data-role="page">
+      <header data-role="header">
+        <h1>按鈕測試</h1>
+      </header>
+      <article data-role="content">
+        <a href="#" data-role="button" id="a_btn">超連結按鈕</a>
+        <button id="button_btn">Button 按鈕</button>
+        <input id="input_btn" type="button" value="Input 按鈕">
+        <input id="reset_btn" type="reset" value="Reset 按鈕">
+        <input id="submit_btn" type="submit" value="Submit 按鈕">
+      </article>
+      <footer data-role="footer">
+        <h3>頁尾</h3>
+      </footer>
+    </section>
+    <script>
+      $(function(){
+        $(document).on("click", "#a_btn", function(e){
+          e.preventDefault();
+          alert("你按了" + $(this).html());
+          });
+        $(document).on("click", "#button_btn", function(e){
+          e.preventDefault();
+          alert("你按了" + $(this).html());
+          });
+        $(document).on("click", "#input_btn", function(e){
+          e.preventDefault();
+          alert("你按了" + $(this).val());
+          });
+        $(document).on("click", "#reset_btn", function(e){
+          e.preventDefault();
+          alert("你按了" + $(this).val());
+          });
+        $(document).on("click", "#submit_btn", function(e){
+          e.preventDefault();
+          alert("你按了" + $(this).val());
+          });
+        });
+    </script>
+  </body>
+</html>
