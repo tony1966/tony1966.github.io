@@ -16,10 +16,12 @@
         <h1>按鈕測試</h1>
       </header>
       <article data-role="content">
-        <a href="#" data-role="button" data-icon="alert" class="ui-disabled">注意</a>
+        <a href="#" data-role="button" data-icon="alert" class="ui-disabled" id="alert">注意</a>
         <a href="#" data-role="button" data-icon="home">首頁</a>
         <a href="#" data-role="button" data-icon="grid" id="grid">格子</a>
-        <button data-icon="gear" disabled>設定</button>
+        <button data-icon="gear" id="gear" disabled>設定</button>
+        <button data-icon="check" id="enable">啟用</button>
+        <button data-icon="delete" id="disable">關閉</button>
       </article>
       <footer data-role="footer">
         <h3>頁尾</h3>
@@ -28,6 +30,16 @@
     <script>
       $(document).on("pageinit", "#page1", function(e){
         $("#grid").addClass("ui-disabled");
+        $("#enable").on("click", function(e) {
+          $("#alert").removeClass("ui-disabled");
+          $("#grid").removeClass("ui-disabled");
+          $("#gear").attr("disabled", false);
+          });
+        $("#disable").on("click", function(e) {
+          $("#alert").addClass("ui-disabled");
+          $("#grid").addClass("ui-disabled");
+          $("#gear").attr("disabled", true);
+          });
         });
     </script>
   </body>
