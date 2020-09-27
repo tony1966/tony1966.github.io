@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <link href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <!-- 第一頁頁面 -->
+    <section data-role="page" id="page1">
+      <header data-role="header">
+        <h1>按鈕測試</h1>
+      </header>
+      <article data-role="content">
+        <!-- 套用 class="ui-disabled" -->
+        <a href="#" data-role="button" data-icon="alert" class="ui-disabled" id="alert">注意</a>
+        <button data-icon="check" class="ui-disabled" id="check">選取</button>
+        <!-- 呼叫 addClass("ui-disabled") -->
+        <a href="#" data-role="button" data-icon="grid" id="grid">格子</a>
+        <button data-icon="star" id="star">星號</button>
+        <!-- 呼叫 attr("disabled", true) : 僅表單按鈕有效 -->
+        <button data-icon="gear" id="gear">設定</button>
+        <!-- 套用 disabled 屬性 : 僅表單按鈕有效 -->
+        <button data-icon="info" disabled id="info">訊息</button>
+        <!-- 關閉與啟用按鈕 -->
+        <button id="enable">全部啟用</button>
+        <button id="disable">全部關閉</button>
+      </article>
+      <footer data-role="footer">
+        <h3>頁尾</h3>
+      </footer>
+    </section>
+    <script>
+      $(document).on("pageinit", "#page1", function(e){
+        $("#grid").addClass("ui-disabled");
+        $("#star").addClass("ui-disabled");
+        $("#gear").attr("disabled", true);
+        $("#enable").on("click", function(e) {
+          $("#alert").removeClass("ui-disabled");
+          $("#check").removeClass("ui-disabled");
+          $("#grid").removeClass("ui-disabled");
+          $("#star").removeClass("ui-disabled");
+          $("#gear").attr("disabled", false);
+          $("#info").attr("disabled", false);
+          });
+        $("#disable").on("click", function(e) {
+          $("#alert").addClass("ui-disabled");
+          $("#check").addClass("ui-disabled");
+          $("#grid").addClass("ui-disabled");
+          $("#star").addClass("ui-disabled");
+          $("#gear").attr("disabled", true);
+          $("#info").attr("disabled", true);
+          });
+        });
+    </script>
+  </body>
+</html>
