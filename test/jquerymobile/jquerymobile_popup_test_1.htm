@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <link href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <!-- 首頁頁面 -->
+    <section data-role="page">
+      <header data-role="header">
+        <h1>彈出式視窗 (popup) 測試</h1>
+      </header>
+      <article data-role="content">
+        <a href="#no_close" data-role="button" data-rel="popup">1.無關閉鈕</a>
+        <a href="#right_close" data-role="button" data-rel="popup">2.右方關閉</a>
+        <a href="#left_close" data-role="button" data-rel="popup">3.左方關閉</a>
+        <a href="#right_close_only" data-role="button" data-rel="popup">4.右方關閉(only)</a>
+        <a href="#left_close_only" data-role="button" data-rel="popup">5.左方關閉(only)</a>
+        <a href="#right_close_header" data-role="button" data-rel="popup">6.右方關閉(有標題)</a>
+        <a href="#left_close_header" data-role="button" data-rel="popup">7.左方關閉(有標題)</a>
+      </article>
+      <footer data-role="footer">
+        <h3>頁尾</h3>
+      </footer>
+      <!-- 無關閉鈕 -->
+      <div data-role="popup" id="no_close" class="ui-content">
+        <p>點頁面其他地方關閉視窗</p>
+      </div>
+      <!-- 右方關閉鈕 -->
+      <div data-role="popup" id="right_close" style="max-width: 200px;">
+        <a href="#" data-role="button" data-rel="back" data-icon="delete" data-iconpos="notext" class="ui-btn-right"></a>
+        <p>點右方叉叉或頁面其他地方關閉視窗</p>
+      </div>
+      <!-- 左方關閉鈕 -->
+      <div data-role="popup" id="left_close" style="max-width: 200px;">
+        <a href="#" data-role="button" data-rel="back" data-icon="delete" data-iconpos="notext" class="ui-btn-left"></a>
+        <p>點右方叉叉或頁面其他地方關閉視窗</p>
+      </div>
+      <!-- 右方關閉鈕(only) -->
+      <div data-role="popup" id="right_close_only" style="max-width: 200px;" data-dismissible="false">
+        <a href="#" data-role="button" data-rel="back" data-icon="delete" data-iconpos="notext" class="ui-btn-right"></a>
+        <p>只能點右方叉叉關閉視窗</p>
+      </div>
+      <!-- 左方關閉鈕(only) -->
+      <div data-role="popup" id="left_close_only" style="max-width: 200px;" data-dismissible="false">
+        <a href="#" data-role="button" data-rel="back" data-icon="delete" data-iconpos="notext" class="ui-btn-left"></a>
+        <p>只能點右方叉叉關閉視窗</p>
+      </div>
+      <!-- 左方關閉鈕(有標題) -->
+      <div data-role="popup" id="left_close_header" style="max-width: 200px;">
+        <div data-role="header" style="text-align: center;">左方關閉鈕(有標題)</div>
+        <a href="#" data-role="button" data-rel="back" data-icon="delete" data-iconpos="notext" class="ui-btn-left"></a>
+        <p>點右方叉叉或頁面其他地方關閉視窗</p>
+      </div>
+      <!-- 右方關閉鈕(有標題) -->
+      <div data-role="popup" id="right_close_header" style="max-width: 200px;">
+        <div data-role="header" style="text-align: center;">右方關閉鈕(有標題)</div>
+        <a href="#" data-role="button" data-rel="back" data-icon="delete" data-iconpos="notext" class="ui-btn-right"></a>
+        <p>只能點右方叉叉關閉視窗</p>
+      </div>
+    </section>
+  </body>
+</html>
