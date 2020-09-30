@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <link href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <!-- 首頁頁面 -->
+    <section data-role="page">
+      <header data-role="header">
+        <h1>彈出式視窗(popup)測試</h1>
+      </header>
+      <article data-role="content">
+        <a href="#popup1" data-position-to="window" data-rel="popup">
+          <img src="jquerymobile_popup_test_2_1.jpg" style="width: 49%">
+        </a>
+        <a href="#popup2" data-position-to="window" data-rel="popup">
+          <img src="jquerymobile_popup_test_2_2.jpg" style="width: 49%">
+        </a>
+        <a href="#popup3" data-position-to="window" data-rel="popup">
+          <img src="jquerymobile_popup_test_2_3.jpg" style="width: 49%">
+        </a>
+        <a href="#popup4" data-position-to="window" data-rel="popup">
+          <img src="jquerymobile_popup_test_2_4.jpg" style="width: 49%">
+        </a>
+      </article>
+      <footer data-role="footer">
+        <h3>頁尾</h3>
+      </footer>
+      <!-- photo 1 -->
+      <div data-role="popup" id="popup1">
+        <a href="#" data-role="button" data-rel="back" data-icon="delete" data-iconpos="notext" class="ui-btn-right"></a>
+        <img src="jquerymobile_popup_test_2_1.jpg" style="max-height: 512px;">
+      </div>
+      <!-- photo 2 -->
+      <div data-role="popup" id="popup2">
+        <a href="#" data-role="button" data-rel="back" data-icon="delete" data-iconpos="notext" class="ui-btn-right"></a>
+        <img src="jquerymobile_popup_test_2_2.jpg" style="max-height: 512px;">
+      </div>
+      <!-- photo 3 -->
+      <div data-role="popup" id="popup3">
+        <a href="#" data-role="button" data-rel="back" data-icon="delete" data-iconpos="notext" class="ui-btn-right"></a>
+        <img src="jquerymobile_popup_test_2_3.jpg" style="max-height: 512px;">
+      </div>
+      <!-- photo 4 -->
+      <div data-role="popup" id="popup4">
+        <a href="#" data-role="button" data-rel="back" data-icon="delete" data-iconpos="notext" class="ui-btn-right"></a>
+        <img src="jquerymobile_popup_test_2_4.jpg" style="max-height: 512px;">
+      </div>
+    </section>
+  </body>
+</html>
