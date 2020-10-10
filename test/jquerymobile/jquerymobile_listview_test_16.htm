@@ -8,6 +8,9 @@
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <link href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" rel="stylesheet">
+    <style>
+      .ui-icon-github:after {background-image: url('GitHub-logo.jpg');}
+    </style>
   </head>
   <body>
     <!-- 第一頁頁面 -->
@@ -16,7 +19,7 @@
         <h1>列表清單</h1>
       </header>
       <article data-role="content">
-        <ul data-role="listview" data-inset="true">
+        <ul data-role="listview" data-inset="true" data-split-icon="github">
           <li>
             <a href="https://jquery.com/">
               <h1>jQuery</h1>
