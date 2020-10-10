@@ -10,22 +10,19 @@
     <link href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" rel="stylesheet">
   </head>
   <body>
-    <!-- 第一頁頁面 -->
     <section data-role="page" id="page1">
       <header data-role="header">
         <a href="#page2">第二頁</a>
-        <h1>按鈕測試 (1)</h1>
+        <h1>按鈕圖示測試 (1)</h1>
       </header>
       <article data-role="content">
+        <a href="#" data-role="button" data-icon="action">動作</a>
         <a href="#" data-role="button" data-icon="alert">注意</a>
         <a href="#" data-role="button" data-icon="arrow-l">左箭頭</a>
+        <a href="#" data-role="button" data-icon="arrow-d">下箭頭</a>        
+        <a href="#" data-role="button" data-icon="arrow-d-l">下左箭頭</a>
+        <a href="#" data-role="button" data-icon="arrow-d-r">下右箭頭</a>
         <a href="#" data-role="button" data-icon="arrow-r">右箭頭</a>
-        <a href="#" data-role="button" data-icon="arrow-u">上箭頭</a>
-        <a href="#" data-role="button" data-icon="arrow-d">下箭頭</a>
-        <a href="#" data-role="button" data-icon="back">下箭頭</a>
-        <a href="#" data-role="button" data-icon="check">選取</a>
-        <a href="#" data-role="button" data-icon="delete">刪除</a>
-        <a href="#" data-role="button" data-icon="forward">前進</a>
       </article>
       <footer data-role="footer">
         <h3>頁尾</h3>
@@ -34,19 +31,119 @@
     <!-- 第二頁頁面 -->
     <section data-role="page" id="page2">
       <header data-role="header">
-        <a href="#page1">第一頁</a>
-        <h1>按鈕測試 (2)</h1>
+        <a href="#page1">上一頁</a>
+        <h1>按鈕圖示測試 (2)</h1>
+	      <a href="#page3">下一頁</a>
       </header>
       <article data-role="content">
+        <a href="#" data-role="button" data-icon="arrow-u">上箭頭</a>
+        <a href="#" data-role="button" data-icon="arrow-u-l">上左箭頭</a>
+        <a href="#" data-role="button" data-icon="arrow-u-r">上右箭頭</a>
+        <a href="#" data-role="button" data-icon="audio">音訊</a>
+        <a href="#" data-role="button" data-icon="back">返回</a>
+        <a href="#" data-role="button" data-icon="bars">橫槓</a>
+        <a href="#" data-role="button" data-icon="bullets">子彈</a>
+      </article>
+      <footer data-role="footer">
+        <h3>頁尾</h3>
+      </footer>
+    </section>
+    <!-- 第三頁頁面 -->
+    <section data-role="page" id="page3">
+      <header data-role="header">
+        <a href="#page2">上一頁</a>
+        <h1>按鈕圖示測試 (3)</h1>
+	      <a href="#page4">下一頁</a>
+      </header>
+      <article data-role="content">
+        <a href="#" data-role="button" data-icon="calendar">日曆</a>
+        <a href="#" data-role="button" data-icon="camera">照相機</a>
+        <a href="#" data-role="button" data-icon="carat-d">向下</a>
+        <a href="#" data-role="button" data-icon="carat-l">向左</a>
+        <a href="#" data-role="button" data-icon="carat-r">向右</a>
+        <a href="#" data-role="button" data-icon="carat-u">向上</a>
+        <a href="#" data-role="button" data-icon="check">選取</a>
+      </article>
+      <footer data-role="footer">
+        <h3>頁尾</h3>
+      </footer>
+    </section>
+    <!-- 第四頁頁面 -->
+    <section data-role="page" id="page4">
+      <header data-role="header">
+        <a href="#page3">上一頁</a>
+        <h1>按鈕圖示測試 (4)</h1>
+	      <a href="#page5">下一頁</a>
+      </header>
+      <article data-role="content">
+        <a href="#" data-role="button" data-icon="clock">時鐘</a>
+        <a href="#" data-role="button" data-icon="cloud">雲端</a>
+        <a href="#" data-role="button" data-icon="comment">評論</a>
+        <a href="#" data-role="button" data-icon="delete">刪除</a>
+        <a href="#" data-role="button" data-icon="edit">編輯</a>
+        <a href="#" data-role="button" data-icon="eye">眼睛</a>
+        <a href="#" data-role="button" data-icon="forbidden">禁止</a>
+      </article>
+      <footer data-role="footer">
+        <h3>頁尾</h3>
+      </footer>
+    </section>
+    <!-- 第五頁頁面 -->
+    <section data-role="page" id="page5">
+      <header data-role="header">
+        <a href="#page4">上一頁</a>
+        <h1>按鈕圖示測試 (5)</h1>
+	      <a href="#page6">下一頁</a>
+      </header>
+      <article data-role="content">
+        <a href="#" data-role="button" data-icon="forward">前進</a>
         <a href="#" data-role="button" data-icon="gear">齒輪</a>
-        <a href="#" data-role="button" data-icon="grid">格子</a>
+        <a href="#" data-role="button" data-icon="grid">網格</a>
+        <a href="#" data-role="button" data-icon="heart">愛心</a>
         <a href="#" data-role="button" data-icon="home">首頁</a>
         <a href="#" data-role="button" data-icon="info">訊息</a>
+        <a href="#" data-role="button" data-icon="location">定位</a>
+      </article>
+      <footer data-role="footer">
+        <h3>頁尾</h3>
+      </footer>
+    </section>
+    <!-- 第六頁頁面 -->
+    <section data-role="page" id="page6">
+      <header data-role="header">
+        <a href="#page5">上一頁</a>
+        <h1>按鈕圖示測試 (6)</h1>
+	      <a href="#page7">下一頁</a>
+      </header>
+      <article data-role="content">
+        <a href="#" data-role="button" data-icon="lock">上鎖</a>
+        <a href="#" data-role="button" data-icon="mail">郵件</a>
+        <a href="#" data-role="button" data-icon="navigation">導覽</a>
+        <a href="#" data-role="button" data-icon="phone">電話</a>
         <a href="#" data-role="button" data-icon="minus">減號</a>
         <a href="#" data-role="button" data-icon="plus">加號</a>
+        <a href="#" data-role="button" data-icon="power">電源</a>
+      </article>
+      <footer data-role="footer">
+        <h3>頁尾</h3>
+      </footer>
+    </section>
+    <!-- 第七頁頁面 -->
+    <section data-role="page" id="page7">
+      <header data-role="header">
+        <a href="#page6">上一頁</a>
+        <h1>按鈕圖示測試 (7)</h1>
+	      <a href="#page1">第一頁</a>
+      </header>
+      <article data-role="content">
+        <a href="#" data-role="button" data-icon="recycle">回收</a>
         <a href="#" data-role="button" data-icon="refresh">重新整理</a>
         <a href="#" data-role="button" data-icon="search">搜尋</a>
+        <a href="#" data-role="button" data-icon="shop">購物</a>
         <a href="#" data-role="button" data-icon="star">星號</a>
+        <a href="#" data-role="button" data-icon="tag">標籤</a>
+        <a href="#" data-role="button" data-icon="user">使用者</a>
+        <a href="#" data-role="button" data-icon="video">視訊</a>
       </article>
       <footer data-role="footer">
         <h3>頁尾</h3>
