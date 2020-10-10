@@ -38,7 +38,7 @@
              });
            $("#remove_btn").on("click", function(e) {
              $("li").last().remove();
-             --i;
+             if(i>1) {--i};
              });
           });
       </script>
