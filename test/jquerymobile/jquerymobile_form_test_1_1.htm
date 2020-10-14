@@ -11,7 +11,7 @@
   </head>
   <body>
     <!-- 第一頁頁面 -->
-    <section data-role="page">
+    <section data-role="page" id="page1">
       <header data-role="header">
         <h1>表單元件測試</h1>
       </header>
@@ -22,12 +22,26 @@
           <label for="account">密碼</label>
           <input type="password" id="password" name="password" placeholder="請輸入密碼">
           <label for="age">年齡</label>
-          <input type="number" id="age" name="age" placeholder="請輸入年齡">
+          <input type="number" id="age" name="age" placeholder="請輸入年齡">          
+          <label for="search">搜尋</label>          
+          <input type="search" id="search" name="search" placeholder="請輸入搜尋字串">
+          <button id="ok_btn">確定</button>
         </form>
       </article>
       <footer data-role="footer">
         <h3>頁尾</h3>
       </footer>
+      <script>
+        $(document).on("pageinit", "#page1", function(e) {
+           $("#ok_btn").on("click", function(e) {
+             var msg="帳號=" + $("#account").val() + "\n" +
+                     "密碼=" + $("#password").val() + "\n" +
+                     "年齡=" + $("#age").val() + "\n" +
+                     "搜尋=" + $("#search").val();
+             alert(msg);
+             });
+          });
+      </script>
     </section>
   </body>
 </html>
