@@ -42,11 +42,7 @@
       <script>
         $(document).on("pageinit", "#page1", function(e) {
           $("#ok_btn").on("click", function(e) {
-            var msg="帳號=" + $("#account").val() + "\n" +
-                    "密碼=" + $("#password").val() + "\n" +
-                    "年齡=" + $("#age").val() + "\n" +
-                    "搜尋=" + $("#search").val();
-            alert(msg);
+            this.form.submit();
             });
           });
       </script>
