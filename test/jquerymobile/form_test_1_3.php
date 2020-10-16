@@ -16,25 +16,14 @@
         <h1>表單元件測試</h1>
       </header>
       <article data-role="content">
-        <form method="post" action="http://tony1966.xyz/test/jqmtest/form_test_1_3.php">
-          <div data-role="fieldcontain">
-            <label for="remark">評論</label>
-            <textarea id="remark" name="remark" placeholder="請輸入評論"></textarea>
-          </div>
-          <button id="ok_btn">確定</button>
-        </form>
+      <?php
+        $msg="評論:<br>".$_REQUEST["remark"];
+        echo $msg;
+      ?>
       </article>
       <footer data-role="footer">
         <h3>頁尾</h3>
       </footer>
-      <script>
-        $(document).on("pageinit", "#page1", function(e) {
-          $("#ok_btn").on("click", function(e) {
-            alert($("#remark").val());
-            this.form.submit();
-            });
-          });
-      </script>
     </section>
   </body>
 </html>
