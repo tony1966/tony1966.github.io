@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <link href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <!-- 第一頁頁面 -->
+    <section data-role="page" id="page1">
+      <header data-role="header">
+        <h1>表單元件測試</h1>
+      </header>
+      <article data-role="content">
+        <form method="post" action="http://tony1966.xyz/test/jqmtest/form_test_2_1.php">
+          <div data-role="fieldcontain">
+            <p>學歷:</p>
+            <label for="ed-1">國中</label>
+            <input type="radio" name="education" id="ed-1" value="國中">
+            <label for="ed-2">高中</label>
+            <input type="radio" name="education" id="ed-2" value="高中">
+            <label for="ed-3">大學</label>
+            <input type="radio" name="education" id="ed-3" value="大學" checked>
+            <label for="ed-4">研究所</label>
+            <input type="radio" name="education" id="ed-4" value="研究所">
+          </div>
+          <button id="ok_btn">確定</button>
+        </form>
+      </article>
+      <footer data-role="footer">
+        <h3>頁尾</h3>
+      </footer>
+      <script>
+        $(document).on("pageinit", "#page1", function(e) {
+          $("#ok_btn").on("click", function(e) {
+            alert($("[name=education]:radio:checked").val());
+            this.form.submit();
+            });
+          });
+      </script>
+    </section>
+  </body>
+</html>
