@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <link href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <!-- 第一頁頁面 -->
+    <section data-role="page" id="page1">
+      <header data-role="header">
+        <h1>表單元件測試</h1>
+      </header>
+      <article data-role="content">
+        <form method="post" action="http://tony1966.xyz/test/jqmtest/form_test_2_4.php">
+          <fieldset data-role="controlgroup">
+            <legend>擅長的程式語言:</legend>
+            <div data-role="fieldcontain">
+              <label for="lan-1">Python</label>
+              <input type="checkbox" name="language" id="lan-1" value="Python" checked>
+              <label for="lan-2">Javascript</label>
+              <input type="checkbox" name="language" id="lan-2" value="Javascript">
+              <label for="lan-3">R 語言</label>
+              <input type="checkbox" name="language" id="lan-3" value="R 語言">
+              <label for="lan-4">Swift</label>
+              <input type="checkbox" name="language" id="lan-4" value="Swift" checked>
+              <label for="lan-5">C 語言</label>
+              <input type="checkbox" name="language" id="lan-5" value="C 語言">
+            </div>
+            <button id="ok_btn">確定</button>
+          </fieldset>
+        </form>
+      </article>
+      <footer data-role="footer">
+        <h3>頁尾</h3>
+      </footer>
+      <script>
+        $(document).on("pageinit", "#page1", function(e) {
+          $("#ok_btn").on("click", function(e) {
+            var selected=[];
+            $("[name=language]:checkbox:checked").each(function(){
+              selected.push($(this).val());
+              });
+            alert("選取的語言=" + selected.join());
+            //this.form.submit();
+            });
+          });
+      </script>
+    </section>
+  </body>
+</html>
