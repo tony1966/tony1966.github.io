@@ -32,7 +32,7 @@
               <input type="checkbox" name="language" id="lan-5" value="C 語言">
             </div>
             <button id="ok_btn">確定</button>
-            <input type="hidden" id="selected_languages">
+            <input type="hidden" name="selected_languages">
           </fieldset>
         </form>
       </article>
@@ -47,7 +47,7 @@
               selected.push($(this).val());
               });
             $("#selected_languages").val(selected.join());
-            alert("選取的語言=" + $("#selected_languages").val());
+            alert("選取的語言=" + $("[name=selected_languages]".val());
             this.form.submit();
             });
           });
