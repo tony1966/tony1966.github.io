@@ -17,7 +17,7 @@
       </header>
       <article data-role="content">
       <?php
-        $msg="選取的語言=".$_REQUEST["language"];
+        $msg="選取的語言=".$_REQUEST["selected_languages"];
         echo $msg;
       ?>
       </article>
