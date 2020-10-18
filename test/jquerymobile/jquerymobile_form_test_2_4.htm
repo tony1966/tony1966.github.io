@@ -16,23 +16,20 @@
         <h1>表單元件測試</h1>
       </header>
       <article data-role="content">
-        <form method="post" action="http://tony1966.xyz/test/jqmtest/form_test_2_4.php">
-          <fieldset data-role="controlgroup">
-            <legend>擅長的程式語言:</legend>
+        <form method="post" action="http://tony1966.xyz/test/jqmtest/form_test_2_1.php">
+          <fieldset data-role="controlgroup" data-type="horizontal">
+            <legend>學歷:</legend>
             <div data-role="fieldcontain">
-              <label for="lan-1">Python</label>
-              <input type="checkbox" name="language" id="lan-1" value="Python" checked>
-              <label for="lan-2">Javascript</label>
-              <input type="checkbox" name="language" id="lan-2" value="Javascript">
-              <label for="lan-3">R 語言</label>
-              <input type="checkbox" name="language" id="lan-3" value="R 語言">
-              <label for="lan-4">Swift</label>
-              <input type="checkbox" name="language" id="lan-4" value="Swift" checked>
-              <label for="lan-5">C 語言</label>
-              <input type="checkbox" name="language" id="lan-5" value="C 語言">
+              <label for="ed-1">國中</label>
+              <input type="radio" name="education" id="ed-1" value="國中">
+              <label for="ed-2">高中</label>
+              <input type="radio" name="education" id="ed-2" value="高中">
+              <label for="ed-3">大學</label>
+              <input type="radio" name="education" id="ed-3" value="大學" checked>
+              <label for="ed-4">研究所</label>
+              <input type="radio" name="education" id="ed-4" value="研究所">
             </div>
             <button id="ok_btn">確定</button>
-            <input type="hidden" name="selected_languages" id="selected_languages">
           </fieldset>
         </form>
       </article>
@@ -42,12 +39,7 @@
       <script>
         $(document).on("pageinit", "#page1", function(e) {
           $("#ok_btn").on("click", function(e) {
-            var selected=[];
-            $("[name=language]:checkbox:checked").each(function(){
-              selected.push($(this).val());
-              });
-            $("#selected_languages").val(selected.join());
-            alert("選取的語言=" + $("#selected_languages").val());
+            alert($("[name=education]:radio:checked").val());
             this.form.submit();
             });
           });
