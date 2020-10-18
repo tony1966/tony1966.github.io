@@ -16,7 +16,7 @@
         <h1>表單元件測試</h1>
       </header>
       <article data-role="content">
-        <form method="post" action="http://tony1966.xyz/test/jqmtest/form_test_2_4.php">
+        <form method="post" action="http://tony1966.xyz/test/jqmtest/form_test_2_5.php">
           <fieldset data-role="controlgroup">
             <legend>擅長的程式語言:</legend>
             <div data-role="fieldcontain">
@@ -31,9 +31,8 @@
               <label for="lan-5">C 語言</label>
               <input type="checkbox" name="language" id="lan-5" value="C 語言">
             </div>
-            <button id="ok_btn">確定</button>
-            <input type="hidden" name="selected_languages" id="selected_languages">
           </fieldset>
+          <button id="ok_btn">確定</button>
         </form>
       </article>
       <footer data-role="footer">
@@ -46,8 +45,7 @@
             $("[name=language]:checkbox:checked").each(function(){
               selected.push($(this).val());
               });
-            $("#selected_languages").val(selected.join());
-            alert("選取的語言=" + $("#selected_languages").val());
+            alert("選取的語言=" + selected.join());
             this.form.submit();
             });
           });
