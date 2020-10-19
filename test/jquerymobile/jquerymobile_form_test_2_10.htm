@@ -16,7 +16,7 @@
         <h1>表單元件測試</h1>
       </header>
       <article data-role="content">
-        <form method="post" action="http://tony1966.xyz/test/jqmtest/form_test_2_5.php">
+        <form method="post" action="http://tony1966.xyz/test/jqmtest/form_test_2_6.php">
           <fieldset data-role="controlgroup">
             <legend>擅長的程式語言:</legend>
             <div data-role="fieldcontain">
@@ -29,6 +29,7 @@
               </select>
             </div>
           </fieldset>
+          <input type="hidden" name="selected_languages" id="selected_languages">
           <button id="ok_btn">確定</button>
         </form>
       </article>
@@ -38,7 +39,12 @@
       <script>
         $(document).on("pageinit", "#page1", function(e) {
           $("#ok_btn").on("click", function(e) {
-            alert("選取的語言=" + $("#language").val());
+            var selected=[];
+            $("[name=language] :selected").each(function(){
+              selected.push($(this).val());
+              });
+            $("#selected_languages").val(selected.join());
+            alert("選取的語言=" + $("#selected_languages").val());
             this.form.submit();
             });
           });
