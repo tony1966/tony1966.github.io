@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <link href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <!-- 第一頁頁面 -->
+    <section data-role="page" id="page1">
+      <header data-role="header">
+        <h1>表單元件測試</h1>
+      </header>
+      <article data-role="content">
+        <form method="post" action="http://tony1966.xyz/test/jqmtest/form_test_2_5.php">
+          <fieldset data-role="controlgroup">
+            <legend>擅長的程式語言:</legend>
+            <div data-role="fieldcontain">
+              <select id="language" name="language">
+                <option value="Python" selected>Python</option>
+                <option value="Javascript">Javascript</option>
+                <option value="R 語言">R 語言</option>
+                <option value="Swift">Swift</option>
+                <option value="C 語言">C 語言</option>
+              </select>
+            </div>
+          </fieldset>
+          <button id="ok_btn">確定</button>
+        </form>
+      </article>
+      <footer data-role="footer">
+        <h3>頁尾</h3>
+      </footer>
+      <script>
+        $(document).on("pageinit", "#page1", function(e) {
+          $("#ok_btn").on("click", function(e) {
+            alert("選取的語言=" + $("#language").val());
+            this.form.submit();
+            });
+          });
+      </script>
+    </section>
+  </body>
+</html>
