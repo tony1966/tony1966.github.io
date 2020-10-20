@@ -19,15 +19,15 @@
         <form method="post" action="http://tony1966.xyz/test/jqmtest/form_test_3_1.php">
           <div data-role="fieldcontain">
             <label for="R">R</label>
-            <input type="range" id="R" name="R" min="0" max="255" step="1">
+            <input type="range" id="R" name="R" min="0" max="255" step="1" value="0">
           </div>
           <div data-role="fieldcontain">
             <label for="G">G</label>
-            <input type="range" id="G" name="G" min="0" max="255" step="1">
+            <input type="range" id="G" name="G" min="0" max="255" step="1" value="0">
           </div>
           <div data-role="fieldcontain">
             <label for="B">B</label>
-            <input type="range" id="B" name="B" min="0" max="255" step="1">
+            <input type="range" id="B" name="B" min="0" max="255" step="1" value="0">
           </div>
           <button id="ok_btn">確定</button>
         </form>
@@ -38,7 +38,7 @@
       </footer>
       <script>
         $(document).on("pageinit", "#page1", function(e) {
-          $("#R,#G,#B").val(0);
+          //$("#R,#G,#B").val(0);
           $("#R,#G,#B").on("change", function(e) {
             var R=$("#R").val();
             var G=$("#G").val();
