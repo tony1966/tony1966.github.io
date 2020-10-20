@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <link href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <!-- 第一頁頁面 -->
+    <section data-role="page" id="page1">
+      <header data-role="header">
+        <h1>表單元件測試</h1>
+      </header>
+      <article data-role="content">
+        <form method="post" action="http://tony1966.xyz/test/jqmtest/form_test_3_1.php">
+          <div data-role="fieldcontain">
+            <label for="R">R</label>
+            <input type="range" id="R" name="R" min="0" max="255" step="1">
+          </div>
+          <div data-role="fieldcontain">
+            <label for="G">G</label>
+            <input type="range" id="G" name="G" min="0" max="255" step="1">
+          </div>
+          <div data-role="fieldcontain">
+            <label for="B">B</label>
+            <input type="range" id="B" name="B" min="0" max="255" step="1">
+          </div>
+          <button id="ok_btn">確定</button>
+        </form>
+        <div id="canvas" style="height:50px;"></div>
+      </article>
+      <footer data-role="footer">
+        <h3>頁尾</h3>
+      </footer>
+      <script>
+        $(document).on("pageinit", "#page1", function(e) {
+          $("#R,#G,#B").val(0);
+          $("#R,#G,#B").on("change", function(e) {
+            var R=$("#R").val();
+            var G=$("#G").val();
+            var B=$("#B").val();
+            var bgcolor="rgb(" + R + "," + G + "," + B + ")";
+            $("#canvas").css("background-color", bgcolor);
+            });
+          $("#ok_btn").on("click", function(e) {
+            this.form.submit();
+            });
+          });
+      </script>
+    </section>
+  </body>
+</html>
