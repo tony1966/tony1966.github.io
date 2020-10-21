@@ -17,7 +17,7 @@
       </header>
       <article data-role="content">
       <?php
-        $msg="R=".$_REQUEST["R"]."<br>G=".$_REQUEST["G"]."<br>R=".$_REQUEST["R"];
+        $msg="R=".$_REQUEST["R"]."<br>G=".$_REQUEST["G"]."<br>B=".$_REQUEST["B"];
         echo $msg;
       ?>
       </article>
