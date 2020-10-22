@@ -8,6 +8,9 @@
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <link href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" rel="stylesheet">
+    <script src="http://cdn.jtsage.com/datebox/latest/jqm-datebox.core.min.js"></script>
+    <script src="http://cdn.jtsage.com/datebox/latest/jqm-datebox.mode.datebox.min.js"></script>
+
   </head>
   <body>
     <!-- 第一頁頁面 -->
@@ -19,7 +22,7 @@
         <form method="post" action="http://tony1966.xyz/test/jqmtest/form_test_4_1.php">
           <div data-role="fieldcontain">
             <label for="set_date">日期設定</label>
-            <input type="date" id="set_date" name="set_date" data-role="datebox">
+            <input type="date" id="set_date" name="set_date" data-role="datebox" data-options='{"mode": "datebox", "overrideDateFormat": "mm/dd/YYYY"}'>
           </div>
           <button id="ok_btn">確定</button>
         </form>
