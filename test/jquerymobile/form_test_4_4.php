@@ -8,9 +8,6 @@
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <link href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" rel="stylesheet">
-    <script src="http://cdn.jtsage.com/datebox/latest/jqm-datebox.core.min.js"></script>
-    <script src="http://cdn.jtsage.com/datebox/latest/jqm-datebox.mode.datebox.min.js"></script>
-
   </head>
   <body>
     <!-- 第一頁頁面 -->
@@ -19,26 +16,14 @@
         <h1>表單元件測試</h1>
       </header>
       <article data-role="content">
-        <form method="post" action="http://tony1966.xyz/test/jqmtest/form_test_4_4.php">
-          <div data-role="fieldcontain">
-            <label for="set_time">時間設定</label>
-            <input type="datetime-local" id="set_datetime_local" name="set_datetime_local">
-          </div>
-          <div data-role="fieldcontain">
-            <button id="ok_btn">確定</button>
-          </div>
-        </form>
+      <?php
+        $msg="設定日期時間=".$_REQUEST["set_datetime_local"];
+        echo $msg;
+      ?>
       </article>
       <footer data-role="footer">
         <h3>頁尾</h3>
       </footer>
-      <script>
-        $(document).on("pageinit", "#page1", function(e) {
-          $("#ok_btn").on("click", function(e) {
-            this.form.submit();
-            });
-          });
-      </script>
     </section>
   </body>
 </html>
