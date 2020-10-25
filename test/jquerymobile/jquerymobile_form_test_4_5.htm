@@ -16,7 +16,7 @@
         <h1>表單元件測試</h1>
       </header>
       <article data-role="content">
-        <form method="post" action="http://tony1966.xyz/test/jqmtest/form_test_4_3.php">
+        <form method="post" action="http://tony1966.xyz/test/jqmtest/form_test_4_5.php">
           <div data-role="fieldcontain">
             <label for="set_week">周次設定</label>
             <input type="week" id="set_week" name="set_week">
@@ -36,6 +36,9 @@
       <script>
         $(document).on("pageinit", "#page1", function(e) {
           $("#ok_btn").on("click", function(e) {
+            var msg="周次=" + $("#set_week").val() + "\n" + 
+                    "月份=" + $("#set_month").val();
+            alert(msg);
             this.form.submit();
             });
           });
