@@ -16,10 +16,14 @@
         <h1>表單元件測試</h1>
       </header>
       <article data-role="content">
-        <form method="post" action="http://tony1966.xyz/test/jqmtest/form_test_4_4.php">
+        <form method="post" action="http://tony1966.xyz/test/jqmtest/form_test_4_3.php">
           <div data-role="fieldcontain">
-            <label for="set_color">顏色設定</label>
-            <input type="color">
+            <label for="set_week">周次設定</label>
+            <input type="week" id="set_week" name="set_week">
+          </div>
+          <div data-role="fieldcontain">
+            <label for="set_month">月份設定</label>
+            <input type="month" id="set_month" name="set_month">
           </div>
           <div data-role="fieldcontain">
             <button id="ok_btn">確定</button>
