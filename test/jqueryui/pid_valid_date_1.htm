@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  </head>
+  <body>
+    <select id="pid" name="pid">
+      <option value="">請選擇身分證號碼</option>
+    </select>
+    <input type="text" id="valid_date" name="valid_date">
+    <button id="update">更新</button>
+    <script>
+      $(document).ready(function(){ 
+        $.get({
+          url: "http://tony1966.xyz/test/jquerytest/get_pid.php",
+          dataType: "html",
+          success: function(res) {
+            $("#pid").append(res);
+            }
+          });
+        $('#pid').on('change', function() {
+          $.get({
+            url: "http://tony1966.xyz/test/jquerytest/get_valid_date.php",
+            dataType: "html",
+            data: {pid: this.value},
+            success: function(res) {
+              $("#valid_date").val(res);
+              }
+            });
+          });
+        $("#update").on("click", function(e){
+          $.get({
+            url: "http://tony1966.xyz/test/jquerytest/update_valid_date.php",
+            dataType: "text",
+            data: {pid: $("#pid").val(), valid_date: $("#valid_date").val()},
+            success: function(res) {alert(res);}
+            });          
+          });
+        });
+    </script>
+  </body>
+</html>
