@@ -22,6 +22,8 @@
     <script>
       $(document).ready(function(){        
         $("button").button();
+        $("input").addClass("ui-widget ui-widget-content ui-corner-all");
+        $("input").height($("button").innerHeight());
         $("#pid").selectmenu();
         $.get({
           url: "http://tony1966.xyz/test/jquerytest/get_pid.php",
@@ -40,10 +42,13 @@
               }
             });
           });
-        $("input").addClass("ui-widget ui-widget-content ui-corner-all");
-        $("input").height($("button").innerHeight());
         $("#update").on("click", function(e){
-          
+          $.get({
+            url: "http://tony1966.xyz/test/jquerytest/update_valid_date.php",
+            dataType: "text",
+            data: {pid: $("#pid").val(), valid_date: $("#valid_date").val()},
+            success: function(res) {alert(res);}
+            });          
           });
         });
     </script>
