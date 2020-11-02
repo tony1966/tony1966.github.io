@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: text/html;charset=UTF-8');
 //建立 PDO 連線物件
-$dsn="mysql:host=localhost;port=3306;dbname=test1"; 
+$dsn="mysql:host=localhost;port=3306;dbname=test"; 
 $username="root"; 
 $password="mysql"; 
 try {$conn=new PDO($dsn, $username, $password);}
