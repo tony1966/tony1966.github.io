@@ -11,7 +11,7 @@
   </head>
   <body>
     <!-- 第一頁頁面 -->
-    <section data-role="page">
+    <section data-role="page" id="page1">
       <header data-role="header">
         <h1>表單元件測試</h1>
       </header>
@@ -25,7 +25,7 @@
             <label for="account">密碼</label>
             <input type="password" id="password" name="password" placeholder="請輸入密碼">
           </div>
-          <input type="submit" id="login" value="登入">
+          <input type="button" id="login" value="登入">
         </form>
       </article>
       <footer data-role="footer">
@@ -35,8 +35,8 @@
         $(document).on("pageinit", "#page1", function(e) {
           $("#login").on("click", function(e) {
             alert("ok");
-            //e.preventDefault();
-            this.form.submit();
+            e.preventDefault();
+            //this.form.submit();
             });
           });
       </script>
