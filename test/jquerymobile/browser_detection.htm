@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://cdn.jsdelivr.net/npm/mobile-detect@1.4.4/mobile-detect.min.js"></script>
+  </head>
+  <body>
+    <script>
+      var md=new MobileDetect(window.navigator.userAgent);
+      document.write("md.mobile()=" + md.mobile() + "<br>");
+      document.write("md.phone()=" + md.phone() + "<br>");           
+      document.write("md.tablet()=" + md.tablet() + "<br>");          
+      document.write("md.userAgent()=" + md.userAgent() + "<br>");       
+      document.write("md.os()=" +md.os() + "<br>");              
+      document.write("md.is('iPhone')=" + md.is('iPhone') + "<br>");      
+      document.write("md.is('bot')=" + md.is('bot') + "<br>");         
+      document.write("md.version('Webkit')=" + md.version('Webkit') + "<br>");         
+      document.write("md.versionStr('Build')=" + md.versionStr('Build') + "<br>");       
+      document.write("md.match('playstation|xbox')=" + md.match('playstation|xbox')); 
+    </script>
+  </body>
+</html>
