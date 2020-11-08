@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta class="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <style>
+      table {border: 1px solid #007108;
+             border-collapse: collapse;
+             background-color: #d9ffdc}
+      th {border: 1px solid #007108; 
+          padding:6px; 
+          background-color: #a16128;
+          color: white;}
+      td {border: 1px solid #007108; padding:6px;}
+      .altrow {background-color: #a5e5aa;}
+      .highlight {background-color: yellow;}
+    </style>
+  </head>
+  <body>  
+    <table>
+      <caption>0056 歷年配息與填息天數</caption>
+      <thead>
+        <tr>
+          <th>除息日</th>
+          <th>每股配發(元)</th>
+          <th>殖利率</th>
+          <th>填息日</th>
+          <th>填息天數</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2009/10/23</td>
+          <td>2</td>
+          <td>8.46%</td>
+          <td>2010/1/8</td>
+          <td>78</td>
+        </tr>
+        <tr>
+          <td>2011/10/26</td>
+          <td>2.2</td>
+          <td>8.73%</td>
+          <td>2012/2/17</td>
+          <td>115</td>
+        </tr>
+        <tr>
+          <td>2012/10/24</td>
+          <td>1.3</td>
+          <td>5.33%</td>
+          <td>2013/5/9</td>
+          <td>198</td>
+        </tr>
+        <tr>
+          <td>2013/10/23</td>
+          <td>0.85</td>
+          <td>3.52%</td>
+          <td>2014/4/16</td>
+          <td>176</td>
+        </tr>
+        <tr>
+          <td>2014/10/24</td>
+          <td>1</td>
+          <td>4.17%</td>
+          <td>2014/12/5</td>
+          <td>43</td>
+        </tr>
+        <tr>
+          <td>2015/10/23</td>
+          <td>1</td>
+          <td>4.42%</td>
+          <td>2016/3/1</td>
+          <td>131</td>
+        </tr>
+        <tr>
+          <td>2016/10/26</td>
+          <td>1.3</td>
+          <td>5.13%</td>
+          <td>2017/6/21</td>
+          <td>239</td>
+        </tr>
+        <tr>
+          <td>2017/10/30</td>
+          <td>0.95</td>
+          <td>3.6%</td>
+          <td>2018/1/23</td>
+          <td>86</td>
+        </tr>
+        <tr>
+          <td>2018/10/23</td>
+          <td>1.45</td>
+          <td>5.62%</td>
+          <td>2019/2/21</td>
+          <td>122</td>
+        </tr>
+        <tr>
+          <td>2019/10/23</td>
+          <td>1.8</td>
+          <td>6.2%</td>
+          <td>2019/12/30</td>
+          <td>69</td>
+        </tr>
+        <tr>
+          <td>2020/10/28</td>
+          <td>1.6</td>
+          <td>5.34%</td>
+          <td>?</td>
+          <td>?</td>
+        </tr>
+        <tr>
+          <td colspan="2">平均年度殖利率</td>
+          <td>5.43%</td>
+          <td>平均填息天數</td>
+          <td>125.7</td>
+        </tr>
+      </tbody>
+    </table>
+    <script> 
+      $(function(){
+        $("tr:nth-child(even)").addClass("altrow");
+        $("tr").hover(function(){
+          $(this).toggleClass("highlight");
+          });
+        });
+    </script>
+  </body>
+</html>
