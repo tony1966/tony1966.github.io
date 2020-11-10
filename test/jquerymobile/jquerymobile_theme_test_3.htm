@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jQuery Mobile 測試</title>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <link href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="themes/custom-theme-c.min.css">
+    <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css">
+  </head>
+  <body>
+    <!-- 第一頁頁面 -->
+    <section data-role="page" id="page1">
+      <header data-role="header">
+        <h1>預設主題佈景 a</h1>
+      </header>
+      <article data-role="content">
+        <a href="#page2" data-role="button">主題佈景 b</a>
+        <a href="#page3" data-role="button">主題佈景 c</a>
+      </article>
+      <footer data-role="footer">
+        <h3>頁尾</h3>
+      </footer>
+    </section>
+    <!-- 第二頁頁面 -->
+    <section data-role="page" id="page2" data-theme="b">
+      <header data-role="header" data-add-back-btn="true" data-back-btn-text="返回">
+        <h1>主題背景 b</h1>
+      </header>
+      <article data-role="content">
+        <a href="#page1" data-role="button">主題佈景 a</a>
+        <a href="#page3" data-role="button">主題佈景 c</a>
+      </article>
+      <footer data-role="footer">
+        <h3>頁尾</h3>
+      </footer>
+    </section>
+    <!-- 第三頁頁面 -->
+    <section data-role="page" id="page3" data-theme="c">
+      <header data-role="header" data-add-back-btn="true" data-back-btn-text="返回">
+        <h1>主題背景 c</h1>
+      </header>
+      <article data-role="content">
+        <a href="#page1" data-role="button">主題佈景 a</a>
+        <a href="#page2" data-role="button">主題佈景 b</a>
+      </article>
+      <footer data-role="footer">
+        <h3>頁尾</h3>
+      </footer>
+    </section>
+    <script>
+    </script>
+  </body>
+</html>
