@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jQuery Mobile 測試</title>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <link href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="themes/custom-theme-c.min.css">
+    <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css">
+  </head>
+  <body>
+    <!-- 第一頁頁面 -->
+    <section data-role="page" id="page1" data-theme="c">
+      <header data-role="header">
+        <h1>自訂主題佈景 c 測試</h1>
+      </header>
+      <article data-role="content">
+        <fieldset data-role="controlgroup" data-type="horizontal">
+          <legend>學歷:</legend>
+          <div data-role="fieldcontain">
+            <label for="ed-1">國中</label>
+            <input type="radio" name="education" id="ed-1" value="國中">
+            <label for="ed-2">高中</label>
+            <input type="radio" name="education" id="ed-2" value="高中">
+            <label for="ed-3">大學</label>
+            <input type="radio" name="education" id="ed-3" value="大學" checked>
+            <label for="ed-4">研究所</label>
+            <input type="radio" name="education" id="ed-4" value="研究所">
+          </div>
+        </fieldset>
+        <div data-role="fieldcontain">
+          <label for="graduated">畢業</label>
+          <select id="graduated" name="graduated" data-role="slider">
+            <option value="是" selected>是</option>
+            <option value="否">否</option>
+          </select>
+        </div>
+        <div data-role="fieldcontain">
+          <label for="work_experience">工作經驗</label>
+          <input type="range" id="work_experience" name="work_experience" min="0" max="30" step="1" data-highlight="true">
+        </div>          
+        <div data-role="fieldcontain">
+          <label for="language">擅長的程式語言</label>
+          <select id="language" name="language" data-native-menu="false" multiple>
+            <option value="Python" selected>Python</option>
+            <option value="Javascript">Javascript</option>
+            <option value="R 語言">R 語言</option>
+            <option value="Swift">Swift</option>
+            <option value="C 語言">C 語言</option>
+          </select>
+        </div>        
+      </article>
+      <footer data-role="footer">
+        <h3>頁尾</h3>
+      </footer>
+    </section>
+    <script>
+    </script>
+  </body>
+</html>
