@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <link href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <!-- 第一頁頁面 -->
+    <div data-role="page" id="page1">
+      <div data-role="header">
+        <h1>側邊欄面板測試</h1>
+      </div>
+      <div data-role="content">
+        <a href="#overlay" data-role="button" data-rel="close">Overlay</a>
+        <a href="#reveal" data-role="button" data-rel="close">Reveal</a>
+        <a href="#push" data-role="button" data-rel="close">Push</a>        
+      </div>
+      <div data-role="footer">
+        <h3>頁尾</h3>
+      </div>
+      <!-- 左方覆蓋主版之側邊欄 (overlay) -->
+      <div id="overlay" data-role="panel" data-position="left" data-display="overlay">
+        <h1>Overlay</h1>
+        <a href="#" data-role="button" data-rel="close">關閉</a>
+      </div>
+      <!-- 右方展開主版之側邊欄 (reveal) -->
+      <div id="reveal" data-role="panel" data-position="right" data-display="reveal">
+        <h1>Reveal<h1>
+        <a href="#" data-role="button" data-rel="close">關閉</a>
+      </div>
+      <!-- 左方推開主版之側邊欄 (push) -->
+      <div id="push" data-role="panel" data-position="left" data-display="push">
+        <h1>Push</h1>
+        <a href="#" data-role="button" data-rel="close">關閉</a>
+      </div>
+    </div>
+  </body>
+</html>
