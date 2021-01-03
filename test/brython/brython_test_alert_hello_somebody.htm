@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Brython 測試</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+<script src="js/brython.js" async></script>
+<input id="name" autocomplete="off">
+<button id="say_hello">說哈囉</button>
+<body onload="brython()">
+  <script type="text/python">
+    from browser import document, alert, window
+    def hello(str):
+        alert("Hello " + document["name"].value + "!")
+    document["say_hello"].bind("click", hello)
+  </script>
+</body>
+</html>
