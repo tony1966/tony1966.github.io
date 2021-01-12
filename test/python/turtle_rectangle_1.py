@@ -1,0 +1,10 @@
+import turtle as tt
+tt.showturtle()
+tt.forward(100)
+tt.left(90)
+tt.forward(100)
+tt.left(90)
+tt.forward(100)
+tt.left(90)
+tt.forward(100)
+tt.hideturtle()
