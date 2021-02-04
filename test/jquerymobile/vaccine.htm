@@ -16,7 +16,7 @@
         <h1 style="white-space: nowrap">疫苗臨床試驗登記</h1>
       </header>
       <article data-role="content">
-        <form method="post" action="https://tony1966.xyz/test/jqmtest/form_test_4_6.php">
+        <form method="post" action="https://tony1966.xyz/test/jqmtest/form_test_4_6.php" data-ajax="false">          
           <div data-role="fieldcontain">
             <label for="name">姓名 :</label>
             <input type="text" id="name" name="name">
@@ -48,14 +48,15 @@
         <h3>頁尾</h3>
       </footer>
       <script>
-        $(function(){
+        $(document).on("pageinit", "#page1", function() {
           $("#ok_btn").on("click", function(e) { 
+            e.preventDefault();
             var msg="姓名 : " + $("#name").val() + "\n" + 
                     "年齡 : " + $("#age").val() + "\n" + 
                     "性別 : " + $("[name=gender]:radio:checked").val() + "\n" + 
                     "電話 : " + $("#phone").val() + "\n"; 
             if (!confirm(msg + "以上資料正確嗎? ")) {return;}
-            else {//this.form.submit();}
+            else {}
             });
           });
       </script>
