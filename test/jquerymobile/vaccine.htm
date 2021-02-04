@@ -23,7 +23,7 @@
           </div>
           <div data-role="fieldcontain">
             <label for="age">年齡 :</label>
-            <input type="number" id="age" name="age" min="0" max="100" value="" step="1000">
+            <input type="number" id="age" name="age" min="0" max="100">
           </div>
           <fieldset data-role="controlgroup" data-iconpos="right">
             <legend>性別 :</legend>
@@ -55,7 +55,7 @@
                     "性別 : " + $("[name=gender]:radio:checked").val() + "\n" + 
                     "電話 : " + $("#phone").val() + "\n"; 
             if (!confirm(msg + "以上資料正確嗎? ")) {return;}
-            else {this.form.submit();}
+            else {//this.form.submit();}
             });
           });
       </script>
