@@ -19,11 +19,11 @@
         <form method="post" action="https://tony1966.xyz/test/jqmtest/form_test_4_6.php" data-ajax="false">          
           <div data-role="fieldcontain">
             <label for="name">姓名 :</label>
-            <input type="text" id="name" name="name" required />
+            <input type="text" id="name" name="name">
           </div>
           <div data-role="fieldcontain">
             <label for="age">年齡 :</label>
-            <input type="number" id="age" name="age" min="0" max="100" required />
+            <input type="number" id="age" name="age" min="0" max="100">
           </div>
           <fieldset data-role="controlgroup" data-iconpos="right">
             <legend>性別 :</legend>
@@ -37,10 +37,10 @@
             </div>
           <div data-role="fieldcontain">
             <label for="phone">電話 :</label>
-            <input type="tel" id="phone" name="phone" required />
+            <input type="tel" id="phone" name="phone">
           </div>
           <div data-role="fieldcontain">
-            <button type="submit" id="ok_btn">確定</button>
+            <button id="ok_btn">確定</button>
           </div>
         </form>
       </article>
@@ -51,10 +51,18 @@
         $(document).on("pageinit", "#page1", function() {
           $("#ok_btn").on("click", function(e) { 
             e.preventDefault();
-            var msg="姓名 : " + $("#name").val() + "\n" + 
-                    "年齡 : " + $("#age").val() + "\n" + 
-                    "性別 : " + $("[name=gender]:radio:checked").val() + "\n" + 
-                    "電話 : " + $("#phone").val() + "\n"; 
+            var name=$("#name").val();
+            var age=$("#age").val();
+            var gender=$("[name=gender]:radio:checked").val();
+            var phone=$("#phone").val();
+            if (name=="" || age=="" || phone=="" || gender==undefined) {
+              alert("每一個欄位都必須填寫");
+              return;
+              }
+            var msg="姓名 : " + name + "\n" + 
+                    "年齡 : " + age + "\n" + 
+                    "性別 : " + gender + "\n" + 
+                    "電話 : " + phone + "\n"; 
             if (!confirm(msg + "以上資料正確嗎? ")) {return;}
             else {}
             });
