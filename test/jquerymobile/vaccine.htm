@@ -13,7 +13,7 @@
     <!-- 第一頁頁面 -->
     <section data-role="page" id="page1">
       <header data-role="header" data-position="fixed">
-        <h1>Covid-19 疫苗臨床試驗申請表</h1>
+        <h1 style="white-space: normal">Covid-19 疫苗臨床試驗申請表</h1>
       </header>
       <article data-role="content">
         <form method="post" action="https://tony1966.xyz/test/jqmtest/form_test_4_6.php">
@@ -25,8 +25,8 @@
             <label for="age">年齡 :</label>
             <input type="number" id="age" name="age" min="0" max="100" value="" step="1000">
           </div>
-          <fieldset data-role="controlgroup">
-            <legend>性別:</legend>
+          <fieldset data-role="controlgroup" data-type="horizontal">
+            <legend>性別 :</legend>
             <div data-role="fieldcontain">
               <label for="gender-1">男</label>
               <input type="radio" name="gender" id="gender-1" value="男">
@@ -50,7 +50,10 @@
       <script>
         $(document).on("pageinit", "#page1", function(e) {
           $("#ok_btn").on("click", function(e) {
-            var msg="月入=" + $("#income").val();
+            var msg="姓名 : " + $("#name").val() + "<br>" + 
+                    "年齡 : " + $("#age").val() + "<br>" + 
+                    "性別 : " + $("#gender").val() + "<br>" + 
+                    "電話 : " + $("#phone").val(); 
             alert(msg);
             //this.form.submit();
             });
