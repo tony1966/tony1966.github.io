@@ -13,6 +13,7 @@
     <!-- 第一頁頁面 -->
     <section data-role="page" id="page1">
       <header data-role="header" data-position="fixed">
+        <a href="#page2">登入</a>
         <h1 style="white-space: nowrap">疫苗臨床試驗登記</h1>
       </header>
       <article data-role="content">
@@ -32,8 +33,6 @@
               <input type="radio" name="gender" id="gender-1" value="男">
               <label for="gender-2">女</label>
               <input type="radio" name="gender" id="gender-2" value="女">
-              <label for="gender-3">其他</label>
-              <input type="radio" name="gender" id="gender-3" value="其他">
             </div>
           <div data-role="fieldcontain">
             <label for="phone">電話 :</label>
@@ -47,30 +46,61 @@
       <footer data-role="footer" data-position="fixed">
         <h3>高雄榮總 07-3422121</h3>
       </footer>
-      <script>
-        function trim(s){ 
-          return (s || '').replace(/^\s+|\s+$/g, ''); 
-          }
-        $(document).on("pageinit", "#page1", function() {
-          $("#ok_btn").on("click", function(e) { 
-            e.preventDefault();
-            var name=trim($("#name").val());
-            var age=trim($("#age").val());
-            var gender=$("[name=gender]:radio:checked").val();
-            var phone=trim($("#phone").val());
-            if (name=="" || age=="" || phone=="" || gender==undefined) {
-              alert("每一個欄位都必須填寫");
-              return;
-              }
-            var msg="姓名 : " + name + "\n" + 
-                    "年齡 : " + age + "\n" + 
-                    "性別 : " + gender + "\n" + 
-                    "電話 : " + phone + "\n"; 
-            if (!confirm(msg + "以上資料正確嗎? ")) {return;}
-            else {}
-            });
-          });
-      </script>
     </section>
+    <!-- 第二頁頁面 -->
+    <section data-role="page" id="page2">
+      <header data-role="header" data-add-back-btn="true">
+        <h1>管理員登入</h1>
+      </header>
+      <article data-role="content">
+        <form method="post" action="https://tony1966.xyz/test/jqmtest/vaccine_login.php" data-ajax="false">
+          <div data-role="fieldcontain">
+            <label for="account">帳號</label>
+            <input type="text" id="account" name="account" placeholder="請輸入帳號">
+          </div>
+          <div data-role="fieldcontain">
+            <label for="account">密碼</label>
+            <input type="password" id="password" name="password" placeholder="請輸入密碼">
+          </div>
+          <input type="button" id="login_btn" value="登入">
+        </form>
+      </article>
+      <footer data-role="footer">
+        <h3>高雄榮總 07-3422121</h3>
+      </footer>
+    </section>
+    <script>
+      function trim(s){ 
+        return (s || '').replace(/^\s+|\s+$/g, ''); 
+        }
+      $(document).ready(function() {
+        $("#ok_btn").on("click", function(e) { 
+          e.preventDefault();
+          var name=trim($("#name").val());
+          var age=trim($("#age").val());
+          var gender=$("[name=gender]:radio:checked").val();
+          var phone=trim($("#phone").val());
+          if (name=="" || age=="" || phone=="" || gender==undefined) {
+            alert("每一個欄位都必須填寫");
+            return;
+            }
+          var msg="姓名 : " + name + "\n" + 
+                  "年齡 : " + age + "\n" + 
+                  "性別 : " + gender + "\n" + 
+                  "電話 : " + phone + "\n"; 
+          if (!confirm(msg + "以上資料正確嗎? ")) {return;}
+          else {}
+          });
+        $("#login_btn").on("click", function(e) { 
+          e.preventDefault();
+          var account=trim($("#account").val());
+          var password=trim($("#password").val());
+          if (account=="" || password=="") {
+            alert("請輸入帳號與密碼");
+            return;
+            }
+          });
+        });
+    </script>
   </body>
 </html>
