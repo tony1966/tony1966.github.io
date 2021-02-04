@@ -49,6 +49,7 @@
       </footer>
       <script>
         $(document).on("pageinit", "#page1", function(e) {
+          event.preventDefault();
           $("#ok_btn").on("click", function(e) {
             var msg="姓名 : " + $("#name").val() + "\n" + 
                     "年齡 : " + $("#age").val() + "\n" + 
