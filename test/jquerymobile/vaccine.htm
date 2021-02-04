@@ -16,7 +16,7 @@
         <h1 style="white-space: nowrap">疫苗臨床試驗登記</h1>
       </header>
       <article data-role="content">
-        <form method="post" action="https://tony1966.xyz/test/jqmtest/form_test_4_6.php" data-ajax="false">          
+        <form method="post" action="https://tony1966.xyz/test/jqmtest/vaccine_apply.php" data-ajax="false">          
           <div data-role="fieldcontain">
             <label for="name">姓名 :</label>
             <input type="text" id="name" name="name">
@@ -45,16 +45,19 @@
         </form>
       </article>
       <footer data-role="footer" data-position="fixed">
-        <h3>頁尾</h3>
+        <h3>高雄榮總 07-3422121</h3>
       </footer>
       <script>
+        function trim(s){ 
+          return (s || '').replace(/^\s+|\s+$/g, ''); 
+          }
         $(document).on("pageinit", "#page1", function() {
           $("#ok_btn").on("click", function(e) { 
             e.preventDefault();
-            var name=$("#name").val();
-            var age=$("#age").val();
+            var name=trim($("#name").val());
+            var age=trim($("#age").val());
             var gender=$("[name=gender]:radio:checked").val();
-            var phone=$("#phone").val();
+            var phone=trim($("#phone").val());
             if (name=="" || age=="" || phone=="" || gender==undefined) {
               alert("每一個欄位都必須填寫");
               return;
