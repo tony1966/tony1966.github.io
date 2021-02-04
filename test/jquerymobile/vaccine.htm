@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <link href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <!-- 第一頁頁面 -->
+    <section data-role="page" id="page1">
+      <header data-role="header" data-position="fixed">
+        <h1>Covid-19 疫苗臨床試驗申請表</h1>
+      </header>
+      <article data-role="content">
+        <form method="post" action="http://tony1966.xyz/test/jqmtest/form_test_4_6.php">
+          <div data-role="fieldcontain">
+            <label for="name">姓名 :</label>
+            <input type="text" id="name" name="name">
+          </div>
+          <div data-role="fieldcontain">
+            <label for="age">年齡 :</label>
+            <input type="number" id="age" name="age" min="0" max="100" value="" step="1000">
+          </div>
+          <fieldset data-role="controlgroup">
+            <legend>性別:</legend>
+            <div data-role="fieldcontain">
+              <label for="gender-1">男</label>
+              <input type="radio" name="gender" id="gender-1" value="男">
+              <label for="gender-2">女</label>
+              <input type="radio" name="gender" id="gender-2" value="女">
+              <label for="gender-3">其他</label>
+              <input type="radio" name="gender" id="gender-3" value="其他">
+            </div>
+          <div data-role="fieldcontain">
+            <label for="phone">電話 :</label>
+            <input type="tel" id="phone" name="phone" >
+          </div>
+          <div data-role="fieldcontain">
+            <button id="ok_btn">確定</button>
+          </div>
+        </form>
+      </article>
+      <footer data-role="footer" data-position="fixed">
+        <h3>頁尾</h3>
+      </footer>
+      <script>
+        $(document).on("pageinit", "#page1", function(e) {
+          $("#ok_btn").on("click", function(e) {
+            var msg="月入=" + $("#income").val();
+            alert(msg);
+            //this.form.submit();
+            });
+          });
+      </script>
+    </section>
+  </body>
+</html>
