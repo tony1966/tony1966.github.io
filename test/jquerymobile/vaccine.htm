@@ -48,9 +48,8 @@
         <h3>頁尾</h3>
       </footer>
       <script>
-        $(document).on("pageinit", "#page1", function(e) {
-          $("#ok_btn").on("click", function(e) {            
-            e.preventDefault();
+        $(function(){
+          $("#ok_btn").on("click", function(e) { 
             var msg="姓名 : " + $("#name").val() + "\n" + 
                     "年齡 : " + $("#age").val() + "\n" + 
                     "性別 : " + $("[name=gender]:radio:checked").val() + "\n" + 
