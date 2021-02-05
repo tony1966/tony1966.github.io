@@ -116,7 +116,7 @@
                   "性別 : " + gender + "\n" +
                   "以上資料正確嗎? ";
           if (!confirm(msg)) {return;}
-          else {}
+          else {this.form.submit();}
           });
         $("#login_btn").on("click", function(e) { 
           e.preventDefault();
@@ -126,6 +126,7 @@
             alert("請輸入帳號與密碼");
             return;
             }
+          this.form.submit();
           });
         });
     </script>
