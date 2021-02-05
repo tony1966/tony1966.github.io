@@ -23,6 +23,10 @@
             <input type="text" id="name" name="name">
           </div>
           <div data-role="fieldcontain">
+            <label for="phone">電話 :</label>
+            <input type="tel" id="phone" name="phone">
+          </div>
+          <div data-role="fieldcontain">
             <label for="age">年齡 :</label>
             <input type="number" id="age" name="age" min="0" max="100">
           </div>
@@ -34,10 +38,7 @@
               <label for="gender-2">女</label>
               <input type="radio" name="gender" id="gender-2" value="女">
             </div>
-          <div data-role="fieldcontain">
-            <label for="phone">電話 :</label>
-            <input type="tel" id="phone" name="phone">
-          </div>
+          </fieldset>
           <div data-role="fieldcontain">
             <button id="ok_btn">確定</button>
           </div>
@@ -69,6 +70,18 @@
         <h3>高雄榮總 07-3422121</h3>
       </footer>
     </section>
+    <!-- 第三頁頁面 -->
+    <section data-role="page" id="page3">
+      <header data-role="header" data-add-back-btn="true">
+        <h1>資料管理</h1>
+      </header>
+      <article data-role="content">
+
+      </article>
+      <footer data-role="footer">
+        <h3>高雄榮總 07-3422121</h3>
+      </footer>
+    </section>
     <script>
       function trim(s){ 
         return (s || '').replace(/^\s+|\s+$/g, ''); 
@@ -77,18 +90,19 @@
         $("#ok_btn").on("click", function(e) { 
           e.preventDefault();
           var name=trim($("#name").val());
+          var phone=trim($("#phone").val());
           var age=trim($("#age").val());
           var gender=$("[name=gender]:radio:checked").val();
-          var phone=trim($("#phone").val());
-          if (name=="" || age=="" || phone=="" || gender==undefined) {
+          if (name=="" ||  phone=="" || age=="" || gender==undefined) {
             alert("每一個欄位都必須填寫");
             return;
             }
           var msg="姓名 : " + name + "\n" + 
+                  "電話 : " + phone + "\n" +  
                   "年齡 : " + age + "\n" + 
-                  "性別 : " + gender + "\n" + 
-                  "電話 : " + phone + "\n"; 
-          if (!confirm(msg + "以上資料正確嗎? ")) {return;}
+                  "性別 : " + gender + "\n" +
+                  "以上資料正確嗎? ";
+          if (!confirm(msg)) {return;}
           else {}
           });
         $("#login_btn").on("click", function(e) { 
