@@ -1,5 +1,5 @@
 --
--- ¸ê®Æªíµ²ºc `users`
+-- è³‡æ–™è¡¨çµæ§‹ `users`
 --
 
 CREATE TABLE `users` (
@@ -14,7 +14,7 @@ INSERT INTO `users` (`account`, `password`, `email`, `id`) VALUES
 
 
 --
--- ¸ê®Æªíµ²ºc `vaccine`
+-- è³‡æ–™è¡¨çµæ§‹ `vaccine`
 --
 
 CREATE TABLE `vaccine` (
