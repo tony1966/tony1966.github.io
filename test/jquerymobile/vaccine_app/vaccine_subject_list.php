@@ -66,9 +66,9 @@ if (!isset($_SESSION["vaccine_admin_account"])) { //未登入回首頁
           <tbody>
 <?php
 //建立 PDO 連線物件
-$dsn="mysql:host=mysql.hostinger.co.uk;port=3306;dbname=u137801098_test"; 
-$username="u137801098_test"; 
-$password="a5572056"; 
+$dsn="mysql:host=localhost;port=3306;dbname=test"; 
+$username="root"; 
+$password="mysql";
 try {$conn=new PDO($dsn, $username, $password);}
 catch (PDOException $e) {
   echo "資料庫連線錯誤!";
