@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <link href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <!-- 第一頁頁面 -->
+    <section data-role="page">
+      <header data-role="header">
+        <h1>對話框測試</h1>
+      </header>
+      <article data-role="content">
+        <a href="#dialog1" data-role="button" data-rel="dialog" data-trnsition="slidup">用 data-rel="dialog" 開啟</a>
+        <a href="#dialog2" data-role="button" data-trnsition="turn">用 data-role="dialog" 開啟</a>
+      </article>
+      <footer data-role="footer">
+        <h3>頁尾</h3>
+      </footer>
+    </section>
+    <!-- 對話框頁面 1 -->
+    <section data-role="page" id="dialog1">
+      <header data-role="header">
+        <h1>對話框 1</h1>
+      </header>
+      <article data-role="content">
+        <p>用 data-rel="dialog" 開啟</p>
+      </article>
+    </section>
+    <!-- 對話框頁面 2 -->
+    <section data-role="dialog" id="dialog2">
+      <header data-role="header">
+        <h1>對話框 2</h1>
+      </header>
+      <article data-role="content">
+        <p>用 data-role="dialog" 開啟</p>
+      </article>
+    </section>
+  </body>
+</html>
