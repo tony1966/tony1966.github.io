@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script>
+    $(document).on("pagebeforecreate" , function(e){
+      alert("頁面即將新增:" + e.target.id);
+      });
+    $(document).on("pagecreate" , function(e){
+      alert("頁面新增:" + e.target.id);
+      });
+    $(document).on("pageshow" , function(e){
+      alert("顯示的是:" + e.target.id);
+      });
+    $(document).on("pagebeforeshow" , function(e){
+      alert("即將要顯示的是:" + e.target.id);
+      });
+    $(document).on("pagehide" , function(e){
+      alert("隱藏的是:" + e.target.id);
+      });
+    $(document).on("pagebeforehide" , function(e){
+      alert("即將要隱藏的是:" + e.target.id);
+      });
+    </script>
+    <link href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <!-- 第一頁頁面 -->
+    <section data-role="page">
+      <header data-role="header">
+        <h1>頁面事件測試</h1>
+      </header>
+      <article data-role="content">
+        <ul data-role="listview" data-inset="true">
+          <li><a href="#page2">第 2 頁</a></li>
+          <li><a href="#page3">第 3 頁</a></li>                 
+	      </ul> 
+      </article>
+      <footer data-role="footer">
+        <h3>頁尾</h3>
+      </footer>
+    </section>
+    <!-- 第二頁頁面 -->
+    <section data-role="page" id="page2">
+      <header data-role="header" data-add-back-btn="true">
+        <h1>頁面事件測試</h1>
+      </header>
+      <article data-role="content">
+        <p>第二頁</p>
+      </article>
+      <footer data-role="footer">
+        <h3>頁尾</h3>
+      </footer>
+    </section>
+    <!-- 第三頁頁面 -->
+    <section data-role="page" id="page3">
+      <header data-role="header" data-add-back-btn="true">
+        <h1>頁面事件測試</h1>
+      </header>
+      <article data-role="content">
+        <p>第三頁</p>
+      </article>
+      <footer data-role="footer">
+        <h3>頁尾</h3>
+      </footer>
+    </section>
+  </body>
+</html>
