@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script>
+      $(document).on("tap" , function(e){
+        $("#msg").html("<h1>觸發 tap 事件</h1>");
+        });
+      $(document).on("taphold" , function(e){
+        $("#msg").html("<h1>觸發 taphold 事件</h1>");
+        });
+      $(document).on("swipe" , function(e){
+        $("#msg").html("<h1>觸發 swipe 事件</h1>");
+        });
+      $(document).on("swipeleft" , function(e){
+        $("#msg").html("<h1>觸發 swipeleft 事件</h1>");
+        });
+      $(document).on("swiperight" , function(e){
+        $("#msg").html("<h1>觸發 swiperight 事件</h1>");
+        });
+    </script>
+    <link href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <!-- 第一頁頁面 -->
+    <section data-role="page" id="page1">
+      <header data-role="header">
+        <h1>觸控事件測試</h1>
+      </header>
+      <article data-role="content">
+        <h1 id="msg"></h1>
+      </article>
+      <footer data-role="footer">
+        <h3>頁尾</h3>
+      </footer>
+    </section>
+  </body>
+</html>
