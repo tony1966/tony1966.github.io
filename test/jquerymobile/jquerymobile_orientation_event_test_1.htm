@@ -9,7 +9,7 @@
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script>
       $(window).on("orientationchange" , function(e){
-        alert("目前螢幕的方向是 : " + e.orientation);
+        $("#msg").html("目前螢幕的方向是 : " + e.orientation);
         });
     </script>
     <link href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" rel="stylesheet">
