@@ -9,23 +9,23 @@
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script>
     $(document).on("pagebeforecreate" , function(e){
-      alert("頁面即將新增:" + e.target.id);
+      alert("頁面即將新增 (pagebeforecreate) : " + e.target.id);
       });
     $(document).on("pagecreate" , function(e){
-      alert("頁面新增:" + e.target.id);
-      });
-    $(document).on("pageshow" , function(e){
-      alert("顯示的是:" + e.target.id);
+      alert("頁面新增 (pagecreate) : " + e.target.id);
       });
     $(document).on("pagebeforeshow" , function(e){
-      alert("即將要顯示的是:" + e.target.id);
-      });
-    $(document).on("pagehide" , function(e){
-      alert("隱藏的是:" + e.target.id);
+      alert("即將要顯示的是 (pagebeforeshow) : " + e.target.id);
+      });    
+    $(document).on("pageshow" , function(e){
+      alert("顯示頁面 (pageshow) : " + e.target.id);
       });
     $(document).on("pagebeforehide" , function(e){
-      alert("即將要隱藏的是:" + e.target.id);
+      alert("即將要隱藏的是 (pagebeforehide) : " + e.target.id);
       });
+    $(document).on("pagehide" , function(e){
+      alert("隱藏的是 (pagehide) : " + e.target.id);
+      });    
     </script>
     <link href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" rel="stylesheet">
   </head>
@@ -39,7 +39,7 @@
         <ul data-role="listview" data-inset="true">
           <li><a href="#page2">第 2 頁</a></li>
           <li><a href="#page3">第 3 頁</a></li>                 
-	      </ul> 
+        </ul> 
       </article>
       <footer data-role="footer">
         <h3>頁尾</h3>
