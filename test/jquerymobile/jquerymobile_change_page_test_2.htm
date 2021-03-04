@@ -11,7 +11,8 @@
     <script>
       $(document).one("pageinit", function(){
         $("#to_page2").on("click", function(e) {
-          $.mobile.changePage("change_page_test.php", {
+          var url="http://tony1966.xyz/test/jquerymobile/change_page_test.php";
+          $.mobile.changePage(url, {
             type:"post",
             data:{name:"tony", msg:"hello"}
             });
@@ -26,7 +27,7 @@
     <!-- 第一頁頁面 -->
     <section data-role="page" id="page1">
       <header data-role="header">
-        <h1>頁面事件測試</h1>
+        <h1>換頁測試</h1>
       </header>
       <article data-role="content">
         <ul data-role="listview" data-inset="true">
