@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script>
+    $(document).on("mobileinit" , function(e){ //須在 jQuery Mobile 函式庫之前
+      $.mobile.loadingMessage="正在載入頁面";
+      $.mobile.pageLoadErrorMessage="無法載入頁面";
+      $.mobile.pageLoadErrorMessageTheme="b";
+      $.mobile.page.prototype.options.backBtnText="返回";
+      $.mobile.popup.prototype.options.overlayTheme="b";
+      $.mobile.dialog.prototype.options.closeBtnText="關閉";
+      $.mobile.collapsible.prototype.options.expandCueText="展開";
+      $.mobile.collapsible.prototype.options.collapseCueText="隱藏";
+      $.mobile.listview.prototype.options.filterPlaceholder="搜尋";
+      });
+    </script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  </head>
+  <body>
+    <!-- 第一頁頁面 -->
+    <section data-role="page" id="page1">
+      <header data-role="header">
+        <h1>初始化事件測試</h1>
+      </header>
+      <article data-role="content">
+        <ul data-role="listview" data-inset="true" data-filter="true">
+          <li><a href="#page2">第 2 頁</a></li>
+          <li><a href="nothispage.htm">第 3 頁</a></li>                 
+          <li><a href="nothispage.htm">第 3 頁</a></li>                 
+        </ul> 
+        <div data-role="collapsible-set">
+          <div data-role="collapsible">
+            <h3>標題 1</h3>
+            <p>內容 1</p>
+          </div>
+          <div data-role="collapsible">
+            <h3>標題 2</h3>
+            <p>內容 2</p>
+          </div>
+        </div>
+        <a href="#dialog1" data-role="button" data-rel="dialog">對話框 (Dialog)</a>
+        <a href="#popup1" data-role="button" data-rel="popup">彈出視窗 (Popup)</a>
+      </article>
+      <footer data-role="footer">
+        <h3>頁尾</h3>
+      </footer>
+    </section>
+    <!-- 第二頁頁面 -->
+    <section data-role="page" id="page2">
+      <header data-role="header" data-add-back-btn="true">
+        <h1>初始化事件測試</h1>
+      </header>
+      <article data-role="content">
+        <p>第二頁</p>
+      </article>
+      <footer data-role="footer">
+        <h3>頁尾</h3>
+      </footer>
+    </section>
+    <!-- 對話框頁面 -->
+    <section data-role="page" id="dialog1">
+      <header data-role="header">
+        <h1>對話框</h1>
+      </header>
+      <article data-role="content">
+        <p>Hello!</p>
+      </article>
+    </section>
+  </body>
+</html>
