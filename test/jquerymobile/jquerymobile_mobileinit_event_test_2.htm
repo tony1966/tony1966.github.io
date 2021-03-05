@@ -31,8 +31,7 @@
       <article data-role="content">
         <ul data-role="listview" data-inset="true" data-filter="true">
           <li><a href="#page2">第 2 頁</a></li>
-          <li><a href="nothispage.htm">第 3 頁</a></li>                 
-          <li><a href="nothispage.htm">第 3 頁</a></li>                 
+          <li><a href="nothispage.htm">第 3 頁</a></li>                
         </ul> 
         <div data-role="collapsible-set">
           <div data-role="collapsible">
@@ -46,6 +45,12 @@
         </div>
         <a href="#dialog1" data-role="button" data-rel="dialog">對話框 (Dialog)</a>
         <a href="#popup1" data-role="button" data-rel="popup">彈出視窗 (Popup)</a>
+        <!-- 跳出式視窗 -->
+        <div data-role="popup" id="popup1" style="max-width: 200px;">
+          <div data-role="header" style="text-align: center;">跳出式視窗</div>
+          <a href="#" data-role="button" data-rel="back" data-icon="delete" data-iconpos="notext" class="ui-btn-right"></a>
+          <p>請按右方叉叉關閉視窗</p>
+        </div>
       </article>
       <footer data-role="footer">
         <h3>頁尾</h3>
