@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  </head>
+  <style>
+   
+  </style>
+  <body>
+    <!-- 第一頁頁面 -->
+    <section data-role="page" id="page1">
+      <header data-role="header">
+        <h1>表格測試</h1>
+      </header>
+      <article data-role="content">
+        <table data-role="table" border="1" class="ui-responsive ui-shadow"  data-mode="columntoggle" data-column-btn-text="欄位選擇">
+          <thead>
+            <tr>
+              <th>股票名稱</th>
+              <th>股票代號</th>
+              <th>收盤價 (元)</th>
+              <th>成交量 (張)</th>
+              <th data-priority="3">股東會日期</th>
+              <th data-priority="2">董監改選</th>
+              <th data-priority="1">類股</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>台積電</td>
+              <td>2330</td>
+              <td>123</td>
+              <td>4425119</td>
+              <td>2014-06-04</td>
+              <td>0</td>
+              <td>半導體</td>
+            </tr>
+            <tr>
+              <td>中華電</td>
+              <td>2412</td>
+              <td>96.4</td>
+              <td>5249</td>
+              <td>2014-06-15</td>
+              <td>0</td>
+              <td>通信</td>
+            </tr>
+            <tr>
+              <td>中碳</td>
+              <td>1723</td>
+              <td>192.5</td>
+              <td>918</td>
+              <td>2014-07-05</td>
+              <td>0</td>
+              <td>塑化</td>
+            </tr>
+            <tr>
+              <td>創見</td>
+              <td>2451</td>
+              <td>108</td>
+              <td>733</td>
+              <td>2014-06-30</td>
+              <td>0</td>
+              <td>模組</td>
+            </tr>
+            <tr>
+              <td>華擎</td>
+              <td>3515</td>
+              <td>118.5</td>
+              <td>175</td>
+              <td>2014-07-20</td>
+              <td>0</td>
+              <td>主機板</td>
+            </tr>
+            <tr>
+              <td>訊連</td>
+              <td>5203</td>
+              <td>97</td>
+              <td>235</td>
+              <td>2014-05-31</td>
+              <td>0</td>
+              <td>軟體</td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+      <footer data-role="footer">
+        <h3>頁尾</h3>
+      </footer>
+    </section>
+  </body>
+</html>
