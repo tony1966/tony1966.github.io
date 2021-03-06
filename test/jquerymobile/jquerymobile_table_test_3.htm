@@ -10,7 +10,15 @@
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
   </head>
   <style>
-   tr {border-bottom: solid lightgrey;}
+    table {border: 1px solid #007108;
+           border-collapse: collapse;
+           background-color: #d9ffdc}
+    th {border: 1px solid #007108; 
+        padding:6px; 
+        background-color: #a16128;
+        color: white;}
+    td {border: 1px solid #007108; padding:6px;}
+    .altrow {background-color: #a5e5aa;}
   </style>
   <body>
     <!-- 第一頁頁面 -->
@@ -93,5 +101,10 @@
         <h3>頁尾</h3>
       </footer>
     </section>
+    <script> 
+      $(function(){
+        $("tr:nth-child(even)").addClass("altrow");
+        });
+    </script>
   </body>
 </html>
