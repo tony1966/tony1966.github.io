@@ -20,6 +20,19 @@
     td {border: 1px solid #0058a3; padding:6px;}
     .altrow {background-color: #c4e4ff;}
     .highlight {background-color: yellow;}
+    div.pager {text-align: center; margin: 1em 0;}
+    div.pager span {
+        display: inline-block;
+        width: 1.8em;
+        height: 1.8em;
+        line-height: 1.8;
+        text-align: center;
+        cursor: pointer;
+        background: #eaf5ff;
+        border: 1px solid #0058a3;
+        color: #000;
+        margin-right: 0.5em;}
+    div.pager span.active {background: yellow;}
   </style>
   <body>
     <!-- 第一頁頁面 -->
@@ -121,7 +134,7 @@
           var numPages=Math.ceil(numRows / numPerPage);
           var $pager=$('<div class="pager"></div>');
           for (var page=0; page < numPages; page++) {
-            $('<button class="page-number"></button>')
+            $('<span class="page-number"></span>')
               .text((page+1))
               .on('click',{newPage: page}, function(event) {
                 currentPage=event.data['newPage'];
