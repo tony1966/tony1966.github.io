@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/jqplot@1.0.9/jquery.jqplot.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.9/jquery.jqplot.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.9/plugins/jqplot.barRenderer.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.9/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+  </head>
+  <style>
+  </style>
+  <body>
+    <!-- 第一頁頁面 -->
+    <section data-role="page" id="page1">
+      <header data-role="header">
+        <h1>jqPlot 長條圖</h1>
+      </header>
+      <article data-role="content">
+        <div id="chart"></div>
+      </article>
+      <footer data-role="footer">
+        <h3>頁尾</h3>
+      </footer>
+    </section>
+    <script> 
+      $(function(){
+        var data=[[608590, 5522119, 8170231]];
+        var ticks=["宋楚瑜", "韓國瑜", "蔡英文"];
+        var options={title: "2020 台灣總統大選得票數",
+                     seriesDefaults:{renderer: $.jqplot.BarRenderer,
+                                     pointLabels: {show: true}},
+                     axes: {xaxis: {renderer: $.jqplot.CategoryAxisRenderer,
+                                    ticks: ticks}}
+                     };
+        $.jqplot('chart', data, options);
+        });
+    </script>
+  </body>
+</html>
