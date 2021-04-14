@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>p5.js test</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.min.js"></script>
+</head>
+<body>
+  <script>
+    function setup() {
+      createCanvas(200, 100);      
+      background(200, 200, 200);
+      }
+    function draw() { 
+      fill('PaleGreen');
+      beginShape();
+      vertex(10, 50);
+      vertex(30, 30);
+      vertex(30, 40);
+      vertex(90, 40);
+      vertex(90, 60);
+      vertex(30, 60);
+      vertex(30, 70);
+      endShape();
+      fill('cyan');
+      beginShape();
+      vertex(110, 50);
+      vertex(130, 30);
+      vertex(130, 40);
+      vertex(190, 40);
+      vertex(190, 60);
+      vertex(130, 60);
+      vertex(130, 70);
+      endShape(CLOSE);
+      }
+  </script>
+</body>
+</html>
