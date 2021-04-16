@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Test</title>
+</head>
+<body>
+  <script>
+    if(navigator.userAgent.match(/Android/i)|| 
+       navigator.userAgent.match(/iPhone/i) ||
+       navigator.userAgent.match(/iPad/i)) {
+      window.location.href="/desktop/index.htm";
+      }
+    else {window.location.href="/desktop/index.htm";}
+  </script>
+</body>
+</html>
