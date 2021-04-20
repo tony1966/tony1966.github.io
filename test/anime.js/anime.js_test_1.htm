@@ -7,23 +7,20 @@
   <title>Anime.js Test</title>
   <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
   <style>
-    div {
+    .circle {
       width: 100px;
       height: 100px;
-      background-color: cyan;
+      background-color: green;
+      border-radius: 50%;
       }
   </style>
 </head>
 <body>
-  <div></div>
+  <div class="circle"></div>
   <script>
     var animation=anime({
-      targets: 'div',
-      translateX: 100,
-      borderRadius: 50,
-      duration: 2000,
-      easing: 'linear',
-      direction: 'alternate'
+      targets: '.circle',
+      translateX: 300
       });
   </script>
 </body>
