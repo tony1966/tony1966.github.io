@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>p5.js test</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.min.js"></script>
+</head>
+<body>
+  <script>
+    function setup() {
+      createCanvas(200, 120);      
+      background(200, 200, 200);
+      noStroke();
+      }
+    function draw() {
+      var r=20;
+      for(var x=0; x<=width; x += 2*r){
+        for(var y=0; y<=height; y +=2*r){
+          fill('tomato');
+          circle(x, y, 2*r);
+          }
+        }
+      }
+  </script>
+</body>
+</html>
