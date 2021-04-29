@@ -9,29 +9,39 @@
 </head>
 <body>
   <script>
-    var easing=0.03;
-    var x;
-    var y;
-    var px;
-    var py;
+    var count=0;
+    var clicked=false;
+    function mouseClicked(){
+      clicked=true;
+      ++count;
+      }
     function setup() {
       createCanvas(400, 300);
       background(1, 70, 100);
+      strokeWeight(30);
       stroke('orange');
-      strokeWeight(10);
-      x=mouseX;
-      y=mouseY;
-      px=pmouseX;
-      py=pmouseY;
       }
     function draw() { 
-      x += (mouseX - x) * easing;
-      y += (mouseY - y) * easing;
-      d=dist(x, y, px, py);
-      strokeWeight(d);
-      line(x, y, px, py);
-      px=x;
-      py=y;
+      if(clicked){
+        switch(count){
+          case 1 :
+            line(0, 0, width, height);
+            break;
+          case 2:
+            line(width, 0, 0, height);
+            break;
+          case 3:
+            line(0, height/2, width, height/2);
+            break;
+          case 4:
+            line(width/2, 0, width/2, height);
+            break;
+          default:
+            background(1, 70, 100);
+            count=0;
+          }
+        clicked=false;
+        }
       }
   </script>
 </body>
