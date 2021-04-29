@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>p5.js test</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.min.js"></script>
+</head>
+<body>
+  <script>
+    var easing=0.03;
+    var x=0;
+    var y=0;
+    var px=0;
+    var py=0;
+    function setup() {
+      createCanvas(400, 300);
+      background(1, 70, 100);
+      stroke('orange');
+      strokeWeight(10);
+      }
+    function draw() { 
+      x += (mouseX - x) * easing;
+      y += (mouseY - y) * easing;
+      d=dist(x, y, px, py);
+      strokeWeight(d);
+      line(x, y, px, py);
+      px=x;
+      py=y;
+      }
+  </script>
+</body>
+</html>
