@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>p5.js test</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.min.js"></script>
+</head>
+<body>
+  <script>
+    var x=100;
+    var y=100;
+    var dx=5;
+    var dy=5;
+    function setup() {
+      createCanvas(200, 200);
+      background(1, 70, 100);
+      stroke('yellow');
+      strokeWeight(3);
+      fill('cyan');
+      }
+    function keyPressed() {
+      if (keyCode===LEFT_ARROW) {x -= dx;}
+      if (keyCode===RIGHT_ARROW) {x += dx;}
+      if (keyCode===UP_ARROW) {y -= dy;}
+      if (keyCode===DOWN_ARROW) {y += dy;}
+      }
+    function draw() {
+      background(1, 70, 100);
+      circle(x, y, 30, 30);
+      }
+  </script>
+</body>
+</html>
