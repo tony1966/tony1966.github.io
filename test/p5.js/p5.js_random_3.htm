@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>p5.js test</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.min.js"></script>
+</head>
+<body>
+  <script>
+    var arr=[0,1,2,3,4,5,6,7,8,9];
+    function setup() {
+      createCanvas(400, 200);
+      strokeWeight(5);
+      frameRate(1);
+      }
+    function draw() { 
+      background(1, 70, 100);
+      for (var i=20; i < width-20; i += 5) {
+        var r=random(256);
+        var g=random(256);
+        var b=random(256);
+        stroke(r, g, b);
+        line(i, 20, i, 180);
+        }
+      }
+  </script>
+</body>
+</html>

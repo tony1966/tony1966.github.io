@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>p5.js test</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.min.js"></script>
+</head>
+<body>
+  <script>
+    var arr=[0,1,2,3,4,5,6,7,8,9];
+    function setup() {
+      createCanvas(350, 120);
+      background(1, 70, 100);
+      fill('orange');
+      frameRate(1);
+      textSize(16);
+      randomSeed(2);
+      }
+    function draw() { 
+      background(1, 70, 100);
+      text('random():', 10, 20);
+      text(random(), 90, 20);
+      text('random(0,10):', 10, 40);
+      var rnd1=random(0,10); 
+      text(rnd1, 120, 40);
+      text('parseInt(random(0,10)):', 10, 60);
+      text(parseInt(rnd1), 180, 60);
+      text('random([0,1,...10]):', 10, 80);
+      text(random(arr), 150, 80);
+      text('randomGaussian():', 10, 100);
+      text(random(randomGaussian()), 150, 100);
+      }
+  </script>
+</body>
+</html>
