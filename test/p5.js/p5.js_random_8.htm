@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>p5.js test</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.min.js"></script>
+</head>
+<body>
+  <script>
+    var scale=2;
+    var x;
+    var y;
+    function setup() {
+      createCanvas(400, 300);
+      background(1, 70, 100);
+      stroke('red');
+      fill('cyan');
+      x=width/2;
+      y=height/2;
+      }
+    function draw() {
+      if(x > width - 10) {
+        xmin=5 * scale;
+        xmax=scale;
+        }
+      else if(x < 10) {
+        xmin=scale;
+        xmax=5 * scale;
+        }
+      else {
+        xmin=scale;
+        xmax=scale;
+        }
+      if(y > height - 10) {
+        ymin=5 * scale;
+        ymax=scale;
+        }
+      else if(y < 10) {
+        ymin=scale;
+        ymax=5 * scale;
+        }
+      else {
+        ymin=scale;
+        ymax=scale;
+        }
+      x += random(-xmin, xmax);
+      y += random(-ymin, ymax);
+      d=random(20);
+      circle(x, y, d);
+      }
+  </script>
+</body>
+</html>
