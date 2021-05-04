@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html>
 <head>
@@ -9,7 +10,7 @@
 </head>
 <body>
   <script>
-    var scale=2;
+    var speed=2;
     var x;
     var y;
     function setup() {
@@ -22,28 +23,28 @@
       }
     function draw() {
       if(x > width - 10) {
-        xmin=5 * scale;
-        xmax=scale;
+        xmin=5 * speed;
+        xmax=speed;
         }
       else if(x < 10) {
-        xmin=scale;
-        xmax=5 * scale;
+        xmin=speed;
+        xmax=5 * speed;
         }
       else {
-        xmin=scale;
-        xmax=scale;
+        xmin=speed;
+        xmax=speed;
         }
       if(y > height - 10) {
-        ymin=5 * scale;
-        ymax=scale;
+        ymin=5 * speed;
+        ymax=speed;
         }
       else if(y < 10) {
-        ymin=scale;
-        ymax=5 * scale;
+        ymin=speed;
+        ymax=5 * speed;
         }
       else {
-        ymin=scale;
-        ymax=scale;
+        ymin=speed;
+        ymax=speed;
         }
       x += random(-xmin, xmax);
       y += random(-ymin, ymax);
