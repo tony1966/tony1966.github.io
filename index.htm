@@ -16,7 +16,7 @@
   </head>
   <body>
     <div style="text-align: center;">
-      <img src="images/logo.jpg" style="width:98vw;">
+      <img id="logo" src="images/logo.jpg">
     </div>
     <div id="tabs">
       <ul>
@@ -28,6 +28,7 @@
     <script>
       $(function(){
         $("#tabs").tabs();
+        $("#logo").width($("#tabs").width());
         });
     </script>
   </body>
