@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>ES6 測試</title>
+ </head>
+ <body>
+ <script>
+   var a=1;
+   function test(){
+     var a=2;
+     var b=3;
+     document.write("函式內變數 a=" + a + "<br>");
+     document.write("函式內變數 b=" + b + "<br>");
+     }
+   test();
+   document.write("函式外變數 a=" + a + "<br>");
+   document.write("函式內變數 b=" + b + "<br>"); //ReferenceError
+ </script>
+ </body>
+</html>

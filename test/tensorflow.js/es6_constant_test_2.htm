@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>ES6 測試</title>
+ </head>
+ <body>
+ <script>
+   const math={k:'PI', v:3.14159};
+   document.write("常數 math=" + Object.entries(math) + "<br>");
+   //math={k:"PI", v:3.14};  //TypeError
+   math.k='pi';
+   math.v=3.14;
+   document.write("常數 math=" + Object.entries(math) + "<br>");
+   console.log(math);
+ </script>
+ </body>
+</html>
