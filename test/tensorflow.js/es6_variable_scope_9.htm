@@ -6,10 +6,11 @@
   </head>
   <body>
     <script>
-      var a=1;
-      let b=1;
-      document.write("window.a=" + window.a + "<br>");
-      document.write("window.b=" + window.b + "<br>");
+      for (var i=0; i<5 ; i++){
+        (function(j){setTimeout(function(){
+          document.write("第 " + j + "次<br>");
+          }, 100)})(i);
+        }
     </script>
   </body>
 </html>
