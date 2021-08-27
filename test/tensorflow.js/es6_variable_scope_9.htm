@@ -6,10 +6,10 @@
   </head>
   <body>
     <script>
-      for (var i=0; i<5 ; i++){
-        (function(j){setTimeout(function(){
-          document.write("第 " + j + "次<br>");
-          }, 100)})(i);
+      for (let i=0; i<5 ; i++){
+        setTimeout(function(){
+          document.write("第 " + i + "次<br>");
+          }, 100);
         }
     </script>
   </body>
