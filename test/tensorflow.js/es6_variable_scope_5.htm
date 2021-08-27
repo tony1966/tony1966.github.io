@@ -8,13 +8,14 @@
     <script>
       var a=1;
       let b=1;
-      document.write("存取 var 變數 a=" + a + "<br>");
-      document.write("存取 let 變數 b=" + b + "<br>");
-      var a="Hello";
-      //let b="Hello";
-      b="Hello"
-      document.write("存取 var 變數 a=" + a + "<br>");
-      document.write("存取 let 變數 b=" + b + "<br>");
+      if (true) {
+        var a=2; //向上提升為全域變數
+        let b=2; //區域變數
+        document.write("存取內部 var 變數 a=" + a + "<br>");
+        document.write("存取內部 let 變數 b=" + b + "<br>");
+        }
+      document.write("存取外部 var 變數 a=" + a + "<br>");
+      document.write("存取外部 let 變數 b=" + b + "<br>");
     </script>
   </body>
 </html>

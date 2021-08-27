@@ -6,11 +6,15 @@
   </head>
   <body>
     <script>
-      for (var i=0; i<5 ; i++){
-        setTimeout(function(){
-          document.write("第 " + i + "次<br>");
-          }, 100);
-        }
+      var a=1;
+      let b=1;
+      document.write("存取 var 變數 a=" + a + "<br>");
+      document.write("存取 let 變數 b=" + b + "<br>");
+      var a="Hello";
+      //let b="Hello";
+      b="Hello"
+      document.write("存取 var 變數 a=" + a + "<br>");
+      document.write("存取 let 變數 b=" + b + "<br>");
     </script>
   </body>
 </html>
