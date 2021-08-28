@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+   <meta charset="UTF-8">
+   <title>ES6 測試</title>
+  </head>
+  <body>
+    <script>
+      let [a, b, c, d]=[1, 2, 3, 4];
+      document.write("[a, b, c, d]=[1, 2, 3, 4]" + "<br>");
+      document.write("a=" + a + "<br>");
+      document.write("b=" + b + "<br>");
+      document.write("c=" + c + "<br>");
+      document.write("d=" + d + "<br>");
+      [a, b, c, d]=[d, c, b, a];
+      document.write("[a, b, c, d]=[d, c, d, a]" + "<br>");
+      document.write("a=" + a + "<br>");
+      document.write("b=" + b + "<br>");
+      document.write("c=" + c + "<br>");
+      document.write("d=" + d + "<br>");
+      [a, b=0, c='a', d]=[1, 2];
+      document.write("[a, b=0, c='a', d]=[1, 2]" + "<br>");
+      document.write("a=" + a + "<br>");
+      document.write("b=" + b + "<br>");
+      document.write("c=" + c + "<br>");
+      document.write("d=" + d + "<br>");
+    </script>
+  </body>
+</html>
