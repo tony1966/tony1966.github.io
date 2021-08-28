@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <head>
+   <meta charset="UTF-8">
+   <title>ES6 測試</title>
+  </head>
+  <body>
+    <script>
+      let b=1;
+      function test(){
+        if (b==1){
+          var a=2;
+          b=2;
+          let c=2;
+          document.write("if 區塊內 c=" + c + "<br>"); 
+          }
+        document.write("函式內 a=" + a + "<br>");
+        document.write("函式內 b=" + b + "<br>");
+        //document.write("函式內 c=" + c + "<br>"); //not defined
+        }
+      test();
+      //document.write("函式外 a=" + a + "<br>"); //not defined
+      document.write("函式外 b=" + b + "<br>");
+      //document.write("函式外 c=" + c + "<br>"); //not defined
+    </script>
+  </body>
+</html>
