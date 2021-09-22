@@ -3,7 +3,7 @@ from tkinter import ttk
 import time
 
 def get_current_value():
-    return "目前進度 : " + str(progressbar["value"]) + "%"
+    return f"目前進度 : {progressbar['value']}%"
 def start():    
     for i in range(progressbar["maximum"]):
         if progressbar["value"] < progressbar["maximum"]:
