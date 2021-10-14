@@ -10,7 +10,7 @@ def say_hello():
 
 menubar=tk.Menu(win)
 hello_menu=tk.Menu(menubar, tearoff=0)
-hello_menu_a=tk.Menu(hello_menu, tearoff=0)
+hello_menu_a=tk.Menu(hello_menu, tearoff=False)
 hello_menu_a.add_command(label="Hello-1", command=say_hello)
 hello_menu_a.add_command(label="Hello-2", command=say_hello)
 hello_menu_a.add_command(label="Hello-3", command=say_hello)
