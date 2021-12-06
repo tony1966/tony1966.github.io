@@ -25,11 +25,11 @@
     </div>
     <script> 
       $(function(){
-        var t=Date.parse('Dec 31, 2031')-new Date().getTime();
+        var t=Date.parse('Jun 30, 2031')-new Date().getTime();
         var total_days=Math.floor(t / (1000 * 60 * 60 * 24));
         var years=Math.floor(total_days / 365);
         var days=total_days % 365;
-        var msg="離 2031 年 12 月 31 日退休還有 " + years + " 年 " + days + " 天";
+        var msg="離 2031 年 6 月 30 日退休還有 " + years + " 年 " + days + " 天";
         $("#msg").text(msg);
         });
     </script>
