@@ -5,26 +5,24 @@
     <meta charset="utf-8">
     <meta http-equiv="cache-control" content="no-cache">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js">
   </head>
   <body>
-    <div id="motto">      
+    <div id="output">      
     </div>
-    <script>
-      const firebaseConfig = {
-        apiKey: "AIzaSyDLI_hPuDcQCfRFXg2sHPERHA-13uWlTgE",
-        databaseURL: "https://tony1966test-default-rtdb.asia-southeast1.firebasedatabase.app",
-        projectId: "tony1966test",
-        storageBucket: "tony1966test.appspot.com",
-        messagingSenderId: "148399098262",
-        appId: "1:148399098262:web:491c71eef9596449bcb5b7",
-        measurementId: "G-9LX958Y9F3"
-        };
-      const app=firebase.initializeApp(firebaseConfig);
-      var ref=firebase.database().ref();
-      ref.on("value", function(snapshot){
-        motto.innerHTML=JSON.stringify(snapshot.val(), null, 2);
-        });
-    </script>
+  <script>
+  var config = {
+    apiKey: "AIzaSyDLI_hPuDcQCfRFXg2sHPERHA-13uWlTgE",
+    authDomain: "tony1966test.firebaseapp.com",
+    databaseURL: "https://tony1966test-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "tony1966test",
+    storageBucket: "tony1966test.appspot.com",
+    messagingSenderId: "148399098262"
+    };
+  firebase.initializeApp(config);
+  var output=document.getElementById('output');
+  var ref=firebase.database().ref().child('motto');
+  ref.on('value', snap => output.innerText=snap.val());
+</script>
   </body>
 </html>
