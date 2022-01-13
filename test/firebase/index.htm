@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="cache-control" content="no-cache">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js">
+    <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
   </head>
   <body>
     <div id="output">      
@@ -23,6 +23,6 @@
   var output=document.getElementById('output');
   var ref=firebase.database().ref().child('motto');
   ref.on('value', snap => output.innerText=snap.val());
-</script>
+  </script>
   </body>
 </html>
