@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>localStorage 測試</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <div id='msg'></div>
+    <script>
+      if(window.localStorage.page_count==null){
+        window.localStorage.page_count=0;
+        }
+      var current_count=window.localStorage.page_count;
+      var new_count=parseInt(current_count) + 1;
+      window.localStorage.page_count=new_count;
+      var msg="已載入此網頁 " + new_count + " 次";
+      document.getElementById("msg").innerHTML=msg;
+    </script>
+  </body>
+</html>
