@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>localStorage 測試</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <p>更改並儲存網頁背景色與字型大小 : </p>
+    <input type="button" value="Red" onclick="set_bg(this.value)">
+    <input type="button" value="Green" onclick="set_bg(this.value)">
+    <input type="button" value="Blue" onclick="set_bg(this.value)">
+    <input type="button" value="Aqua" onclick="set_bg(this.value)">
+    <input type="button" value="Lime" onclick="set_bg(this.value)">
+    <input type="button" value="White" onclick="set_bg(this.value)"><br><br>
+    <input type="button" value="Small" onclick="set_size('0.5em')">
+    <input type="button" value="Medium" onclick="set_size('1em')">
+    <input type="button" value="Large" onclick="set_size('2em')">
+    <script>
+      function $(id) {return document.getElementById(id);}
+      if(localStorage["background_color"]==null){
+        localStorage["background_color"]="White";
+        }
+      if(localStorage["font_size"]==null){
+        localStorage["font_size"]="1em";
+        }
+      document.body.style.backgroundColor=localStorage["background_color"];
+      document.body.style.fontSize=localStorage["font_size"];
+      function set_bg(color){
+        document.body.style.backgroundColor=color;
+        localStorage["background_color"]=size;        
+        }
+      function set_size(size){
+        document.body.style.fontSize=size;
+        localStorage["font_size"]=size;
+        }
+    </script>
+  </body>
+</html>
