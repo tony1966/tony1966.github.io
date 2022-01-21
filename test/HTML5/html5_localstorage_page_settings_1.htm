@@ -26,12 +26,12 @@
         }
       if(localStorage["background_color"]==null){
         localStorage["background_color"]="White";
-        set_bg(localStorage["background_color"]);
         }
       if(localStorage["font_size"]==null){
         localStorage["font_size"]="1em";
-        set_size(localStorage["font_size"]);
         } 
+      set_bg(localStorage["background_color"]);
+      set_size(localStorage["font_size"]);
     </script>
   </body>
 </html>
