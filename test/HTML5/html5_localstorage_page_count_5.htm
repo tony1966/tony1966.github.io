@@ -8,11 +8,17 @@
     <div id='msg'></div>
     <script>
       if(localStorage.page_count==null){
-        localStorage.page_count=0;
+        try {localStorage.page_count=0;}
+        catch (exception){
+          document.getElementById("msg").innerHTML="容量超出限制!";
+          }
         }
       var current_count=localStorage.getItem("page_count");
       var new_count=parseInt(current_count) + 1;
-      localStorage["page_count"]=new_count;
+      try {localStorage["page_count"]=new_count;}
+      catch (exception){
+        document.getElementById("msg").innerHTML="容量超出限制!";
+        } 
       var msg="已載入此網頁 " + new_count + " 次";
       document.getElementById("msg").innerHTML=msg;
     </script>
