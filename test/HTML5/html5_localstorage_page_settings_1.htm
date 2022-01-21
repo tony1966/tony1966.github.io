@@ -16,23 +16,22 @@
     <input type="button" value="Medium" onclick="set_size('1em')">
     <input type="button" value="Large" onclick="set_size('2em')">
     <script>
-      function $(id) {return document.getElementById(id);}
-      if(localStorage["background_color"]==null){
-        localStorage["background_color"]="White";
-        }
-      if(localStorage["font_size"]==null){
-        localStorage["font_size"]="1em";
-        }
-      document.body.style.backgroundColor=localStorage["background_color"];
-      document.body.style.fontSize=localStorage["font_size"];
       function set_bg(color){
         document.body.style.backgroundColor=color;
-        localStorage["background_color"]=size;        
+        localStorage["background_color"]=color;        
         }
       function set_size(size){
         document.body.style.fontSize=size;
         localStorage["font_size"]=size;
         }
+      if(localStorage["background_color"]==null){
+        localStorage["background_color"]="White";
+        set_bg(localStorage["background_color"]);
+        }
+      if(localStorage["font_size"]==null){
+        localStorage["font_size"]="1em";
+        set_size(localStorage["font_size"]);
+        } 
     </script>
   </body>
 </html>
