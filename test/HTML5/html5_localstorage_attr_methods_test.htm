@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>localStorage 測試</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <p>存取 localStorage 資料 : </p>
+    <label for="k">鍵(k):</label> 
+    <input type="text" id="k"><br>
+    <label for="v">值(v):</label>
+    <input type="text" id="v"><br><br>
+    <label for="k">存取:</label>
+    <button id="set_data">設定</button>
+    <button id="show_data">顯示</button>
+    <button id="remove_data">刪除</button>
+    <button id="clear_data">清除</button><br>
+    <div id="output"></div>
+    <script>
+      function $(id) {return document.getElementById(id);}
+      function set_data(){
+        var k=$('k').value;
+        var v=$('v').value;
+        localStorage.setItem(k, v); 
+        show_data();
+        }
+      function show_data(){
+        var arr=["<ul>"];
+        for (var i=0; i<localStorage.length; i++){
+          var k=localStorage.key(i);
+          var v=localStorage.getItem(k);          
+          arr.push("<li>" + k + ":" + v + "</li>");
+          }
+        arr.push("</ul>");
+        $("output").innerHTML=arr.join("");
+        } 
+      function remove_data(){
+        var k=$('k').value;
+        localStorage.removeItem(k);  
+        show_data();
+        } 
+      function clear_data(){
+        localStorage.clear(k); 
+        show_data();
+        } 
+      $("set_data").onclick=set_data;
+      $("show_data").onclick=show_data;
+      $("remove_data").onclick=remove_data;
+      $("clear_data").onclick=clear_data;
+    </script>
+  </body>
+</html>
