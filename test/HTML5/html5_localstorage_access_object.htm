@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>localStorage 測試</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <p>存取 localStorage 物件資料 : </p>
+    <label for="k">存取:</label>
+    <button id="set_data">設定</button>
+    <button id="show_data">顯示</button>
+    <button id="remove_data">刪除</button>
+    <button id="clear_data">清除</button><br>
+    <div id="output"></div>
+    <div id="item"></div>
+    <script>
+      function $(id) {return document.getElementById(id);}
+      function set_data(){
+        var k=Math.round(Math.random()*10000);
+        var obj={user:'tony', datetime:new Date};
+        var v=JSON.stringify(obj);
+        localStorage.setItem(k, v); 
+        show_data();
+        }
+      function show_data(){
+        var arr=["<ul>"];
+        for (var i=0; i<localStorage.length; i++){
+          var k=localStorage.key(i);
+          var v=localStorage.getItem(k); 
+          var item="<li><a href='#' onclick='get_item(" + k + ")'>" + 
+                   k + ":" + v + "</li>";
+          arr.push(item);
+          }
+        arr.push("</ul>");
+        $("output").innerHTML=arr.join("");
+        } 
+      function remove_data(){
+        var k=$('k').value;
+        localStorage.removeItem(k);  
+        show_data();
+        } 
+      function clear_data(){
+        localStorage.clear(); 
+        show_data();
+        } 
+      function get_item(k){
+        var obj=JSON.parse(localStorage.getItem(k));
+        var item="user=" + obj.user + " datetime=" + obj.datetime;
+        $("item").innerHTML=item;
+        } 
+      $("set_data").onclick=set_data;
+      $("show_data").onclick=show_data;
+      $("remove_data").onclick=remove_data;
+      $("clear_data").onclick=clear_data;
+    </script>
+  </body>
+</html>
