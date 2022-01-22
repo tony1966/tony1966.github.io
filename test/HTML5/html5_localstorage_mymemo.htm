@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <link href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <!-- 第一頁頁面 -->
+    <section data-role="page">
+      <header data-role="header">
+        <h1>我的備忘錄</h1>
+      </header>
+      <article data-role="content">
+        <ul data-role="listview" data-inset="true" id="memo_list" data-split-icon="edit">
+    <a href="#">操作A</a>
+    <a href="#">操作B</a> 
+        </ul>
+      </article>
+      <footer data-role="footer">
+        <h3>頁尾</h3>
+      </footer>
+    </section>
+    <script>
+      $(document).one("pageinit", function(){
+        var arr=[];
+        if (localStorage.length == 0){
+          arr.push("<li>尚無備忘錄</li>");
+          }
+        else {
+          for (var i=0; i<localStorage.length; i++){
+            var k=localStorage.key(i);
+            var v=localStorage.getItem(k); 
+            var item="<li><h1>" + v + "</h1>" + 
+                     "<a href='#' data-icon='edit'>" + k + 
+                     "</a></li>";
+            arr.push(item);
+            }
+          }
+        //$("#memo_list").html(arr.join(""));
+        //alert(arr.join(""));
+        }); 
+    </script>
+  </body>
+</html>
