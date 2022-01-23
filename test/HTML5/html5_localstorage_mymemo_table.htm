@@ -37,20 +37,22 @@
     </style>
   </head>
   <body>
-    <!-- 第一頁頁面 -->
-    <section data-role="page">
-      <header data-role="header">
+    <!-- 第一頁頁面 (顯示備忘事項列表) -->
+    <section data-role="page" id="page1">
+      <header data-role="header" data-position="fixed">
         <h1>我的備忘錄</h1>
+        <a href="#" id="clear_memo_btn" class="ui-btn-right">刪除</a>
       </header>
       <article data-role="content">
-        <table>
+      <a href="#page2" data-role="button" data-icon="plus">新增備忘事項</a>
+        <table id="memo_table">
           <thead>
             <tr>
-              <th>事項</th>
+              <th>備忘事項</th>
               <th>編輯</th>
             </tr>
           </thead>
-          <tbody id="tbody">
+          <tbody id="memo_list">
           </tbody>
         </table>
       </article>
@@ -58,24 +60,59 @@
         <h3>頁尾</h3>
       </footer>
     </section>
+    <!-- 第二頁頁面 (新增備忘事項) -->
+    <section data-role="page" id="page2">
+      <header data-role="header" data-position="fixed" data-add-back-btn="true">
+        <h1>新增備忘事項</h1>
+      </header>
+      <article data-role="content">
+        <form data-ajax="false">
+          <div data-role="fieldcontain">
+            <label for="memo">備忘事項 : </label>
+            <textarea id="memo" name="memo"></textarea>
+          </div>
+          <input type="button" id="save_memo_btn" value="儲存備忘事項" data-icon="check">
+        </form>
+      </article>
     <script>
-      $(document).one("pageinit", function(){
+      function sort_local_storage(){
         var arr=[];
+        for (var i=0; i<localStorage.length; i++){
+          var k=localStorage.key(i);
+          var v=localStorage.getItem(k); 
+          arr.push(k + "+" + v);
+          }
+        arr.sort();
+        arr.reverse();
+        return arr;
+        }
+      $(document).one("pageinit", function(){
         if (localStorage.length == 0){
-          arr.push("<tr><td colspan=2>尚無備忘錄</td></tr>");
+          arr.push("<tr><td colspan=2>尚無備忘事項</td></tr>");
           }
         else {
-          for (var i=0; i<localStorage.length; i++){
-            var k=localStorage.key(i);
-            var v=localStorage.getItem(k); 
-            var item="<tr><td>" + v + "</td><td>" + 
+          var memo_arr=sort_local_storage();
+          for (var i=0; i<memo_arr.length; i++){
+            var arr=memo_arr[i].split("+");
+            var item="<tr><td>" + arr[1] + "</td><td style='text-align: center;'>" + 
                      "<a href='#' data-icon='edit' data-iconpos='notext' " + 
                      "data-mini='true' data-ajax='false'>編輯</a></td></tr>";
-            arr.push(item);
+            $(item).appendTo("#memo_list").trigger("create");
             }
           }
         $("#tbody").html(arr.join(""));
-        //alert(arr.join(""));
+        $("#save_memo_btn").on("click", function(e) {
+          var k=JSON.stringify(new Date()).substr(1,19);
+          var v=$("#memo").val();
+          localStorage.setItem(k, v); 
+          $.mobile.changePage("#page1");
+          $("#tbody").parent().trigger("create");
+          });
+        $("#clear_memo_btn").on("click", function(e) {
+          alert(JSON.stringify(sort_local_storage()));
+          //localStorage.clear(); 
+          //$.mobile.changePage("#page1");
+          });
         }); 
     </script>
   </body>
