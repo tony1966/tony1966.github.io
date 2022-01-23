@@ -109,9 +109,9 @@
           $("#tbody").parent().trigger("create");
           });
         $("#clear_memo_btn").on("click", function(e) {
-          alert(JSON.stringify(sort_local_storage()));
-          //localStorage.clear(); 
-          //$.mobile.changePage("#page1");
+          //alert(JSON.stringify(sort_local_storage()));
+          localStorage.clear(); 
+          $.mobile.changePage("#page1");
           });
         }); 
     </script>
