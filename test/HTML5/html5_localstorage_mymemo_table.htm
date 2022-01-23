@@ -88,7 +88,8 @@
         }
       $(document).one("pageinit", function(){
         if (localStorage.length == 0){
-          arr.push("<tr><td colspan=2>尚無備忘事項</td></tr>");
+          var item="<tr><td colspan=2>尚無備忘事項</td></tr>";
+          $(item).appendTo("#memo_list").trigger("create");
           }
         else {
           var memo_arr=sort_local_storage();
@@ -100,7 +101,6 @@
             $(item).appendTo("#memo_list").trigger("create");
             }
           }
-        $("#tbody").html(arr.join(""));
         $("#save_memo_btn").on("click", function(e) {
           var k=JSON.stringify(new Date()).substr(1,19);
           var v=$("#memo").val();
