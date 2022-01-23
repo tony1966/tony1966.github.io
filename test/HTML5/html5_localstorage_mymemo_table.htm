@@ -95,9 +95,11 @@
           var memo_arr=sort_local_storage();
           for (var i=0; i<memo_arr.length; i++){
             var arr=memo_arr[i].split("+");
-            var item="<tr><td>" + arr[1] + "</td><td style='text-align: center;'>" + 
-                     "<a href='#' data-icon='edit' data-iconpos='notext' " + 
-                     "data-mini='true' data-ajax='false'>編輯</a></td></tr>";
+            var item="<tr><td>" + arr[1] + "</td>" +
+                     "<td style='text-align: center;'>" + 
+                     "<a href='#' data-role='button' data-icon='edit' " +
+                     "data-iconpos='notext' data-mini='true' " +
+                     "data-inline='true'>編輯</a></td></tr>";
             $(item).appendTo("#memo_list").trigger("create");
             }
           }
