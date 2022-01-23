@@ -74,6 +74,29 @@
           <input type="button" id="save_memo_btn" value="儲存備忘事項" data-icon="check">
         </form>
       </article>
+      <footer data-role="footer">
+        <h3>頁尾</h3>
+      </footer>
+    </section>
+    <!-- 第三頁頁面 (編輯備忘事項) -->
+    <section data-role="page" id="page3">
+      <header data-role="header" data-position="fixed" data-add-back-btn="true">
+        <h1>編輯備忘事項</h1>
+      </header>
+      <article data-role="content">
+        <form data-ajax="false">
+          <div data-role="fieldcontain">
+            <label for="memo">備忘事項 : </label>
+            <textarea id="memo" name="memo"></textarea>
+          </div>
+          <input type="button" id="delete_memo_btn" value="刪除" data-icon="delete">
+          <input type="button" id="save_memo_btn" value="儲存" data-icon="check">
+        </form>
+      </article>
+      <footer data-role="footer">
+        <h3>頁尾</h3>
+      </footer>
+    </section>
     <script>
       function sort_local_storage(){
         var arr=[];
@@ -97,9 +120,9 @@
             var arr=memo_arr[i].split("+");
             var item="<tr><td>" + arr[1] + "</td>" +
                      "<td style='text-align: center;'>" + 
-                     "<a href='#' data-role='button' data-icon='edit' " +
+                     "<a href='#page3' data-role='button' data-icon='edit' " +
                      "data-iconpos='notext' data-mini='true' " +
-                     "data-inline='true'>編輯</a></td></tr>";
+                     "data-inline='true' id='edit_memo_btn'>編輯</a></td></tr>";
             $(item).appendTo("#memo_list").trigger("create");
             }
           }
@@ -107,13 +130,15 @@
           var k=JSON.stringify(new Date()).substr(1,19);
           var v=$("#memo").val();
           localStorage.setItem(k, v); 
-          $.mobile.changePage("#page1");
+          $.mobile.changePage($("#page1"));
           $("#tbody").parent().trigger("create");
           });
         $("#clear_memo_btn").on("click", function(e) {
-          //alert(JSON.stringify(sort_local_storage()));
           localStorage.clear(); 
-          $.mobile.changePage("#page1");
+          $.mobile.changePage($("#page1"));
+          });
+        $("#edit_memo_btn").on("click", function(e) {
+          $.mobile.changePage($("#page3"));
           });
         }); 
     </script>
