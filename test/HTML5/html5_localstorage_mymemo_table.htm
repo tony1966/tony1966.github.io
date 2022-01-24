@@ -165,7 +165,7 @@
         }
       $(document).one("pageinit", function(){
         if (localStorage.length == 0){
-          var item="<tr><td colspan=2>尚無備忘事項</td></tr>";
+          var item="<tr><td colspan=2>無備忘事項</td></tr>";
           $(item).appendTo("#memo_list").trigger("create");
           }
         else {render_memo_list();}
@@ -178,8 +178,10 @@
           $.mobile.changePage($("#page1"));
           });
         $("#confirm_clear_btn").on("click", function(e) {
-          localStorage.clear(); 
-          render_memo_list();
+          localStorage.clear();
+          $("#memo_list").empty();
+          var item="<tr><td colspan=2>無備忘事項</td></tr>";
+          $(item).appendTo("#memo_list").trigger("create");
           $.mobile.changePage($("#page1"));
           });
         $("#edit_memo_btn").on("click", function(e) {
