@@ -44,8 +44,8 @@
         <a href="#confirm_clear_dialog" id="clear_memo_btn" class="ui-btn-right" data-rel="dialog">清除</a>
       </header>
       <article data-role="content">
-      <a href="#page2" data-role="button" data-icon="plus">新增</a>
-        <table id="memo_table">
+        <a href="#page2" data-role="button" data-icon="plus">新增</a>
+        <table>
           <thead>
             <tr>
               <th>備忘事項</th>
@@ -56,8 +56,8 @@
           </tbody>
         </table>
       </article>
-      <footer data-role="footer">
-        <h3>頁尾</h3>
+      <footer data-role="footer" data-position="fixed">
+        <h3>© 2022 LF.Studio</h3>
       </footer>
     </section>
     <!-- 第二頁頁面 (新增備忘事項) -->
@@ -69,13 +69,13 @@
         <form data-ajax="false">
           <div data-role="fieldcontain">
             <label for="add_memo">備忘事項 : </label>
-            <textarea id="add_memo" name="memo"></textarea>
+            <textarea id="add_memo"></textarea>
           </div>
           <input type="button" id="add_memo_btn" value="儲存" data-icon="check">
         </form>
       </article>
-      <footer data-role="footer">
-        <h3>頁尾</h3>
+      <footer data-role="footer" data-position="fixed">
+        <h3>© 2022 LF.Studio</h3>
       </footer>
     </section>
     <!-- 第三頁頁面 (編輯備忘事項) -->
@@ -85,16 +85,20 @@
       </header>
       <article data-role="content">
         <form data-ajax="false">
-          <div data-role="fieldcontain">
-            <label for="edit_memo">備忘事項 : </label>
-            <textarea id="edit_memo" name="memo"></textarea>
+          <div data-role="fieldcontain">          
+            <input type="hidden" id="edit_memo_key">
+            <label for="edit_memo_value">備忘事項 : </label>
+            <textarea id="edit_memo_value"></textarea>
           </div>
-          <a href="#confirm_delete_dialog" id="delete_memo_btn" data-role='button' data-rel="dialog" data-icon="delete" data-inline="true">刪除</a>
-          <a href="#confirm_delete_dialog" id="update_memo_btn" data-role='button' data-icon="check" data-inline="true">更新</a>
+          <div data-role="controlgroup" data-type="horizontal">
+            <a href="#" data-role='button' data-rel="back" data-icon="back" data-inline="true">取消</a>
+            <a href="#confirm_remove_dialog" id="remove_memo_btn" data-role='button' data-rel="dialog" data-icon="delete" data-inline="true">刪除</a>
+            <a href="#" id="update_memo_btn" data-role='button' data-icon="check" data-inline="true">更新</a>
+          </div>
         </form>
       </article>
-      <footer data-role="footer">
-        <h3>頁尾</h3>
+      <footer data-role="footer" data-position="fixed">
+        <h3>© 2022 LF.Studio</h3>
       </footer>
     </section>
     <!-- 對話框頁面 1 (清除全部資料) -->
@@ -105,21 +109,21 @@
       <article data-role="content">
         <p>確定要清除全部資料嗎?</p>
         <div data-role="controlgroup" data-type="horizontal">
-          <a href="#" id="cancel_clear_btn" data-role='button' data-icon='delete'  data-inline="true" data-rel="back">取消</a>
+          <a href="#" data-role='button' data-icon='back'  data-inline="true" data-rel="back">取消</a>
           <a href="#" id="confirm_clear_btn" data-role='button' data-icon='check'  data-inline="true">確定</a>
         </div>
       </article>
     </section>
     <!-- 對話框頁面 2 (刪除單筆資料) -->
-    <section data-role="dialog" id="confirm_delete_dialog" data-overlay-theme="b">
+    <section data-role="dialog" id="confirm_remove_dialog" data-overlay-theme="b">
       <header data-role="header">
-        <h1>確認</h1>
+        <h1>請確認</h1>
       </header>
       <article data-role="content">
         <p>確定要刪除這筆備忘事項嗎?</p>
         <div data-role="controlgroup" data-type="horizontal">
-          <a href="#" id="cancel_delete_btn" data-role='button' data-icon='delete'  data-inline="true" data-rel="back">取消</a>
-          <a href="#" id="confirm_delete_btn" data-role='button' data-icon='check'  data-inline="true">確定</a>
+          <a href="#" data-role='button' data-icon='back' data-inline="true" data-rel="back">取消</a>
+          <a href="#" id="confirm_remove_btn" data-role='button' data-icon='check'  data-inline="true">確定</a>
         </div>
       </article>
     </section>
@@ -135,36 +139,64 @@
         arr.reverse();
         return arr;
         }
+      function set_edit_memo(k){
+        var v=localStorage.getItem(k);
+        $("#edit_memo_key").val(k);
+        $("#edit_memo_value").val(v);
+        render_memo_list();
+        $.mobile.changePage($("#page3"));
+        }
+      function render_memo_list(){
+        $("#memo_list").empty();
+        var memo_arr=sort_local_storage();
+        for (var i=0; i<memo_arr.length; i++){
+          var arr=memo_arr[i].split("+");
+          var k=arr[0];
+          var v=arr[1];
+          var item="<tr><td>" + v + "</td>" +
+                   "<td style='text-align: center;'>" + 
+                   "<a href='#' data-role='button' " + 
+                   "data-icon='edit' data-iconpos='notext' " + 
+                   "data-mini='true' data-inline='true' " + 
+                   "onclick='set_edit_memo(" + '"' + k + '"' +
+                   ")'>編輯</a></td></tr>";
+          $(item).appendTo("#memo_list").trigger("create");
+          }
+        }
       $(document).one("pageinit", function(){
         if (localStorage.length == 0){
           var item="<tr><td colspan=2>尚無備忘事項</td></tr>";
           $(item).appendTo("#memo_list").trigger("create");
           }
-        else {
-          var memo_arr=sort_local_storage();
-          for (var i=0; i<memo_arr.length; i++){
-            var arr=memo_arr[i].split("+");
-            var item="<tr><td>" + arr[1] + "</td>" +
-                     "<td style='text-align: center;'>" + 
-                     "<a href='#page3' data-role='button' data-icon='edit' " +
-                     "data-iconpos='notext' data-mini='true' " +
-                     "data-inline='true' id='edit_memo_btn'>編輯</a></td></tr>";
-            $(item).appendTo("#memo_list").trigger("create");
-            }
-          }
+        else {render_memo_list();}
         $("#add_memo_btn").on("click", function(e) {
           var k=JSON.stringify(new Date()).substr(1,19);
           var v=$("#add_memo").val();
           localStorage.setItem(k, v); 
+          $("#add_memo").val("");
+          render_memo_list();
           $.mobile.changePage($("#page1"));
-          $("#tbody").parent().trigger("create");
           });
-        $("#clear_memo_btn").on("click", function(e) {
+        $("#confirm_clear_btn").on("click", function(e) {
           localStorage.clear(); 
+          render_memo_list();
           $.mobile.changePage($("#page1"));
           });
         $("#edit_memo_btn").on("click", function(e) {
           $.mobile.changePage($("#page3"));
+          });
+        $("#confirm_remove_btn").on("click", function(e) {
+          var k=$("#edit_memo_key").val();
+          localStorage.removeItem(k);
+          render_memo_list();
+          $.mobile.changePage($("#page1"));
+          });
+        $("#update_memo_btn").on("click", function(e) {
+          var k=$("#edit_memo_key").val();
+          var v=$("#edit_memo_value").val();
+          localStorage.setItem(k, v);
+          render_memo_list();
+          $.mobile.changePage($("#page1"));
           });
         }); 
     </script>
