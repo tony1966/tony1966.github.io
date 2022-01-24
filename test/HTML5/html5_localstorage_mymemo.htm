@@ -8,41 +8,198 @@
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <link href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" rel="stylesheet">
+    <style>
+      table {
+          color: black;
+          background: #fff;
+          border: 1px solid #b4b4b4;
+          padding: 0;
+          margin-top:10px;
+          width: 100%;
+          -webkit-border-radius: 8px;
+          }
+      table tr td {
+          color: #666;
+          border-bottom: 1px solid #b4b4b4;
+          border-right: 1px solid #b4b4b4;
+          padding: 5px 5px 5px 5px;
+          background-image: -webkit-linear-gradient(top, #fdfdfd, #eee);
+          }
+      table tr:first-child td {
+          border-top: 1px solid #b4b4b4;
+          }
+      table tr td:last-child {
+          border-right: none;
+          }
+      table tr:last-child td {
+          border-bottom: none;
+          }
+    </style>
   </head>
   <body>
-    <!-- 第一頁頁面 -->
-    <section data-role="page">
-      <header data-role="header">
+    <!-- 第一頁頁面 (顯示備忘事項列表) -->
+    <section data-role="page" id="page1">
+      <header data-role="header" data-position="fixed">
         <h1>我的備忘錄</h1>
+        <a href="#confirm_clear_dialog" id="clear_memo_btn" class="ui-btn-right" data-rel="dialog">清除</a>
       </header>
       <article data-role="content">
-        <ul data-role="listview" data-inset="true" id="memo_list" data-split-icon="edit">
-    <a href="#">操作A</a>
-    <a href="#">操作B</a> 
-        </ul>
+        <a href="#page2" data-role="button" data-icon="plus">新增</a>
+        <table>
+          <thead>
+            <tr>
+              <th>備忘事項</th>
+              <th>編輯</th>
+            </tr>
+          </thead>
+          <tbody id="memo_list">
+          </tbody>
+        </table>
       </article>
-      <footer data-role="footer">
-        <h3>頁尾</h3>
+      <footer data-role="footer" data-position="fixed">
+        <h3>© 2022 LF.Studio</h3>
       </footer>
     </section>
+    <!-- 第二頁頁面 (新增備忘事項) -->
+    <section data-role="page" id="page2">
+      <header data-role="header" data-position="fixed" data-add-back-btn="true" data-back-btn-text="返回">
+        <h1>新增備忘事項</h1>
+      </header>
+      <article data-role="content">
+        <form data-ajax="false">
+          <div data-role="fieldcontain">
+            <label for="add_memo">備忘事項 : </label>
+            <textarea id="add_memo"></textarea>
+          </div>
+          <input type="button" id="add_memo_btn" value="儲存" data-icon="check">
+        </form>
+      </article>
+      <footer data-role="footer" data-position="fixed">
+        <h3>© 2022 LF.Studio</h3>
+      </footer>
+    </section>
+    <!-- 第三頁頁面 (編輯備忘事項) -->
+    <section data-role="page" id="page3">
+      <header data-role="header" data-position="fixed" data-add-back-btn="true" data-back-btn-text="返回">
+        <h1>編輯備忘事項</h1>
+      </header>
+      <article data-role="content">
+        <form data-ajax="false">
+          <div data-role="fieldcontain">          
+            <input type="hidden" id="edit_memo_key">
+            <label for="edit_memo_value">備忘事項 : </label>
+            <textarea id="edit_memo_value"></textarea>
+          </div>
+          <div data-role="controlgroup" data-type="horizontal">
+            <a href="#" data-role='button' data-rel="back" data-icon="back" data-inline="true">取消</a>
+            <a href="#confirm_remove_dialog" id="remove_memo_btn" data-role='button' data-rel="dialog" data-icon="delete" data-inline="true">刪除</a>
+            <a href="#" id="update_memo_btn" data-role='button' data-icon="check" data-inline="true">更新</a>
+          </div>
+        </form>
+      </article>
+      <footer data-role="footer" data-position="fixed">
+        <h3>© 2022 LF.Studio</h3>
+      </footer>
+    </section>
+    <!-- 對話框頁面 1 (清除全部資料) -->
+    <section data-role="dialog" id="confirm_clear_dialog" data-overlay-theme="b">
+      <header data-role="header">
+        <h1>確認</h1>
+      </header>
+      <article data-role="content">
+        <p>確定要清除全部資料嗎?</p>
+        <div data-role="controlgroup" data-type="horizontal">
+          <a href="#" data-role='button' data-icon='back'  data-inline="true" data-rel="back">取消</a>
+          <a href="#" id="confirm_clear_btn" data-role='button' data-icon='check'  data-inline="true">確定</a>
+        </div>
+      </article>
+    </section>
+    <!-- 對話框頁面 2 (刪除單筆資料) -->
+    <section data-role="dialog" id="confirm_remove_dialog" data-overlay-theme="b">
+      <header data-role="header">
+        <h1>請確認</h1>
+      </header>
+      <article data-role="content">
+        <p>確定要刪除這筆備忘事項嗎?</p>
+        <div data-role="controlgroup" data-type="horizontal">
+          <a href="#" data-role='button' data-icon='back' data-inline="true" data-rel="back">取消</a>
+          <a href="#" id="confirm_remove_btn" data-role='button' data-icon='check'  data-inline="true">確定</a>
+        </div>
+      </article>
+    </section>
     <script>
-      $(document).one("pageinit", function(){
+      function sort_local_storage(){
         var arr=[];
+        for (var i=0; i<localStorage.length; i++){
+          var k=localStorage.key(i);
+          var v=localStorage.getItem(k); 
+          arr.push(k + "+" + v);
+          }
+        arr.sort();
+        arr.reverse();
+        return arr;
+        }
+      function set_edit_memo(k){
+        var v=localStorage.getItem(k);
+        $("#edit_memo_key").val(k);
+        $("#edit_memo_value").val(v);
+        render_memo_list();
+        $.mobile.changePage($("#page3"));
+        }
+      function render_memo_list(){
+        $("#memo_list").empty();
+        var memo_arr=sort_local_storage();
+        for (var i=0; i<memo_arr.length; i++){
+          var arr=memo_arr[i].split("+");
+          var k=arr[0];
+          var v=arr[1];
+          var item="<tr><td>" + v + "</td>" +
+                   "<td style='text-align: center;'>" + 
+                   "<a href='#' data-role='button' " + 
+                   "data-icon='edit' data-iconpos='notext' " + 
+                   "data-mini='true' data-inline='true' " + 
+                   "onclick='set_edit_memo(" + '"' + k + '"' +
+                   ")'>編輯</a></td></tr>";
+          $(item).appendTo("#memo_list").trigger("create");
+          }
+        }
+      $(document).one("pageinit", function(){
         if (localStorage.length == 0){
-          arr.push("<li>尚無備忘錄</li>");
+          var item="<tr><td colspan=2>無備忘事項</td></tr>";
+          $(item).appendTo("#memo_list").trigger("create");
           }
-        else {
-          for (var i=0; i<localStorage.length; i++){
-            var k=localStorage.key(i);
-            var v=localStorage.getItem(k); 
-            var item="<li><h1>" + v + "</h1>" + 
-                     "<a href='#' data-icon='edit'>" + k + 
-                     "</a></li>";
-            arr.push(item);
-            }
-          }
-        //$("#memo_list").html(arr.join(""));
-        //alert(arr.join(""));
+        else {render_memo_list();}
+        $("#add_memo_btn").on("click", function(e) {
+          var k=JSON.stringify(new Date()).substr(1,19);
+          var v=$("#add_memo").val();
+          localStorage.setItem(k, v); 
+          $("#add_memo").val("");
+          render_memo_list();
+          $.mobile.changePage($("#page1"));
+          });
+        $("#confirm_clear_btn").on("click", function(e) {
+          localStorage.clear();
+          $("#memo_list").empty();
+          var item="<tr><td colspan=2>無備忘事項</td></tr>";
+          $(item).appendTo("#memo_list").trigger("create");
+          $.mobile.changePage($("#page1"));
+          });
+        $("#edit_memo_btn").on("click", function(e) {
+          $.mobile.changePage($("#page3"));
+          });
+        $("#confirm_remove_btn").on("click", function(e) {
+          var k=$("#edit_memo_key").val();
+          localStorage.removeItem(k);
+          render_memo_list();
+          $.mobile.changePage($("#page1"));
+          });
+        $("#update_memo_btn").on("click", function(e) {
+          var k=$("#edit_memo_key").val();
+          var v=$("#edit_memo_value").val();
+          localStorage.setItem(k, v);
+          render_memo_list();
+          $.mobile.changePage($("#page1"));
+          });
         }); 
     </script>
   </body>
