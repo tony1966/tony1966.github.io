@@ -147,9 +147,9 @@
       function set_edit_memo(k){
         var cv=localStorage.getItem(k);
         $("#edit_memo_key").val(k);
-        var arr=cv.split("|");
-        var c=arr[0];
-        var v=arr[1];
+        var obj=JSON.parse(cv);
+        var c=obj.category;
+        var v=obj.memo;
         $("#edit_memo_value").val(v);
         $("#edit_memo_category").val(c);
         render_memo_list();
@@ -167,8 +167,9 @@
           for (var i=0; i<memo_arr.length; i++){
             var arr=memo_arr[i].split("|");
             var k=arr[0];
-            var c=arr[1];
-            var v=arr[2];
+            var obj=JSON.parse(arr[1]);
+            var c=obj.category;
+            var v=obj.memo;
             item.push("<tr><td>" + v + "</td><td>" + c + "</td>" + 
                       "<td style='text-align: center;'>" + 
                       "<a href='#' data-role='button' " + 
@@ -184,8 +185,9 @@
         render_memo_list();
         $("#add_memo_btn").on("click", function(e) {
           var k=JSON.stringify(new Date()).substr(1,19);
-          var v=$("#add_category").val() + "|" + $("#add_memo").val();
-          localStorage.setItem(k, v); 
+          var v={category:$("#add_category").val(),
+                 memo:$("#add_memo").val()};
+          localStorage.setItem(k, JSON.stringify(v)); 
           $("#add_memo").val("");
           $("#add_category").val("");
           render_memo_list();
@@ -204,9 +206,9 @@
           });
         $("#update_memo_btn").on("click", function(e) {
           var k=$("#edit_memo_key").val();
-          var v=$("#edit_memo_category").val() + "|" + 
-                $("#edit_memo_value").val();
-          localStorage.setItem(k, v);
+          var v={category:$("#edit_memo_category").val(),
+                 memo:$("#edit_memo_value").val()};
+          localStorage.setItem(k, JSON.stringify(v)); 
           render_memo_list();
           $.mobile.changePage($("#page1"));
           });
