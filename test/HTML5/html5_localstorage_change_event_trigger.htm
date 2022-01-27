@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>localStorage 測試</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <p>觸發儲存區資料變動事件 (StorageEvent) : </p>
+    <label>鍵 :</label>
+    <input type="text" id="k"><br>
+    <label>值 :</label>
+    <input type="text" id="v"><br><br>
+    <button onclick="set_data()">新增</button>
+    <button onclick="remove_data()">刪除</button>
+    <input type="hidden" id="keys">
+    <div id="output"></div>
+    <script>
+      function $(id) {return document.getElementById(id);}
+      function set_data(){
+        var k=$("k").value;
+        var v=$("v").value; 
+        var keys=$("keys").value;
+        var arr=$("keys").value.split(",");
+        arr.push(k);
+        $("keys").value=arr.join(",");
+        localStorage.setItem(k, v);  
+        show_data();
+        }
+      function remove_data(){
+        localStorage.removeItem(localStorage.key(0));
+        show_data();
+        } 
+      function show_data(){
+        var arr=["<ul>"];
+        for (var i=0; i<localStorage.length; i++){  
+          var k=localStorage.key(i);   
+          var v=localStorage.getItem(k); 
+          var item="<li><a href='#' onclick='get_item(" + k + ")'>" + 
+                   k + ":" + v + "</li>";
+          arr.push(item);
+          }
+        arr.push("</ul>");
+        $("output").innerHTML=arr.join("");
+        } 
+    </script>
+  </body>
+</html>

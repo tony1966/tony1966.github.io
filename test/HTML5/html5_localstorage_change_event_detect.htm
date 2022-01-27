@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>localStorage 測試</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <p>偵測儲存區資料變動事件 (StorageEvent) : </p>
+    <ul id="item">
+      <li id="key">null</li>
+      <li id="oldValue">null</li>
+      <li id="newValue">null</li>
+      <li id="url">null</li>
+    </ul>
+    <script>
+      function $(id) {return document.getElementById(id);}
+      function storage_changed(e){
+        $("key").innerHTML="key: " + e.key;
+        $("oldValue").innerHTML="oldValue: " + e.oldValue;
+        $("newValue").innerHTML="newValue: " + e.newValue;
+        $("url").innerHTML="url: " + e.url;
+        } 
+      window.onload=function() {
+        window.addEventListener("storage", storage_changed, false);
+        }
+    </script>
+  </body>
+</html>
