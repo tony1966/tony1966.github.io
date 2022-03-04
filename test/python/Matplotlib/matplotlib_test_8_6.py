@@ -7,4 +7,5 @@ plt.plot(x,temp,'r--o',x, humid,'b-s')                  #繪製兩組資料
 plt.title('Temperature & Humidity')                     #設定圖形標題
 plt.xlabel('day')                                       #設定 X 軸標籤
 plt.ylabel('Temperature & Humidity')                    #設定 Y 軸標籤
+plt.xticks(x, rotation=20)
 plt.show()

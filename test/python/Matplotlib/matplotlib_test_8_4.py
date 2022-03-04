@@ -1,10 +1,18 @@
+import numpy as np
 import matplotlib.pyplot as plt
-x=['2022-02-25','2022-02-26','2022-02-27','2022-02-28',
-   '2022-03-01','2022-03-02','2022-03-03']              #X 軸(日期)
-temp=[25.4, 23.7, 28.6, 29.2, 24.8, 22.5, 21.9]         #氣溫
-humid=[56, 63, 75, 72, 66, 59, 77]                      #濕度
-plt.plot(x,temp,'r--o',x, humid,'b-s')                  #繪製兩組資料
-plt.title('Temperature & Humidity')                     #設定圖形標題
-plt.xlabel('day')                                       #設定 X 軸標籤
-plt.ylabel('Temperature & Humidity')                    #設定 Y 軸標籤
+x=(2015, 2016, 2017, 2018, 2019)      #X 軸
+y1=(4.33, 5.67, 3.78, 5.62, 6.7)      #Y軸1=0056殖利率
+y2=(3.01, 1.28, 6.1, 7.1, 7.22)       #Y軸2=0050殖利率
+plt.plot(x, y1, 'r--o', label='0056') #指定資料之圖例標籤
+plt.plot(x, y2, 'b:d', label='0050')  #指定資料之圖例標籤
+plt.xticks(x)                         #設定 X 軸刻度讀數
+plt.yticks(np.arange(1, 8, 0.5))      #設定 Y 軸刻度讀數
+plt.tick_params(axis='both',
+                labelsize='12',
+                color='blue',
+                labelcolor='blue')    #設定刻度參數
+plt.legend()                          #顯示圖例
+plt.title('ETF Dividend Yield')       #設定圖形標題
+plt.xlabel('Year')                    #設定 X 軸標籤
+plt.ylabel('Dividend yield(%)')       #設定 Y 軸標籤
 plt.show()
