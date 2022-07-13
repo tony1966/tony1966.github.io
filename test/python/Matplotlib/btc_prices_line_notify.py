@@ -34,7 +34,7 @@ plt.xlabel('')
 plt.ylabel('Price(TWD)')
 plt.grid(True)
 plt.savefig('btc_prices.jpg')
-token='mwjHfUXnmc6QfcZz3rzZzMR3LAgao4w1CWoeuN5YLhs'
+token='ud7PaDL45fz849A0e1f5oaMCbRIkxMXapQCt7PfNkzz'
 msg='Bit Coin'
 notify_image(msg, token, 'btc_prices.jpg')
 plt.show()
