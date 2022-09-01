@@ -1,0 +1,779 @@
+
+1. 下載 Ta-Lib v0.4.0 原始碼壓縮檔
+==================================
+
+pi@raspberrypi:~ $ wget http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz   
+--2022-09-01 10:44:33--  http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz
+正在查找主機 prdownloads.sourceforge.net (prdownloads.sourceforge.net)... 204.68.111.105
+正在連接 prdownloads.sourceforge.net (prdownloads.sourceforge.net)|204.68.111.105|:80... 連上了。
+已送出 HTTP 要求，正在等候回應... 301 Moved Permanently
+位置: http://downloads.sourceforge.net/project/ta-lib/ta-lib/0.4.0/ta-lib-0.4.0-src.tar.gz [跟隨至新的 URL]
+--2022-09-01 10:44:33--  http://downloads.sourceforge.net/project/ta-lib/ta-lib/0.4.0/ta-lib-0.4.0-src.tar.gz
+正在查找主機 downloads.sourceforge.net (downloads.sourceforge.net)... 204.68.111.105
+繼續使用和 prdownloads.sourceforge.net:80 的連線。
+已送出 HTTP 要求，正在等候回應... 302 Found
+位置: http://nchc.dl.sourceforge.net/project/ta-lib/ta-lib/0.4.0/ta-lib-0.4.0-src.tar.gz [跟隨至新的 URL]
+--2022-09-01 10:44:33--  http://nchc.dl.sourceforge.net/project/ta-lib/ta-lib/0.4.0/ta-lib-0.4.0-src.tar.gz
+正在查找主機 nchc.dl.sourceforge.net (nchc.dl.sourceforge.net)... 140.110.96.69, 2001:e10:ffff:1f02::17
+正在連接 nchc.dl.sourceforge.net (nchc.dl.sourceforge.net)|140.110.96.69|:80... 連上了。
+已送出 HTTP 要求，正在等候回應... 200 OK
+長度: 1330299 (1.3M) [application/x-gzip]
+儲存到：`ta-lib-0.4.0-src.tar.gz'
+
+ta-lib-0.4.0-src.ta 100%[===================>]   1.27M  1.60MB/s  於 0.8s
+
+2022-09-01 10:44:34 (1.60 MB/s) - 已儲存 `ta-lib-0.4.0-src.tar.gz' [1330299/1330299]
+
+
+2. 解壓縮原始碼
+===============
+pi@raspberrypi:~ $ tar xvf ta-lib-0.4.0-src.tar.gz   
+ta-lib/
+ta-lib/config.sub
+ta-lib/aclocal.m4
+ta-lib/CHANGELOG.TXT
+ta-lib/include/
+ta-lib/include/ta_abstract.h
+ta-lib/include/ta_func.h
+ta-lib/include/ta_common.h
+ta-lib/include/ta_config.h.in
+ta-lib/include/Makefile.am
+ta-lib/include/ta_libc.h
+ta-lib/include/ta_defs.h
+ta-lib/missing
+ta-lib/ta-lib.spec.in
+ta-lib/config.guess
+ta-lib/Makefile.in
+ta-lib/ta-lib.dpkg.in
+ta-lib/Makefile.am
+ta-lib/autogen.sh
+ta-lib/install-sh
+ta-lib/configure
+ta-lib/depcomp
+ta-lib/HISTORY.TXT
+ta-lib/configure.in
+ta-lib/autom4te.cache/
+ta-lib/autom4te.cache/output.0
+ta-lib/autom4te.cache/requests
+ta-lib/autom4te.cache/output.1
+ta-lib/autom4te.cache/traces.0
+ta-lib/autom4te.cache/traces.1
+ta-lib/ltmain.sh
+ta-lib/ta-lib-config.in
+ta-lib/src/
+ta-lib/src/ta_func/
+ta-lib/src/ta_func/ta_MACDFIX.c
+ta-lib/src/ta_func/ta_CDLPIERCING.c
+ta-lib/src/ta_func/ta_DIV.c
+ta-lib/src/ta_func/ta_ROCR100.c
+ta-lib/src/ta_func/ta_ADXR.c
+ta-lib/src/ta_func/ta_MAVP.c
+ta-lib/src/ta_func/ta_CDLCLOSINGMARUBOZU.c
+ta-lib/src/ta_func/ta_COSH.c
+ta-lib/src/ta_func/ta_EXP.c
+ta-lib/src/ta_func/ta_MINMAXINDEX.c
+ta-lib/src/ta_func/ta_SQRT.c
+ta-lib/src/ta_func/ta_FLOOR.c
+ta-lib/src/ta_func/ta_CDLCONCEALBABYSWALL.c
+ta-lib/src/ta_func/ta_NATR.c
+ta-lib/src/ta_func/ta_CDLHARAMICROSS.c
+ta-lib/src/ta_func/ta_MINUS_DM.c
+ta-lib/src/ta_func/ta_LOG10.c
+ta-lib/src/ta_func/ta_LINEARREG_ANGLE.c
+ta-lib/src/ta_func/ta_RSI.c
+ta-lib/src/ta_func/ta_CDLABANDONEDBABY.c
+ta-lib/src/ta_func/ta_SAR.c
+ta-lib/src/ta_func/ta_CDLBREAKAWAY.c
+ta-lib/src/ta_func/ta_CDLDRAGONFLYDOJI.c
+ta-lib/src/ta_func/ta_CDLHIGHWAVE.c
+ta-lib/src/ta_func/ta_CDLKICKING.c
+ta-lib/src/ta_func/ta_CDLDOJISTAR.c
+ta-lib/src/ta_func/ta_VAR.c
+ta-lib/src/ta_func/ta_CDLMATCHINGLOW.c
+ta-lib/src/ta_func/ta_CDLGAPSIDESIDEWHITE.c
+ta-lib/src/ta_func/ta_CDLMARUBOZU.c
+ta-lib/src/ta_func/ta_AROONOSC.c
+ta-lib/src/ta_func/ta_WCLPRICE.c
+ta-lib/src/ta_func/ta_CDLEVENINGDOJISTAR.c
+ta-lib/src/ta_func/ta_CDL3INSIDE.c
+ta-lib/src/ta_func/ta_OBV.c
+ta-lib/src/ta_func/ta_AROON.c
+ta-lib/src/ta_func/ta_CDLBELTHOLD.c
+ta-lib/src/ta_func/ta_CDLSPINNINGTOP.c
+ta-lib/src/ta_func/ta_AD.c
+ta-lib/src/ta_func/ta_MAX.c
+ta-lib/src/ta_func/ta_CDLENGULFING.c
+ta-lib/src/ta_func/ta_MINMAX.c
+ta-lib/src/ta_func/ta_CDLINNECK.c
+ta-lib/src/ta_func/ta_STDDEV.c
+ta-lib/src/ta_func/ta_NVI.c
+ta-lib/src/ta_func/ta_CDLHAMMER.c
+ta-lib/src/ta_func/ta_ASIN.c
+ta-lib/src/ta_func/ta_SUM.c
+ta-lib/src/ta_func/ta_STOCH.c
+ta-lib/src/ta_func/ta_CDLLONGLEGGEDDOJI.c
+ta-lib/src/ta_func/ta_MEDPRICE.c
+ta-lib/src/ta_func/ta_CDL3STARSINSOUTH.c
+ta-lib/src/ta_func/ta_HT_TRENDMODE.c
+ta-lib/src/ta_func/ta_BBANDS.c
+ta-lib/src/ta_func/ta_CDLMORNINGSTAR.c
+ta-lib/src/ta_func/ta_HT_DCPHASE.c
+ta-lib/src/ta_func/ta_CDLLONGLINE.c
+ta-lib/src/ta_func/ta_TAN.c
+ta-lib/src/ta_func/ta_SMA.c
+ta-lib/src/ta_func/ta_DX.c
+ta-lib/src/ta_func/ta_MIDPOINT.c
+ta-lib/src/ta_func/ta_CDL2CROWS.c
+ta-lib/src/ta_func/ta_CORREL.c
+ta-lib/src/ta_func/ta_CDL3BLACKCROWS.c
+ta-lib/src/ta_func/ta_ADD.c
+ta-lib/src/ta_func/Makefile.in
+ta-lib/src/ta_func/ta_CDLTHRUSTING.c
+ta-lib/src/ta_func/ta_SUB.c
+ta-lib/src/ta_func/ta_CDLSTALLEDPATTERN.c
+ta-lib/src/ta_func/ta_CDLTRISTAR.c
+ta-lib/src/ta_func/ta_MA.c
+ta-lib/src/ta_func/ta_HT_SINE.c
+ta-lib/src/ta_func/ta_ACOS.c
+ta-lib/src/ta_func/ta_CDLSTICKSANDWICH.c
+ta-lib/src/ta_func/ta_SINH.c
+ta-lib/src/ta_func/ta_utility.h
+ta-lib/src/ta_func/ta_CDLSHORTLINE.c
+ta-lib/src/ta_func/ta_ATAN.c
+ta-lib/src/ta_func/ta_CDLADVANCEBLOCK.c
+ta-lib/src/ta_func/ta_CDLKICKINGBYLENGTH.c
+ta-lib/src/ta_func/ta_CDLSHOOTINGSTAR.c
+ta-lib/src/ta_func/ta_ROCR.c
+ta-lib/src/ta_func/ta_WMA.c
+ta-lib/src/ta_func/ta_CDLDARKCLOUDCOVER.c
+ta-lib/src/ta_func/ta_CDLXSIDEGAP3METHODS.c
+ta-lib/src/ta_func/ta_TYPPRICE.c
+ta-lib/src/ta_func/ta_CDL3WHITESOLDIERS.c
+ta-lib/src/ta_func/Makefile.am
+ta-lib/src/ta_func/ta_MACDEXT.c
+ta-lib/src/ta_func/ta_ADX.c
+ta-lib/src/ta_func/ta_PLUS_DM.c
+ta-lib/src/ta_func/ta_CDLUPSIDEGAP2CROWS.c
+ta-lib/src/ta_func/ta_LN.c
+ta-lib/src/ta_func/ta_DEMA.c
+ta-lib/src/ta_func/ta_CDL3OUTSIDE.c
+ta-lib/src/ta_func/ta_CDLTASUKIGAP.c
+ta-lib/src/ta_func/ta_MAMA.c
+ta-lib/src/ta_func/ta_CDLMORNINGDOJISTAR.c
+ta-lib/src/ta_func/ta_PLUS_DI.c
+ta-lib/src/ta_func/ta_MININDEX.c
+ta-lib/src/ta_func/ta_COS.c
+ta-lib/src/ta_func/ta_HT_TRENDLINE.c
+ta-lib/src/ta_func/ta_MIDPRICE.c
+ta-lib/src/ta_func/ta_CEIL.c
+ta-lib/src/ta_func/ta_TRIMA.c
+ta-lib/src/ta_func/ta_CDLSEPARATINGLINES.c
+ta-lib/src/ta_func/ta_ROCP.c
+ta-lib/src/ta_func/ta_CDLHOMINGPIGEON.c
+ta-lib/src/ta_func/ta_CDLHANGINGMAN.c
+ta-lib/src/ta_func/ta_AVGPRICE.c
+ta-lib/src/ta_func/ta_APO.c
+ta-lib/src/ta_func/ta_CDLRISEFALL3METHODS.c
+ta-lib/src/ta_func/ta_TRANGE.c
+ta-lib/src/ta_func/ta_TSF.c
+ta-lib/src/ta_func/ta_LINEARREG.c
+ta-lib/src/ta_func/ta_PVI.c
+ta-lib/src/ta_func/ta_CDLHIKKAKEMOD.c
+ta-lib/src/ta_func/ta_MFI.c
+ta-lib/src/ta_func/ta_CDLHARAMI.c
+ta-lib/src/ta_func/ta_MACD.c
+ta-lib/src/ta_func/ta_BETA.c
+ta-lib/src/ta_func/ta_CDLINVERTEDHAMMER.c
+ta-lib/src/ta_func/ta_LINEARREG_SLOPE.c
+ta-lib/src/ta_func/ta_STOCHF.c
+ta-lib/src/ta_func/ta_MIN.c
+ta-lib/src/ta_func/ta_CDLIDENTICAL3CROWS.c
+ta-lib/src/ta_func/ta_CDLRICKSHAWMAN.c
+ta-lib/src/ta_func/ta_T3.c
+ta-lib/src/ta_func/ta_CDLMATHOLD.c
+ta-lib/src/ta_func/ta_CDLUNIQUE3RIVER.c
+ta-lib/src/ta_func/ta_ADOSC.c
+ta-lib/src/ta_func/ta_MAXINDEX.c
+ta-lib/src/ta_func/ta_ULTOSC.c
+ta-lib/src/ta_func/ta_TRIX.c
+ta-lib/src/ta_func/ta_MOM.c
+ta-lib/src/ta_func/ta_CDLDOJI.c
+ta-lib/src/ta_func/ta_EMA.c
+ta-lib/src/ta_func/ta_STOCHRSI.c
+ta-lib/src/ta_func/ta_ROC.c
+ta-lib/src/ta_func/ta_CDLEVENINGSTAR.c
+ta-lib/src/ta_func/ta_CDLCOUNTERATTACK.c
+ta-lib/src/ta_func/ta_LINEARREG_INTERCEPT.c
+ta-lib/src/ta_func/ta_SAREXT.c
+ta-lib/src/ta_func/ta_WILLR.c
+ta-lib/src/ta_func/ta_MULT.c
+ta-lib/src/ta_func/ta_ATR.c
+ta-lib/src/ta_func/ta_BOP.c
+ta-lib/src/ta_func/ta_CMO.c
+ta-lib/src/ta_func/ta_CDLONNECK.c
+ta-lib/src/ta_func/ta_CCI.c
+ta-lib/src/ta_func/ta_CDLLADDERBOTTOM.c
+ta-lib/src/ta_func/ta_HT_PHASOR.c
+ta-lib/src/ta_func/ta_utility.c
+ta-lib/src/ta_func/ta_PPO.c
+ta-lib/src/ta_func/ta_CDLHIKKAKE.c
+ta-lib/src/ta_func/ta_HT_DCPERIOD.c
+ta-lib/src/ta_func/ta_CDL3LINESTRIKE.c
+ta-lib/src/ta_func/ta_TEMA.c
+ta-lib/src/ta_func/ta_SIN.c
+ta-lib/src/ta_func/ta_MINUS_DI.c
+ta-lib/src/ta_func/ta_KAMA.c
+ta-lib/src/ta_func/ta_TANH.c
+ta-lib/src/ta_func/ta_CDLTAKURI.c
+ta-lib/src/ta_func/ta_CDLGRAVESTONEDOJI.c
+ta-lib/src/ta_common/
+ta-lib/src/ta_common/ta_pragma.h
+ta-lib/src/ta_common/ta_magic_nb.h
+ta-lib/src/ta_common/ta_retcode.csv
+ta-lib/src/ta_common/Makefile.in
+ta-lib/src/ta_common/Makefile.am
+ta-lib/src/ta_common/ta_memory.h
+ta-lib/src/ta_common/ta_version.c
+ta-lib/src/ta_common/ta_global.h
+ta-lib/src/ta_common/ta_global.c
+ta-lib/src/ta_common/ta_retcode.c
+ta-lib/src/Makefile.in
+ta-lib/src/ta_abstract/
+ta-lib/src/ta_abstract/frames/
+ta-lib/src/ta_abstract/frames/ta_frame.c
+ta-lib/src/ta_abstract/frames/ta_frame.h
+ta-lib/src/ta_abstract/excel_glue.c
+ta-lib/src/ta_abstract/ta_frame_priv.h
+ta-lib/src/ta_abstract/ta_func_api.c
+ta-lib/src/ta_abstract/Makefile.in
+ta-lib/src/ta_abstract/ta_def_ui.h
+ta-lib/src/ta_abstract/Makefile.am
+ta-lib/src/ta_abstract/ta_abstract.c
+ta-lib/src/ta_abstract/ta_group_idx.c
+ta-lib/src/ta_abstract/tables/
+ta-lib/src/ta_abstract/tables/table_u.c
+ta-lib/src/ta_abstract/tables/table_x.c
+ta-lib/src/ta_abstract/tables/table_r.c
+ta-lib/src/ta_abstract/tables/table_f.c
+ta-lib/src/ta_abstract/tables/table_j.c
+ta-lib/src/ta_abstract/tables/table_e.c
+ta-lib/src/ta_abstract/tables/table_t.c
+ta-lib/src/ta_abstract/tables/table_n.c
+ta-lib/src/ta_abstract/tables/table_i.c
+ta-lib/src/ta_abstract/tables/table_c.c
+ta-lib/src/ta_abstract/tables/table_l.c
+ta-lib/src/ta_abstract/tables/table_k.c
+ta-lib/src/ta_abstract/tables/table_g.c
+ta-lib/src/ta_abstract/tables/table_d.c
+ta-lib/src/ta_abstract/tables/table_h.c
+ta-lib/src/ta_abstract/tables/table_o.c
+ta-lib/src/ta_abstract/tables/table_b.c
+ta-lib/src/ta_abstract/tables/table_q.c
+ta-lib/src/ta_abstract/tables/table_v.c
+ta-lib/src/ta_abstract/tables/table_m.c
+ta-lib/src/ta_abstract/tables/table_s.c
+ta-lib/src/ta_abstract/tables/table_y.c
+ta-lib/src/ta_abstract/tables/table_p.c
+ta-lib/src/ta_abstract/tables/table_z.c
+ta-lib/src/ta_abstract/tables/table_a.c
+ta-lib/src/ta_abstract/tables/table_w.c
+ta-lib/src/ta_abstract/ta_def_ui.c
+ta-lib/src/ta_abstract/templates/
+ta-lib/src/ta_abstract/templates/ta_x.c.template
+ta-lib/src/ta_abstract/templates/ta_java_defs.h.template
+ta-lib/src/ta_abstract/templates/excel_glue.c.template
+ta-lib/src/ta_abstract/templates/ta_group_idx.c.template
+ta-lib/src/ta_abstract/templates/ta_frame.c.template
+ta-lib/src/ta_abstract/templates/CoreAnnotated.java.template
+ta-lib/src/ta_abstract/templates/ta_func.h.template
+ta-lib/src/ta_abstract/templates/ta_frame.h.template
+ta-lib/src/ta_abstract/templates/Makefile.am.template
+ta-lib/src/ta_abstract/templates/ta_func_api.c.template
+ta-lib/src/ta_abstract/templates/ta_func.swg.template
+ta-lib/src/ta_abstract/templates/ta_retcode.c.template
+ta-lib/src/ta_abstract/ta_java_defs.h
+ta-lib/src/Makefile.am
+ta-lib/src/tools/
+ta-lib/src/tools/ta_regtest/
+ta-lib/src/tools/ta_regtest/test_util.c
+ta-lib/src/tools/ta_regtest/ta_test_func.h
+ta-lib/src/tools/ta_regtest/test_data.c
+ta-lib/src/tools/ta_regtest/ta_gDataHigh.c
+ta-lib/src/tools/ta_regtest/Makefile.in
+ta-lib/src/tools/ta_regtest/test_internals.c
+ta-lib/src/tools/ta_regtest/Makefile.am
+ta-lib/src/tools/ta_regtest/ta_regtest.c
+ta-lib/src/tools/ta_regtest/ta_gDataOpen.c
+ta-lib/src/tools/ta_regtest/ta_gDataClose.c
+ta-lib/src/tools/ta_regtest/test_abstract.c
+ta-lib/src/tools/ta_regtest/ta_test_func/
+ta-lib/src/tools/ta_regtest/ta_test_func/test_bbands.c
+ta-lib/src/tools/ta_regtest/ta_test_func/test_stddev.c
+ta-lib/src/tools/ta_regtest/ta_test_func/test_1in_2out.c
+ta-lib/src/tools/ta_regtest/ta_test_func/test_sar.c
+ta-lib/src/tools/ta_regtest/ta_test_func/test_1in_1out.c
+ta-lib/src/tools/ta_regtest/ta_test_func/test_trange.c
+ta-lib/src/tools/ta_regtest/ta_test_func/test_macd.c
+ta-lib/src/tools/ta_regtest/ta_test_func/test_po.c
+ta-lib/src/tools/ta_regtest/ta_test_func/test_per_hlc.c
+ta-lib/src/tools/ta_regtest/ta_test_func/test_mom.c
+ta-lib/src/tools/ta_regtest/ta_test_func/test_per_ohlc.c
+ta-lib/src/tools/ta_regtest/ta_test_func/test_adx.c
+ta-lib/src/tools/ta_regtest/ta_test_func/test_candlestick.c
+ta-lib/src/tools/ta_regtest/ta_test_func/test_rsi.c
+ta-lib/src/tools/ta_regtest/ta_test_func/test_per_ema.c
+ta-lib/src/tools/ta_regtest/ta_test_func/test_minmax.c
+ta-lib/src/tools/ta_regtest/ta_test_func/test_per_hlcv.c
+ta-lib/src/tools/ta_regtest/ta_test_func/test_per_hl.c
+ta-lib/src/tools/ta_regtest/ta_test_func/test_stoch.c
+ta-lib/src/tools/ta_regtest/ta_test_func/test_ma.c
+ta-lib/src/tools/ta_regtest/ta_error_number.h
+ta-lib/src/tools/ta_regtest/ta_test_priv.h
+ta-lib/src/tools/ta_regtest/ReadMe.txt
+ta-lib/src/tools/ta_regtest/ta_gDataLow.c
+ta-lib/src/tools/Makefile.in
+ta-lib/src/tools/Makefile.am
+ta-lib/src/tools/gen_code/
+ta-lib/src/tools/gen_code/java/
+ta-lib/src/tools/gen_code/java/PrettyCode.java
+ta-lib/src/tools/gen_code/java/Main.java
+ta-lib/src/tools/gen_code/gen_code.c
+ta-lib/src/tools/gen_code/Makefile.in
+ta-lib/src/tools/gen_code/Makefile.am
+ta-lib/src/tools/gen_code/mcpp.exe
+
+
+3. 設定程式存放路徑
+===================
+
+pi@raspberrypi:~ $ cd ta-lib    
+pi@raspberrypi:~/ta-lib $ ./configure --prefix=/usr   
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a thread-safe mkdir -p... /usr/bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking for gcc... gcc
+checking for C compiler default output file name... a.out
+checking whether the C compiler works... yes
+checking whether we are cross compiling... no
+checking for suffix of executables...
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ISO C89... none needed
+checking for style of include used by make... GNU
+checking dependency style of gcc... gcc3
+checking build system type... armv7l-unknown-linux-gnu
+checking host system type... armv7l-unknown-linux-gnu
+checking for a sed that does not truncate output... /usr/bin/sed
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for ld used by gcc... /usr/bin/ld
+checking if the linker (/usr/bin/ld) is GNU ld... yes
+checking for /usr/bin/ld option to reload object files... -r
+checking for BSD-compatible nm... /usr/bin/nm -B
+checking whether ln -s works... yes
+checking how to recognise dependent libraries... pass_all
+checking how to run the C preprocessor... gcc -E
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking dlfcn.h usability... yes
+checking dlfcn.h presence... yes
+checking for dlfcn.h... yes
+checking for g++... g++
+checking whether we are using the GNU C++ compiler... yes
+checking whether g++ accepts -g... yes
+checking dependency style of g++... gcc3
+checking how to run the C++ preprocessor... g++ -E
+checking for g77... no
+checking for xlf... no
+checking for f77... no
+checking for frt... no
+checking for pgf77... no
+checking for cf77... no
+checking for fort77... no
+checking for fl32... no
+checking for af77... no
+checking for xlf90... no
+checking for f90... no
+checking for pgf90... no
+checking for pghpf... no
+checking for epcf90... no
+checking for gfortran... no
+checking for g95... no
+checking for xlf95... no
+checking for f95... no
+checking for fort... no
+checking for ifort... no
+checking for ifc... no
+checking for efc... no
+checking for pgf95... no
+checking for lf95... no
+checking for ftn... no
+checking whether we are using the GNU Fortran 77 compiler... no
+checking whether  accepts -g... no
+checking the maximum length of command line arguments... 32768
+checking command to parse /usr/bin/nm -B output from gcc object... ok
+checking for objdir... .libs
+checking for ar... ar
+checking for ranlib... ranlib
+checking for strip... strip
+checking if gcc supports -fno-rtti -fno-exceptions... no
+checking for gcc option to produce PIC... -fPIC
+checking if gcc PIC flag -fPIC works... yes
+checking if gcc static flag -static works... yes
+checking if gcc supports -c -o file.o... yes
+checking whether the gcc linker (/usr/bin/ld) supports shared libraries... yes
+checking whether -lc should be explicitly linked in... no
+checking dynamic linker characteristics... GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... yes
+checking whether to build static libraries... yes
+configure: creating libtool
+appending configuration tag "CXX" to libtool
+checking for ld used by g++... /usr/bin/ld
+checking if the linker (/usr/bin/ld) is GNU ld... yes
+checking whether the g++ linker (/usr/bin/ld) supports shared libraries... yes
+checking for g++ option to produce PIC... -fPIC
+checking if g++ PIC flag -fPIC works... yes
+checking if g++ static flag -static works... yes
+checking if g++ supports -c -o file.o... yes
+checking whether the g++ linker (/usr/bin/ld) supports shared libraries... yes
+checking dynamic linker characteristics... GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+appending configuration tag "F77" to libtool
+checking for dlopen in -ldl... yes
+checking for pthread_create in -lpthread... yes
+checking for ANSI C header files... (cached) yes
+checking float.h usability... yes
+checking float.h presence... yes
+checking for float.h... yes
+checking for inttypes.h... (cached) yes
+checking limits.h usability... yes
+checking limits.h presence... yes
+checking for limits.h... yes
+checking locale.h usability... yes
+checking locale.h presence... yes
+checking for locale.h... yes
+checking stddef.h usability... yes
+checking stddef.h presence... yes
+checking for stddef.h... yes
+checking for stdint.h... (cached) yes
+checking for stdlib.h... (cached) yes
+checking for string.h... (cached) yes
+checking for unistd.h... (cached) yes
+checking wchar.h usability... yes
+checking wchar.h presence... yes
+checking for wchar.h... yes
+checking wctype.h usability... yes
+checking wctype.h presence... yes
+checking for wctype.h... yes
+checking for an ANSI C-conforming const... yes
+checking for size_t... yes
+checking whether struct tm is in sys/time.h or time.h... time.h
+checking for working volatile... yes
+checking for ptrdiff_t... yes
+checking return type of signal handlers... void
+checking for working strcoll... yes
+checking for strftime... yes
+checking for working strtod... yes
+checking for vprintf... yes
+checking for _doprnt... no
+checking for floor... no
+checking for isascii... yes
+checking for localeconv... yes
+checking for mblen... yes
+checking for memmove... yes
+checking for memset... yes
+checking for modf... yes
+checking for pow... no
+checking for sqrt... no
+checking for strcasecmp... yes
+checking for strchr... yes
+checking for strerror... yes
+checking for strncasecmp... yes
+checking for strrchr... yes
+checking for strstr... yes
+checking for strtol... yes
+checking for strtoul... yes
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating src/Makefile
+config.status: creating src/ta_abstract/Makefile
+config.status: creating src/ta_common/Makefile
+config.status: creating src/ta_func/Makefile
+config.status: creating src/tools/Makefile
+config.status: creating src/tools/gen_code/Makefile
+config.status: creating src/tools/ta_regtest/Makefile
+config.status: creating ta-lib-config
+config.status: creating ta-lib.spec
+config.status: creating ta-lib.dpkg
+config.status: creating include/ta_config.h
+config.status: executing depfiles commands
+
+
+4. 編譯原始碼 
+=============
+
+pi@raspberrypi:~/ta-lib $ sudo make  
+Making all in src
+make[1]: Entering directory '/home/pi/ta-lib/src'
+Making all in ta_abstract
+make[2]: Entering directory '/home/pi/ta-lib/src/ta_abstract'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/pi/ta-lib/src/ta_abstract'
+Making all in ta_common
+make[2]: Entering directory '/home/pi/ta-lib/src/ta_common'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/pi/ta-lib/src/ta_common'
+Making all in ta_func
+make[2]: Entering directory '/home/pi/ta-lib/src/ta_func'
+/bin/bash ../../libtool --tag=CC   --mode=link gcc  -g -O2 -version-info 0:0:0  -o libta_func.la  ta_utility.lo ta_ACOS.lo ta_AD.lo ta_ADD.lo ta_ADOSC.lo ta_ADX.lo ta_ADXR.lo ta_APO.lo ta_AROON.lo ta_AROONOSC.lo ta_ASIN.lo ta_ATAN.lo ta_ATR.lo ta_AVGPRICE.lo ta_BBANDS.lo ta_BETA.lo ta_BOP.lo ta_CCI.lo ta_CDL2CROWS.lo ta_CDL3BLACKCROWS.lo ta_CDL3INSIDE.lo ta_CDL3LINESTRIKE.lo ta_CDL3OUTSIDE.lo ta_CDL3STARSINSOUTH.lo ta_CDL3WHITESOLDIERS.lo ta_CDLABANDONEDBABY.lo ta_CDLADVANCEBLOCK.lo ta_CDLBELTHOLD.lo ta_CDLBREAKAWAY.lo ta_CDLCLOSINGMARUBOZU.lo ta_CDLCONCEALBABYSWALL.lo ta_CDLCOUNTERATTACK.lo ta_CDLDARKCLOUDCOVER.lo ta_CDLDOJI.lo ta_CDLDOJISTAR.lo ta_CDLDRAGONFLYDOJI.lo ta_CDLENGULFING.lo ta_CDLEVENINGDOJISTAR.lo ta_CDLEVENINGSTAR.lo ta_CDLGAPSIDESIDEWHITE.lo ta_CDLGRAVESTONEDOJI.lo ta_CDLHAMMER.lo ta_CDLHANGINGMAN.lo ta_CDLHARAMI.lo ta_CDLHARAMICROSS.lo ta_CDLHIGHWAVE.lo ta_CDLHIKKAKE.lo ta_CDLHIKKAKEMOD.lo ta_CDLHOMINGPIGEON.lo ta_CDLIDENTICAL3CROWS.lo ta_CDLINNECK.lo ta_CDLINVERTEDHAMMER.lo ta_CDLKICKING.lo ta_CDLKICKINGBYLENGTH.lo ta_CDLLADDERBOTTOM.lo ta_CDLLONGLEGGEDDOJI.lo ta_CDLLONGLINE.lo ta_CDLMARUBOZU.lo ta_CDLMATCHINGLOW.lo ta_CDLMATHOLD.lo ta_CDLMORNINGDOJISTAR.lo ta_CDLMORNINGSTAR.lo ta_CDLONNECK.lo ta_CDLPIERCING.lo ta_CDLRICKSHAWMAN.lo ta_CDLRISEFALL3METHODS.lo ta_CDLSEPARATINGLINES.lo ta_CDLSHOOTINGSTAR.lo ta_CDLSHORTLINE.lo ta_CDLSPINNINGTOP.lo ta_CDLSTALLEDPATTERN.lo ta_CDLSTICKSANDWICH.lo ta_CDLTAKURI.lo ta_CDLTASUKIGAP.lo ta_CDLTHRUSTING.lo ta_CDLTRISTAR.lo ta_CDLUNIQUE3RIVER.lo ta_CDLUPSIDEGAP2CROWS.lo ta_CDLXSIDEGAP3METHODS.lo ta_CEIL.lo ta_CMO.lo ta_CORREL.lo ta_COS.lo ta_COSH.lo ta_DEMA.lo ta_DIV.lo ta_DX.lo ta_EMA.lo ta_EXP.lo ta_FLOOR.lo ta_HT_DCPERIOD.lo ta_HT_DCPHASE.lo ta_HT_PHASOR.lo ta_HT_SINE.lo ta_HT_TRENDLINE.lo ta_HT_TRENDMODE.lo ta_KAMA.lo ta_LINEARREG.lo ta_LINEARREG_ANGLE.lo ta_LINEARREG_INTERCEPT.lo ta_LINEARREG_SLOPE.lo ta_LN.lo ta_LOG10.lo ta_MA.lo ta_MACD.lo ta_MACDEXT.lo ta_MACDFIX.lo ta_MAMA.lo ta_MAVP.lo ta_MAX.lo ta_MAXINDEX.lo ta_MEDPRICE.lo ta_MFI.lo ta_MIDPOINT.lo ta_MIDPRICE.lo ta_MIN.lo ta_MININDEX.lo ta_MINMAX.lo ta_MINMAXINDEX.lo ta_MINUS_DI.lo ta_MINUS_DM.lo ta_MOM.lo ta_MULT.lo ta_NATR.lo ta_OBV.lo ta_PLUS_DI.lo ta_PLUS_DM.lo ta_PPO.lo ta_ROC.lo ta_ROCP.lo ta_ROCR.lo ta_ROCR100.lo ta_RSI.lo ta_SAR.lo ta_SAREXT.lo ta_SIN.lo ta_SINH.lo ta_SMA.lo ta_SQRT.lo ta_STDDEV.lo ta_STOCH.lo ta_STOCHF.lo ta_STOCHRSI.lo ta_SUB.lo ta_SUM.lo ta_T3.lo ta_TAN.lo ta_TANH.lo ta_TEMA.lo ta_TRANGE.lo ta_TRIMA.lo ta_TRIX.lo ta_TSF.lo ta_TYPPRICE.lo ta_ULTOSC.lo ta_VAR.lo ta_WCLPRICE.lo ta_WILLR.lo ta_WMA.lo  -lpthread -ldl
+libtool: link: warning: `-version-info/-version-number' is ignored for convenience libraries
+ar cru .libs/libta_func.a .libs/ta_utility.o .libs/ta_ACOS.o .libs/ta_AD.o .libs/ta_ADD.o .libs/ta_ADOSC.o .libs/ta_ADX.o .libs/ta_ADXR.o .libs/ta_APO.o .libs/ta_AROON.o .libs/ta_AROONOSC.o .libs/ta_ASIN.o .libs/ta_ATAN.o .libs/ta_ATR.o .libs/ta_AVGPRICE.o .libs/ta_BBANDS.o .libs/ta_BETA.o .libs/ta_BOP.o .libs/ta_CCI.o .libs/ta_CDL2CROWS.o .libs/ta_CDL3BLACKCROWS.o .libs/ta_CDL3INSIDE.o .libs/ta_CDL3LINESTRIKE.o .libs/ta_CDL3OUTSIDE.o .libs/ta_CDL3STARSINSOUTH.o .libs/ta_CDL3WHITESOLDIERS.o .libs/ta_CDLABANDONEDBABY.o .libs/ta_CDLADVANCEBLOCK.o .libs/ta_CDLBELTHOLD.o .libs/ta_CDLBREAKAWAY.o .libs/ta_CDLCLOSINGMARUBOZU.o .libs/ta_CDLCONCEALBABYSWALL.o .libs/ta_CDLCOUNTERATTACK.o .libs/ta_CDLDARKCLOUDCOVER.o .libs/ta_CDLDOJI.o .libs/ta_CDLDOJISTAR.o .libs/ta_CDLDRAGONFLYDOJI.o .libs/ta_CDLENGULFING.o .libs/ta_CDLEVENINGDOJISTAR.o .libs/ta_CDLEVENINGSTAR.o .libs/ta_CDLGAPSIDESIDEWHITE.o .libs/ta_CDLGRAVESTONEDOJI.o .libs/ta_CDLHAMMER.o .libs/ta_CDLHANGINGMAN.o .libs/ta_CDLHARAMI.o .libs/ta_CDLHARAMICROSS.o .libs/ta_CDLHIGHWAVE.o .libs/ta_CDLHIKKAKE.o .libs/ta_CDLHIKKAKEMOD.o .libs/ta_CDLHOMINGPIGEON.o .libs/ta_CDLIDENTICAL3CROWS.o .libs/ta_CDLINNECK.o .libs/ta_CDLINVERTEDHAMMER.o .libs/ta_CDLKICKING.o .libs/ta_CDLKICKINGBYLENGTH.o .libs/ta_CDLLADDERBOTTOM.o .libs/ta_CDLLONGLEGGEDDOJI.o .libs/ta_CDLLONGLINE.o .libs/ta_CDLMARUBOZU.o .libs/ta_CDLMATCHINGLOW.o .libs/ta_CDLMATHOLD.o .libs/ta_CDLMORNINGDOJISTAR.o .libs/ta_CDLMORNINGSTAR.o .libs/ta_CDLONNECK.o .libs/ta_CDLPIERCING.o .libs/ta_CDLRICKSHAWMAN.o .libs/ta_CDLRISEFALL3METHODS.o .libs/ta_CDLSEPARATINGLINES.o .libs/ta_CDLSHOOTINGSTAR.o .libs/ta_CDLSHORTLINE.o .libs/ta_CDLSPINNINGTOP.o .libs/ta_CDLSTALLEDPATTERN.o .libs/ta_CDLSTICKSANDWICH.o .libs/ta_CDLTAKURI.o .libs/ta_CDLTASUKIGAP.o .libs/ta_CDLTHRUSTING.o .libs/ta_CDLTRISTAR.o .libs/ta_CDLUNIQUE3RIVER.o .libs/ta_CDLUPSIDEGAP2CROWS.o .libs/ta_CDLXSIDEGAP3METHODS.o .libs/ta_CEIL.o .libs/ta_CMO.o .libs/ta_CORREL.o .libs/ta_COS.o .libs/ta_COSH.o .libs/ta_DEMA.o .libs/ta_DIV.o .libs/ta_DX.o .libs/ta_EMA.o .libs/ta_EXP.o .libs/ta_FLOOR.o .libs/ta_HT_DCPERIOD.o .libs/ta_HT_DCPHASE.o .libs/ta_HT_PHASOR.o .libs/ta_HT_SINE.o .libs/ta_HT_TRENDLINE.o .libs/ta_HT_TRENDMODE.o .libs/ta_KAMA.o .libs/ta_LINEARREG.o .libs/ta_LINEARREG_ANGLE.o .libs/ta_LINEARREG_INTERCEPT.o .libs/ta_LINEARREG_SLOPE.o .libs/ta_LN.o .libs/ta_LOG10.o .libs/ta_MA.o .libs/ta_MACD.o .libs/ta_MACDEXT.o .libs/ta_MACDFIX.o .libs/ta_MAMA.o .libs/ta_MAVP.o .libs/ta_MAX.o .libs/ta_MAXINDEX.o .libs/ta_MEDPRICE.o .libs/ta_MFI.o .libs/ta_MIDPOINT.o .libs/ta_MIDPRICE.o .libs/ta_MIN.o .libs/ta_MININDEX.o .libs/ta_MINMAX.o .libs/ta_MINMAXINDEX.o .libs/ta_MINUS_DI.o .libs/ta_MINUS_DM.o .libs/ta_MOM.o .libs/ta_MULT.o .libs/ta_NATR.o .libs/ta_OBV.o .libs/ta_PLUS_DI.o .libs/ta_PLUS_DM.o .libs/ta_PPO.o .libs/ta_ROC.o .libs/ta_ROCP.o .libs/ta_ROCR.o .libs/ta_ROCR100.o .libs/ta_RSI.o .libs/ta_SAR.o .libs/ta_SAREXT.o .libs/ta_SIN.o .libs/ta_SINH.o .libs/ta_SMA.o .libs/ta_SQRT.o .libs/ta_STDDEV.o .libs/ta_STOCH.o .libs/ta_STOCHF.o .libs/ta_STOCHRSI.o .libs/ta_SUB.o .libs/ta_SUM.o .libs/ta_T3.o .libs/ta_TAN.o .libs/ta_TANH.o .libs/ta_TEMA.o .libs/ta_TRANGE.o .libs/ta_TRIMA.o .libs/ta_TRIX.o .libs/ta_TSF.o .libs/ta_TYPPRICE.o .libs/ta_ULTOSC.o .libs/ta_VAR.o .libs/ta_WCLPRICE.o .libs/ta_WILLR.o .libs/ta_WMA.o
+ar: `u' modifier ignored since `D' is the default (see `U')
+ranlib .libs/libta_func.a
+creating libta_func.la
+(cd .libs && rm -f libta_func.la && ln -s ../libta_func.la libta_func.la)
+make[2]: Leaving directory '/home/pi/ta-lib/src/ta_func'
+make[2]: Entering directory '/home/pi/ta-lib/src'
+/bin/bash ../libtool --tag=CC   --mode=link gcc  -g -O2 -version-info 0:0:0  -o libta_lib.la -rpath /usr/lib  ta_abstract/libta_abstract.la ta_func/libta_func.la ta_common/libta_common.la -lpthread -ldl
+mkdir .libs
+gcc -shared  -Wl,--whole-archive ta_abstract/.libs/libta_abstract.a ta_func/.libs/libta_func.a ta_common/.libs/libta_common.a -Wl,--no-whole-archive  -lpthread -ldl  -Wl,-soname -Wl,libta_lib.so.0 -o .libs/libta_lib.so.0.0.0
+(cd .libs && rm -f libta_lib.so.0 && ln -s libta_lib.so.0.0.0 libta_lib.so.0)
+(cd .libs && rm -f libta_lib.so && ln -s libta_lib.so.0.0.0 libta_lib.so)
+rm -fr .libs/libta_lib.lax
+mkdir .libs/libta_lib.lax
+rm -fr .libs/libta_lib.lax/libta_abstract.a
+mkdir .libs/libta_lib.lax/libta_abstract.a
+(cd .libs/libta_lib.lax/libta_abstract.a && ar x /home/pi/ta-lib/src/ta_abstract/.libs/libta_abstract.a)
+rm -fr .libs/libta_lib.lax/libta_func.a
+mkdir .libs/libta_lib.lax/libta_func.a
+(cd .libs/libta_lib.lax/libta_func.a && ar x /home/pi/ta-lib/src/ta_func/.libs/libta_func.a)
+rm -fr .libs/libta_lib.lax/libta_common.a
+mkdir .libs/libta_lib.lax/libta_common.a
+(cd .libs/libta_lib.lax/libta_common.a && ar x /home/pi/ta-lib/src/ta_common/.libs/libta_common.a)
+ar cru .libs/libta_lib.a   .libs/libta_lib.lax/libta_abstract.a/libta_abstract_la-table_g.o .libs/libta_lib.lax/libta_abstract.a/libta_abstract_la-ta_group_idx.o .libs/libta_lib.lax/libta_abstract.a/libta_abstract_la-table_n.o .libs/libta_lib.lax/libta_abstract.a/libta_abstract_la-table_o.o .libs/libta_lib.lax/libta_abstract.a/libta_abstract_la-ta_abstract.o .libs/libta_lib.lax/libta_abstract.a/libta_abstract_la-table_a.o .libs/libta_lib.lax/libta_abstract.a/libta_abstract_la-table_t.o .libs/libta_lib.lax/libta_abstract.a/libta_abstract_la-table_f.o .libs/libta_lib.lax/libta_abstract.a/libta_abstract_la-table_y.o .libs/libta_lib.lax/libta_abstract.a/libta_abstract_la-table_p.o .libs/libta_lib.lax/libta_abstract.a/libta_abstract_la-table_s.o .libs/libta_lib.lax/libta_abstract.a/libta_abstract_la-table_b.o .libs/libta_lib.lax/libta_abstract.a/libta_abstract_la-table_j.o .libs/libta_lib.lax/libta_abstract.a/libta_abstract_la-table_r.o .libs/libta_lib.lax/libta_abstract.a/libta_abstract_la-table_i.o .libs/libta_lib.lax/libta_abstract.a/libta_abstract_la-table_k.o .libs/libta_lib.lax/libta_abstract.a/libta_abstract_la-table_l.o .libs/libta_lib.lax/libta_abstract.a/libta_abstract_la-ta_func_api.o .libs/libta_lib.lax/libta_abstract.a/libta_abstract_la-table_c.o .libs/libta_lib.lax/libta_abstract.a/libta_abstract_la-table_u.o .libs/libta_lib.lax/libta_abstract.a/libta_abstract_la-table_d.o .libs/libta_lib.lax/libta_abstract.a/libta_abstract_la-table_q.o .libs/libta_lib.lax/libta_abstract.a/libta_abstract_la-table_w.o .libs/libta_lib.lax/libta_abstract.a/libta_abstract_la-ta_frame.o .libs/libta_lib.lax/libta_abstract.a/libta_abstract_la-table_e.o .libs/libta_lib.lax/libta_abstract.a/libta_abstract_la-table_v.o .libs/libta_lib.lax/libta_abstract.a/libta_abstract_la-table_m.o .libs/libta_lib.lax/libta_abstract.a/libta_abstract_la-table_z.o .libs/libta_lib.lax/libta_abstract.a/libta_abstract_la-table_h.o .libs/libta_lib.lax/libta_abstract.a/libta_abstract_la-ta_def_ui.o .libs/libta_lib.lax/libta_abstract.a/libta_abstract_la-table_x.o  .libs/libta_lib.lax/libta_func.a/ta_ASIN.o .libs/libta_lib.lax/libta_func.a/ta_MEDPRICE.o .libs/libta_lib.lax/libta_func.a/ta_CDLXSIDEGAP3METHODS.o .libs/libta_lib.lax/libta_func.a/ta_ADX.o .libs/libta_lib.lax/libta_func.a/ta_HT_TRENDLINE.o .libs/libta_lib.lax/libta_func.a/ta_CDLHARAMI.o .libs/libta_lib.lax/libta_func.a/ta_SAREXT.o .libs/libta_lib.lax/libta_func.a/ta_CDLHARAMICROSS.o .libs/libta_lib.lax/libta_func.a/ta_STOCHRSI.o .libs/libta_lib.lax/libta_func.a/ta_CDLEVENINGDOJISTAR.o .libs/libta_lib.lax/libta_func.a/ta_LN.o .libs/libta_lib.lax/libta_func.a/ta_CDLSHORTLINE.o .libs/libta_lib.lax/libta_func.a/ta_CMO.o .libs/libta_lib.lax/libta_func.a/ta_DX.o .libs/libta_lib.lax/libta_func.a/ta_CDLUPSIDEGAP2CROWS.o .libs/libta_lib.lax/libta_func.a/ta_SQRT.o .libs/libta_lib.lax/libta_func.a/ta_CDLCOUNTERATTACK.o .libs/libta_lib.lax/libta_func.a/ta_COSH.o .libs/libta_lib.lax/libta_func.a/ta_CDLSPINNINGTOP.o .libs/libta_lib.lax/libta_func.a/ta_ATR.o .libs/libta_lib.lax/libta_func.a/ta_CDL3WHITESOLDIERS.o .libs/libta_lib.lax/libta_func.a/ta_FLOOR.o .libs/libta_lib.lax/libta_func.a/ta_CDLHIKKAKE.o .libs/libta_lib.lax/libta_func.a/ta_AROONOSC.o .libs/libta_lib.lax/libta_func.a/ta_utility.o .libs/libta_lib.lax/libta_func.a/ta_OBV.o .libs/libta_lib.lax/libta_func.a/ta_STOCH.o .libs/libta_lib.lax/libta_func.a/ta_MAMA.o .libs/libta_lib.lax/libta_func.a/ta_CDLBREAKAWAY.o .libs/libta_lib.lax/libta_func.a/ta_LINEARREG_SLOPE.o .libs/libta_lib.lax/libta_func.a/ta_SUM.o .libs/libta_lib.lax/libta_func.a/ta_LINEARREG_ANGLE.o .libs/libta_lib.lax/libta_func.a/ta_STDDEV.o .libs/libta_lib.lax/libta_func.a/ta_BETA.o .libs/libta_lib.lax/libta_func.a/ta_MINMAXINDEX.o .libs/libta_lib.lax/libta_func.a/ta_EMA.o .libs/libta_lib.lax/libta_func.a/ta_CDLTAKURI.o .libs/libta_lib.lax/libta_func.a/ta_MINUS_DM.o .libs/libta_lib.lax/libta_func.a/ta_PLUS_DI.o .libs/libta_lib.lax/libta_func.a/ta_TYPPRICE.o .libs/libta_lib.lax/libta_func.a/ta_CDLTASUKIGAP.o .libs/libta_lib.lax/libta_func.a/ta_ROCR100.o .libs/libta_lib.lax/libta_func.a/ta_CEIL.o .libs/libta_lib.lax/libta_func.a/ta_HT_PHASOR.o .libs/libta_lib.lax/libta_func.a/ta_CDL3INSIDE.o .libs/libta_lib.lax/libta_func.a/ta_CDLLONGLINE.o .libs/libta_lib.lax/libta_func.a/ta_MAX.o .libs/libta_lib.lax/libta_func.a/ta_T3.o .libs/libta_lib.lax/libta_func.a/ta_AD.o .libs/libta_lib.lax/libta_func.a/ta_CDLONNECK.o .libs/libta_lib.lax/libta_func.a/ta_TANH.o .libs/libta_lib.lax/libta_func.a/ta_WILLR.o .libs/libta_lib.lax/libta_func.a/ta_BOP.o .libs/libta_lib.lax/libta_func.a/ta_SIN.o .libs/libta_lib.lax/libta_func.a/ta_CDLCLOSINGMARUBOZU.o .libs/libta_lib.lax/libta_func.a/ta_CDLHIKKAKEMOD.o .libs/libta_lib.lax/libta_func.a/ta_CDL3BLACKCROWS.o .libs/libta_lib.lax/libta_func.a/ta_CDLSHOOTINGSTAR.o .libs/libta_lib.lax/libta_func.a/ta_PPO.o .libs/libta_lib.lax/libta_func.a/ta_CDLKICKINGBYLENGTH.o .libs/libta_lib.lax/libta_func.a/ta_MA.o .libs/libta_lib.lax/libta_func.a/ta_VAR.o .libs/libta_lib.lax/libta_func.a/ta_CDLHAMMER.o .libs/libta_lib.lax/libta_func.a/ta_MIDPOINT.o .libs/libta_lib.lax/libta_func.a/ta_TEMA.o .libs/libta_lib.lax/libta_func.a/ta_TAN.o .libs/libta_lib.lax/libta_func.a/ta_AROON.o .libs/libta_lib.lax/libta_func.a/ta_MACDFIX.o .libs/libta_lib.lax/libta_func.a/ta_CDLMORNINGSTAR.o .libs/libta_lib.lax/libta_func.a/ta_CDL3STARSINSOUTH.o .libs/libta_lib.lax/libta_func.a/ta_NATR.o .libs/libta_lib.lax/libta_func.a/ta_HT_DCPERIOD.o .libs/libta_lib.lax/libta_func.a/ta_PLUS_DM.o .libs/libta_lib.lax/libta_func.a/ta_SMA.o .libs/libta_lib.lax/libta_func.a/ta_CDLSEPARATINGLINES.o .libs/libta_lib.lax/libta_func.a/ta_ATAN.o .libs/libta_lib.lax/libta_func.a/ta_CDLABANDONEDBABY.o .libs/libta_lib.lax/libta_func.a/ta_HT_SINE.o .libs/libta_lib.lax/libta_func.a/ta_CDLHANGINGMAN.o .libs/libta_lib.lax/libta_func.a/ta_MACDEXT.o .libs/libta_lib.lax/libta_func.a/ta_CDL3OUTSIDE.o .libs/libta_lib.lax/libta_func.a/ta_LINEARREG_INTERCEPT.o .libs/libta_lib.lax/libta_func.a/ta_TRIMA.o .libs/libta_lib.lax/libta_func.a/ta_CDLLONGLEGGEDDOJI.o .libs/libta_lib.lax/libta_func.a/ta_CDLDOJI.o .libs/libta_lib.lax/libta_func.a/ta_ROCP.o .libs/libta_lib.lax/libta_func.a/ta_CDLUNIQUE3RIVER.o .libs/libta_lib.lax/libta_func.a/ta_CDLDRAGONFLYDOJI.o .libs/libta_lib.lax/libta_func.a/ta_ADOSC.o .libs/libta_lib.lax/libta_func.a/ta_ROC.o .libs/libta_lib.lax/libta_func.a/ta_KAMA.o .libs/libta_lib.lax/libta_func.a/ta_CDLADVANCEBLOCK.o .libs/libta_lib.lax/libta_func.a/ta_CDLPIERCING.o .libs/libta_lib.lax/libta_func.a/ta_CDLINVERTEDHAMMER.o .libs/libta_lib.lax/libta_func.a/ta_HT_TRENDMODE.o .libs/libta_lib.lax/libta_func.a/ta_MFI.o .libs/libta_lib.lax/libta_func.a/ta_CORREL.o .libs/libta_lib.lax/libta_func.a/ta_TRIX.o .libs/libta_lib.lax/libta_func.a/ta_MIN.o .libs/libta_lib.lax/libta_func.a/ta_SAR.o .libs/libta_lib.lax/libta_func.a/ta_CDLMORNINGDOJISTAR.o .libs/libta_lib.lax/libta_func.a/ta_CDLKICKING.o .libs/libta_lib.lax/libta_func.a/ta_CDLSTALLEDPATTERN.o .libs/libta_lib.lax/libta_func.a/ta_MAVP.o .libs/libta_lib.lax/libta_func.a/ta_EXP.o .libs/libta_lib.lax/libta_func.a/ta_ACOS.o .libs/libta_lib.lax/libta_func.a/ta_CDLHOMINGPIGEON.o .libs/libta_lib.lax/libta_func.a/ta_RSI.o .libs/libta_lib.lax/libta_func.a/ta_SINH.o .libs/libta_lib.lax/libta_func.a/ta_BBANDS.o .libs/libta_lib.lax/libta_func.a/ta_MOM.o .libs/libta_lib.lax/libta_func.a/ta_TSF.o .libs/libta_lib.lax/libta_func.a/ta_CDLINNECK.o .libs/libta_lib.lax/libta_func.a/ta_CDLDARKCLOUDCOVER.o .libs/libta_lib.lax/libta_func.a/ta_CDLMARUBOZU.o .libs/libta_lib.lax/libta_func.a/ta_APO.o .libs/libta_lib.lax/libta_func.a/ta_TRANGE.o .libs/libta_lib.lax/libta_func.a/ta_AVGPRICE.o .libs/libta_lib.lax/libta_func.a/ta_CDLLADDERBOTTOM.o .libs/libta_lib.lax/libta_func.a/ta_CDLCONCEALBABYSWALL.o .libs/libta_lib.lax/libta_func.a/ta_HT_DCPHASE.o .libs/libta_lib.lax/libta_func.a/ta_MINUS_DI.o .libs/libta_lib.lax/libta_func.a/ta_CDLHIGHWAVE.o .libs/libta_lib.lax/libta_func.a/ta_CDL2CROWS.o .libs/libta_lib.lax/libta_func.a/ta_DIV.o .libs/libta_lib.lax/libta_func.a/ta_CDLENGULFING.o .libs/libta_lib.lax/libta_func.a/ta_LINEARREG.o .libs/libta_lib.lax/libta_func.a/ta_CCI.o .libs/libta_lib.lax/libta_func.a/ta_MULT.o .libs/libta_lib.lax/libta_func.a/ta_CDLIDENTICAL3CROWS.o .libs/libta_lib.lax/libta_func.a/ta_CDLTRISTAR.o .libs/libta_lib.lax/libta_func.a/ta_WCLPRICE.o .libs/libta_lib.lax/libta_func.a/ta_CDLRISEFALL3METHODS.o .libs/libta_lib.lax/libta_func.a/ta_DEMA.o .libs/libta_lib.lax/libta_func.a/ta_CDLMATHOLD.o .libs/libta_lib.lax/libta_func.a/ta_WMA.o .libs/libta_lib.lax/libta_func.a/ta_STOCHF.o .libs/libta_lib.lax/libta_func.a/ta_CDLGRAVESTONEDOJI.o .libs/libta_lib.lax/libta_func.a/ta_CDLMATCHINGLOW.o .libs/libta_lib.lax/libta_func.a/ta_MIDPRICE.o .libs/libta_lib.lax/libta_func.a/ta_LOG10.o .libs/libta_lib.lax/libta_func.a/ta_CDLGAPSIDESIDEWHITE.o .libs/libta_lib.lax/libta_func.a/ta_CDLEVENINGSTAR.o .libs/libta_lib.lax/libta_func.a/ta_MACD.o .libs/libta_lib.lax/libta_func.a/ta_MAXINDEX.o .libs/libta_lib.lax/libta_func.a/ta_CDLTHRUSTING.o .libs/libta_lib.lax/libta_func.a/ta_ADD.o .libs/libta_lib.lax/libta_func.a/ta_ADXR.o .libs/libta_lib.lax/libta_func.a/ta_SUB.o .libs/libta_lib.lax/libta_func.a/ta_CDLBELTHOLD.o .libs/libta_lib.lax/libta_func.a/ta_CDLSTICKSANDWICH.o .libs/libta_lib.lax/libta_func.a/ta_MININDEX.o .libs/libta_lib.lax/libta_func.a/ta_MINMAX.o .libs/libta_lib.lax/libta_func.a/ta_CDL3LINESTRIKE.o .libs/libta_lib.lax/libta_func.a/ta_ULTOSC.o .libs/libta_lib.lax/libta_func.a/ta_ROCR.o .libs/libta_lib.lax/libta_func.a/ta_CDLDOJISTAR.o .libs/libta_lib.lax/libta_func.a/ta_CDLRICKSHAWMAN.o .libs/libta_lib.lax/libta_func.a/ta_COS.o  .libs/libta_lib.lax/libta_common.a/ta_retcode.o .libs/libta_lib.lax/libta_common.a/ta_version.o .libs/libta_lib.lax/libta_common.a/ta_global.o
+ar: `u' modifier ignored since `D' is the default (see `U')
+ranlib .libs/libta_lib.a
+rm -fr .libs/libta_lib.lax
+creating libta_lib.la
+(cd .libs && rm -f libta_lib.la && ln -s ../libta_lib.la libta_lib.la)
+make[2]: Leaving directory '/home/pi/ta-lib/src'
+make[1]: Leaving directory '/home/pi/ta-lib/src'
+Making all in src/tools
+make[1]: Entering directory '/home/pi/ta-lib/src/tools'
+Making all in gen_code
+make[2]: Entering directory '/home/pi/ta-lib/src/tools/gen_code'
+gcc -DHAVE_CONFIG_H -I. -I../../../include  -I../../ta_common   -g -O2 -MT gen_code-gen_code.o -MD -MP -MF .deps/gen_code-gen_code.Tpo -c -o gen_code-gen_code.o `test -f 'gen_code.c' || echo './'`gen_code.c
+mv -f .deps/gen_code-gen_code.Tpo .deps/gen_code-gen_code.Po
+/bin/bash ../../../libtool --tag=CC   --mode=link gcc  -g -O2 -L../../ta_common -L../../ta_abstract -L../../ta_func  -o gen_code gen_code-gen_code.o -lta_common -lta_abstract_gc -lta_func -lm -lpthread -ldl
+mkdir .libs
+gcc -g -O2 -o gen_code gen_code-gen_code.o  -L/home/pi/ta-lib/src/ta_common -L/home/pi/ta-lib/src/ta_abstract -L/home/pi/ta-lib/src/ta_func /home/pi/ta-lib/src/ta_common/.libs/libta_common.a /home/pi/ta-lib/src/ta_abstract/.libs/libta_abstract_gc.a /home/pi/ta-lib/src/ta_func/.libs/libta_func.a -lm -lpthread -ldl
+make  gen_code
+make[3]: Entering directory '/home/pi/ta-lib/src/tools/gen_code'
+make[3]: 'gen_code' is up to date.
+make[3]: Leaving directory '/home/pi/ta-lib/src/tools/gen_code'
+cp gen_code ../../../bin
+make[2]: Leaving directory '/home/pi/ta-lib/src/tools/gen_code'
+Making all in ta_regtest
+make[2]: Entering directory '/home/pi/ta-lib/src/tools/ta_regtest'
+gcc -DHAVE_CONFIG_H -I. -I../../../include  -I../../ta_func -I../../ta_common/trio -I../../ta_common/mt -I../../ta_common -I../../ta_abstract   -g -O2 -MT ta_regtest-ta_regtest.o -MD -MP -MF .deps/ta_regtest-ta_regtest.Tpo -c -o ta_regtest-ta_regtest.o `test -f 'ta_regtest.c' || echo './'`ta_regtest.c
+mv -f .deps/ta_regtest-ta_regtest.Tpo .deps/ta_regtest-ta_regtest.Po
+gcc -DHAVE_CONFIG_H -I. -I../../../include  -I../../ta_func -I../../ta_common/trio -I../../ta_common/mt -I../../ta_common -I../../ta_abstract   -g -O2 -MT ta_regtest-test_data.o -MD -MP -MF .deps/ta_regtest-test_data.Tpo -c -o ta_regtest-test_data.o `test -f 'test_data.c' || echo './'`test_data.c
+mv -f .deps/ta_regtest-test_data.Tpo .deps/ta_regtest-test_data.Po
+gcc -DHAVE_CONFIG_H -I. -I../../../include  -I../../ta_func -I../../ta_common/trio -I../../ta_common/mt -I../../ta_common -I../../ta_abstract   -g -O2 -MT ta_regtest-test_util.o -MD -MP -MF .deps/ta_regtest-test_util.Tpo -c -o ta_regtest-test_util.o `test -f 'test_util.c' || echo './'`test_util.c
+mv -f .deps/ta_regtest-test_util.Tpo .deps/ta_regtest-test_util.Po
+gcc -DHAVE_CONFIG_H -I. -I../../../include  -I../../ta_func -I../../ta_common/trio -I../../ta_common/mt -I../../ta_common -I../../ta_abstract   -g -O2 -MT ta_regtest-test_abstract.o -MD -MP -MF .deps/ta_regtest-test_abstract.Tpo -c -o ta_regtest-test_abstract.o `test -f 'test_abstract.c' || echo './'`test_abstract.c
+mv -f .deps/ta_regtest-test_abstract.Tpo .deps/ta_regtest-test_abstract.Po
+gcc -DHAVE_CONFIG_H -I. -I../../../include  -I../../ta_func -I../../ta_common/trio -I../../ta_common/mt -I../../ta_common -I../../ta_abstract   -g -O2 -MT ta_regtest-test_adx.o -MD -MP -MF .deps/ta_regtest-test_adx.Tpo -c -o ta_regtest-test_adx.o `test -f 'ta_test_func/test_adx.c' || echo './'`ta_test_func/test_adx.c
+mv -f .deps/ta_regtest-test_adx.Tpo .deps/ta_regtest-test_adx.Po
+gcc -DHAVE_CONFIG_H -I. -I../../../include  -I../../ta_func -I../../ta_common/trio -I../../ta_common/mt -I../../ta_common -I../../ta_abstract   -g -O2 -MT ta_regtest-test_mom.o -MD -MP -MF .deps/ta_regtest-test_mom.Tpo -c -o ta_regtest-test_mom.o `test -f 'ta_test_func/test_mom.c' || echo './'`ta_test_func/test_mom.c
+mv -f .deps/ta_regtest-test_mom.Tpo .deps/ta_regtest-test_mom.Po
+gcc -DHAVE_CONFIG_H -I. -I../../../include  -I../../ta_func -I../../ta_common/trio -I../../ta_common/mt -I../../ta_common -I../../ta_abstract   -g -O2 -MT ta_regtest-test_sar.o -MD -MP -MF .deps/ta_regtest-test_sar.Tpo -c -o ta_regtest-test_sar.o `test -f 'ta_test_func/test_sar.c' || echo './'`ta_test_func/test_sar.c
+mv -f .deps/ta_regtest-test_sar.Tpo .deps/ta_regtest-test_sar.Po
+gcc -DHAVE_CONFIG_H -I. -I../../../include  -I../../ta_func -I../../ta_common/trio -I../../ta_common/mt -I../../ta_common -I../../ta_abstract   -g -O2 -MT ta_regtest-test_rsi.o -MD -MP -MF .deps/ta_regtest-test_rsi.Tpo -c -o ta_regtest-test_rsi.o `test -f 'ta_test_func/test_rsi.c' || echo './'`ta_test_func/test_rsi.c
+mv -f .deps/ta_regtest-test_rsi.Tpo .deps/ta_regtest-test_rsi.Po
+gcc -DHAVE_CONFIG_H -I. -I../../../include  -I../../ta_func -I../../ta_common/trio -I../../ta_common/mt -I../../ta_common -I../../ta_abstract   -g -O2 -MT ta_regtest-test_candlestick.o -MD -MP -MF .deps/ta_regtest-test_candlestick.Tpo -c -o ta_regtest-test_candlestick.o `test -f 'ta_test_func/test_candlestick.c' || echo './'`ta_test_func/test_candlestick.c
+mv -f .deps/ta_regtest-test_candlestick.Tpo .deps/ta_regtest-test_candlestick.Po
+gcc -DHAVE_CONFIG_H -I. -I../../../include  -I../../ta_func -I../../ta_common/trio -I../../ta_common/mt -I../../ta_common -I../../ta_abstract   -g -O2 -MT ta_regtest-test_per_ema.o -MD -MP -MF .deps/ta_regtest-test_per_ema.Tpo -c -o ta_regtest-test_per_ema.o `test -f 'ta_test_func/test_per_ema.c' || echo './'`ta_test_func/test_per_ema.c
+mv -f .deps/ta_regtest-test_per_ema.Tpo .deps/ta_regtest-test_per_ema.Po
+gcc -DHAVE_CONFIG_H -I. -I../../../include  -I../../ta_func -I../../ta_common/trio -I../../ta_common/mt -I../../ta_common -I../../ta_abstract   -g -O2 -MT ta_regtest-test_per_hlc.o -MD -MP -MF .deps/ta_regtest-test_per_hlc.Tpo -c -o ta_regtest-test_per_hlc.o `test -f 'ta_test_func/test_per_hlc.c' || echo './'`ta_test_func/test_per_hlc.c
+mv -f .deps/ta_regtest-test_per_hlc.Tpo .deps/ta_regtest-test_per_hlc.Po
+gcc -DHAVE_CONFIG_H -I. -I../../../include  -I../../ta_func -I../../ta_common/trio -I../../ta_common/mt -I../../ta_common -I../../ta_abstract   -g -O2 -MT ta_regtest-test_stoch.o -MD -MP -MF .deps/ta_regtest-test_stoch.Tpo -c -o ta_regtest-test_stoch.o `test -f 'ta_test_func/test_stoch.c' || echo './'`ta_test_func/test_stoch.c
+mv -f .deps/ta_regtest-test_stoch.Tpo .deps/ta_regtest-test_stoch.Po
+gcc -DHAVE_CONFIG_H -I. -I../../../include  -I../../ta_func -I../../ta_common/trio -I../../ta_common/mt -I../../ta_common -I../../ta_abstract   -g -O2 -MT ta_regtest-test_macd.o -MD -MP -MF .deps/ta_regtest-test_macd.Tpo -c -o ta_regtest-test_macd.o `test -f 'ta_test_func/test_macd.c' || echo './'`ta_test_func/test_macd.c
+mv -f .deps/ta_regtest-test_macd.Tpo .deps/ta_regtest-test_macd.Po
+gcc -DHAVE_CONFIG_H -I. -I../../../include  -I../../ta_func -I../../ta_common/trio -I../../ta_common/mt -I../../ta_common -I../../ta_abstract   -g -O2 -MT ta_regtest-test_minmax.o -MD -MP -MF .deps/ta_regtest-test_minmax.Tpo -c -o ta_regtest-test_minmax.o `test -f 'ta_test_func/test_minmax.c' || echo './'`ta_test_func/test_minmax.c
+mv -f .deps/ta_regtest-test_minmax.Tpo .deps/ta_regtest-test_minmax.Po
+gcc -DHAVE_CONFIG_H -I. -I../../../include  -I../../ta_func -I../../ta_common/trio -I../../ta_common/mt -I../../ta_common -I../../ta_abstract   -g -O2 -MT ta_regtest-test_per_hlcv.o -MD -MP -MF .deps/ta_regtest-test_per_hlcv.Tpo -c -o ta_regtest-test_per_hlcv.o `test -f 'ta_test_func/test_per_hlcv.c' || echo './'`ta_test_func/test_per_hlcv.c
+mv -f .deps/ta_regtest-test_per_hlcv.Tpo .deps/ta_regtest-test_per_hlcv.Po
+gcc -DHAVE_CONFIG_H -I. -I../../../include  -I../../ta_func -I../../ta_common/trio -I../../ta_common/mt -I../../ta_common -I../../ta_abstract   -g -O2 -MT ta_regtest-test_1in_1out.o -MD -MP -MF .deps/ta_regtest-test_1in_1out.Tpo -c -o ta_regtest-test_1in_1out.o `test -f 'ta_test_func/test_1in_1out.c' || echo './'`ta_test_func/test_1in_1out.c
+mv -f .deps/ta_regtest-test_1in_1out.Tpo .deps/ta_regtest-test_1in_1out.Po
+gcc -DHAVE_CONFIG_H -I. -I../../../include  -I../../ta_func -I../../ta_common/trio -I../../ta_common/mt -I../../ta_common -I../../ta_abstract   -g -O2 -MT ta_regtest-test_1in_2out.o -MD -MP -MF .deps/ta_regtest-test_1in_2out.Tpo -c -o ta_regtest-test_1in_2out.o `test -f 'ta_test_func/test_1in_2out.c' || echo './'`ta_test_func/test_1in_2out.c
+mv -f .deps/ta_regtest-test_1in_2out.Tpo .deps/ta_regtest-test_1in_2out.Po
+gcc -DHAVE_CONFIG_H -I. -I../../../include  -I../../ta_func -I../../ta_common/trio -I../../ta_common/mt -I../../ta_common -I../../ta_abstract   -g -O2 -MT ta_regtest-test_per_ohlc.o -MD -MP -MF .deps/ta_regtest-test_per_ohlc.Tpo -c -o ta_regtest-test_per_ohlc.o `test -f 'ta_test_func/test_per_ohlc.c' || echo './'`ta_test_func/test_per_ohlc.c
+mv -f .deps/ta_regtest-test_per_ohlc.Tpo .deps/ta_regtest-test_per_ohlc.Po
+gcc -DHAVE_CONFIG_H -I. -I../../../include  -I../../ta_func -I../../ta_common/trio -I../../ta_common/mt -I../../ta_common -I../../ta_abstract   -g -O2 -MT ta_regtest-test_stddev.o -MD -MP -MF .deps/ta_regtest-test_stddev.Tpo -c -o ta_regtest-test_stddev.o `test -f 'ta_test_func/test_stddev.c' || echo './'`ta_test_func/test_stddev.c
+mv -f .deps/ta_regtest-test_stddev.Tpo .deps/ta_regtest-test_stddev.Po
+gcc -DHAVE_CONFIG_H -I. -I../../../include  -I../../ta_func -I../../ta_common/trio -I../../ta_common/mt -I../../ta_common -I../../ta_abstract   -g -O2 -MT ta_regtest-test_bbands.o -MD -MP -MF .deps/ta_regtest-test_bbands.Tpo -c -o ta_regtest-test_bbands.o `test -f 'ta_test_func/test_bbands.c' || echo './'`ta_test_func/test_bbands.c
+mv -f .deps/ta_regtest-test_bbands.Tpo .deps/ta_regtest-test_bbands.Po
+gcc -DHAVE_CONFIG_H -I. -I../../../include  -I../../ta_func -I../../ta_common/trio -I../../ta_common/mt -I../../ta_common -I../../ta_abstract   -g -O2 -MT ta_regtest-test_ma.o -MD -MP -MF .deps/ta_regtest-test_ma.Tpo -c -o ta_regtest-test_ma.o `test -f 'ta_test_func/test_ma.c' || echo './'`ta_test_func/test_ma.c
+mv -f .deps/ta_regtest-test_ma.Tpo .deps/ta_regtest-test_ma.Po
+gcc -DHAVE_CONFIG_H -I. -I../../../include  -I../../ta_func -I../../ta_common/trio -I../../ta_common/mt -I../../ta_common -I../../ta_abstract   -g -O2 -MT ta_regtest-test_po.o -MD -MP -MF .deps/ta_regtest-test_po.Tpo -c -o ta_regtest-test_po.o `test -f 'ta_test_func/test_po.c' || echo './'`ta_test_func/test_po.c
+mv -f .deps/ta_regtest-test_po.Tpo .deps/ta_regtest-test_po.Po
+gcc -DHAVE_CONFIG_H -I. -I../../../include  -I../../ta_func -I../../ta_common/trio -I../../ta_common/mt -I../../ta_common -I../../ta_abstract   -g -O2 -MT ta_regtest-test_per_hl.o -MD -MP -MF .deps/ta_regtest-test_per_hl.Tpo -c -o ta_regtest-test_per_hl.o `test -f 'ta_test_func/test_per_hl.c' || echo './'`ta_test_func/test_per_hl.c
+mv -f .deps/ta_regtest-test_per_hl.Tpo .deps/ta_regtest-test_per_hl.Po
+gcc -DHAVE_CONFIG_H -I. -I../../../include  -I../../ta_func -I../../ta_common/trio -I../../ta_common/mt -I../../ta_common -I../../ta_abstract   -g -O2 -MT ta_regtest-test_trange.o -MD -MP -MF .deps/ta_regtest-test_trange.Tpo -c -o ta_regtest-test_trange.o `test -f 'ta_test_func/test_trange.c' || echo './'`ta_test_func/test_trange.c
+mv -f .deps/ta_regtest-test_trange.Tpo .deps/ta_regtest-test_trange.Po
+gcc -DHAVE_CONFIG_H -I. -I../../../include  -I../../ta_func -I../../ta_common/trio -I../../ta_common/mt -I../../ta_common -I../../ta_abstract   -g -O2 -MT ta_regtest-test_internals.o -MD -MP -MF .deps/ta_regtest-test_internals.Tpo -c -o ta_regtest-test_internals.o `test -f 'test_internals.c' || echo './'`test_internals.c
+mv -f .deps/ta_regtest-test_internals.Tpo .deps/ta_regtest-test_internals.Po
+/bin/bash ../../../libtool --tag=CC   --mode=link gcc  -g -O2 -L../.. -lta_lib -lm  -o ta_regtest ta_regtest-ta_regtest.o ta_regtest-test_data.o ta_regtest-test_util.o ta_regtest-test_abstract.o ta_regtest-test_adx.o ta_regtest-test_mom.o ta_regtest-test_sar.o ta_regtest-test_rsi.o ta_regtest-test_candlestick.o ta_regtest-test_per_ema.o ta_regtest-test_per_hlc.o ta_regtest-test_stoch.o ta_regtest-test_macd.o ta_regtest-test_minmax.o ta_regtest-test_per_hlcv.o ta_regtest-test_1in_1out.o ta_regtest-test_1in_2out.o ta_regtest-test_per_ohlc.o ta_regtest-test_stddev.o ta_regtest-test_bbands.o ta_regtest-test_ma.o ta_regtest-test_po.o ta_regtest-test_per_hl.o ta_regtest-test_trange.o ta_regtest-test_internals.o  -lpthread -ldl
+mkdir .libs
+gcc -g -O2 -o .libs/ta_regtest ta_regtest-ta_regtest.o ta_regtest-test_data.o ta_regtest-test_util.o ta_regtest-test_abstract.o ta_regtest-test_adx.o ta_regtest-test_mom.o ta_regtest-test_sar.o ta_regtest-test_rsi.o ta_regtest-test_candlestick.o ta_regtest-test_per_ema.o ta_regtest-test_per_hlc.o ta_regtest-test_stoch.o ta_regtest-test_macd.o ta_regtest-test_minmax.o ta_regtest-test_per_hlcv.o ta_regtest-test_1in_1out.o ta_regtest-test_1in_2out.o ta_regtest-test_per_ohlc.o ta_regtest-test_stddev.o ta_regtest-test_bbands.o ta_regtest-test_ma.o ta_regtest-test_po.o ta_regtest-test_per_hl.o ta_regtest-test_trange.o ta_regtest-test_internals.o  -L/home/pi/ta-lib/src /home/pi/ta-lib/src/.libs/libta_lib.so -lm -lpthread -ldl
+creating ta_regtest
+make[2]: Leaving directory '/home/pi/ta-lib/src/tools/ta_regtest'
+make[2]: Entering directory '/home/pi/ta-lib/src/tools'
+make[2]: Nothing to be done for 'all-am'.
+make[2]: Leaving directory '/home/pi/ta-lib/src/tools'
+make[1]: Leaving directory '/home/pi/ta-lib/src/tools'
+make[1]: Entering directory '/home/pi/ta-lib'
+make[1]: Nothing to be done for 'all-am'.
+make[1]: Leaving directory '/home/pi/ta-lib'
+
+
+5. 依據 makefile 將程式安裝到系統 (預設 /usr/local/bin)
+=======================================================
+
+pi@raspberrypi:~/ta-lib $ sudo make install   
+Making install in src
+make[1]: Entering directory '/home/pi/ta-lib/src'
+Making install in ta_abstract
+make[2]: Entering directory '/home/pi/ta-lib/src/ta_abstract'
+make[3]: Entering directory '/home/pi/ta-lib/src/ta_abstract'
+make[3]: Nothing to be done for 'install-exec-am'.
+test -z "/usr/include/ta-lib/" || /usr/bin/mkdir -p "/usr/include/ta-lib/"
+ /usr/bin/install -c -m 644 '../../include/ta_defs.h' '/usr/include/ta-lib//ta_defs.h'
+ /usr/bin/install -c -m 644 '../../include/ta_libc.h' '/usr/include/ta-lib//ta_libc.h'
+ /usr/bin/install -c -m 644 '../../include/ta_abstract.h' '/usr/include/ta-lib//ta_abstract.h'
+make[3]: Leaving directory '/home/pi/ta-lib/src/ta_abstract'
+make[2]: Leaving directory '/home/pi/ta-lib/src/ta_abstract'
+Making install in ta_common
+make[2]: Entering directory '/home/pi/ta-lib/src/ta_common'
+make[3]: Entering directory '/home/pi/ta-lib/src/ta_common'
+make[3]: Nothing to be done for 'install-exec-am'.
+test -z "/usr/include/ta-lib/" || /usr/bin/mkdir -p "/usr/include/ta-lib/"
+ /usr/bin/install -c -m 644 '../../include/ta_defs.h' '/usr/include/ta-lib//ta_defs.h'
+ /usr/bin/install -c -m 644 '../../include/ta_libc.h' '/usr/include/ta-lib//ta_libc.h'
+ /usr/bin/install -c -m 644 '../../include/ta_common.h' '/usr/include/ta-lib//ta_common.h'
+make[3]: Leaving directory '/home/pi/ta-lib/src/ta_common'
+make[2]: Leaving directory '/home/pi/ta-lib/src/ta_common'
+Making install in ta_func
+make[2]: Entering directory '/home/pi/ta-lib/src/ta_func'
+make[3]: Entering directory '/home/pi/ta-lib/src/ta_func'
+make[3]: Nothing to be done for 'install-exec-am'.
+test -z "/usr/include/ta-lib/" || /usr/bin/mkdir -p "/usr/include/ta-lib/"
+ /usr/bin/install -c -m 644 '../../include/ta_defs.h' '/usr/include/ta-lib//ta_defs.h'
+ /usr/bin/install -c -m 644 '../../include/ta_libc.h' '/usr/include/ta-lib//ta_libc.h'
+ /usr/bin/install -c -m 644 '../../include/ta_func.h' '/usr/include/ta-lib//ta_func.h'
+make[3]: Leaving directory '/home/pi/ta-lib/src/ta_func'
+make[2]: Leaving directory '/home/pi/ta-lib/src/ta_func'
+make[2]: Entering directory '/home/pi/ta-lib/src'
+make[3]: Entering directory '/home/pi/ta-lib/src'
+test -z "/usr/lib" || /usr/bin/mkdir -p "/usr/lib"
+ /bin/bash ../libtool --mode=install /usr/bin/install -c  'libta_lib.la' '/usr/lib/libta_lib.la'
+/usr/bin/install -c .libs/libta_lib.so.0.0.0 /usr/lib/libta_lib.so.0.0.0
+(cd /usr/lib && { ln -s -f libta_lib.so.0.0.0 libta_lib.so.0 || { rm -f libta_lib.so.0 && ln -s libta_lib.so.0.0.0 libta_lib.so.0; }; })
+(cd /usr/lib && { ln -s -f libta_lib.so.0.0.0 libta_lib.so || { rm -f libta_lib.so && ln -s libta_lib.so.0.0.0 libta_lib.so; }; })
+/usr/bin/install -c .libs/libta_lib.lai /usr/lib/libta_lib.la
+/usr/bin/install -c .libs/libta_lib.a /usr/lib/libta_lib.a
+chmod 644 /usr/lib/libta_lib.a
+ranlib /usr/lib/libta_lib.a
+PATH="$PATH:/sbin" ldconfig -n /usr/lib
+----------------------------------------------------------------------
+Libraries have been installed in:
+   /usr/lib
+
+If you ever happen to want to link against installed libraries
+in a given directory, LIBDIR, you must either use libtool, and
+specify the full pathname of the library, or use the `-LLIBDIR'
+flag during linking and do at least one of the following:
+   - add LIBDIR to the `LD_LIBRARY_PATH' environment variable
+     during execution
+   - add LIBDIR to the `LD_RUN_PATH' environment variable
+     during linking
+   - use the `-Wl,--rpath -Wl,LIBDIR' linker flag
+   - have your system administrator add LIBDIR to `/etc/ld.so.conf'
+
+See any operating system documentation about shared libraries for
+more information, such as the ld(1) and ld.so(8) manual pages.
+----------------------------------------------------------------------
+make[3]: Nothing to be done for 'install-data-am'.
+make[3]: Leaving directory '/home/pi/ta-lib/src'
+make[2]: Leaving directory '/home/pi/ta-lib/src'
+make[1]: Leaving directory '/home/pi/ta-lib/src'
+Making install in src/tools
+make[1]: Entering directory '/home/pi/ta-lib/src/tools'
+Making install in gen_code
+make[2]: Entering directory '/home/pi/ta-lib/src/tools/gen_code'
+make  gen_code
+make[3]: Entering directory '/home/pi/ta-lib/src/tools/gen_code'
+make[3]: 'gen_code' is up to date.
+make[3]: Leaving directory '/home/pi/ta-lib/src/tools/gen_code'
+cp gen_code ../../../bin
+make[3]: Entering directory '/home/pi/ta-lib/src/tools/gen_code'
+make[3]: Nothing to be done for 'install-exec-am'.
+make[3]: Nothing to be done for 'install-data-am'.
+make[3]: Leaving directory '/home/pi/ta-lib/src/tools/gen_code'
+make[2]: Leaving directory '/home/pi/ta-lib/src/tools/gen_code'
+Making install in ta_regtest
+make[2]: Entering directory '/home/pi/ta-lib/src/tools/ta_regtest'
+make[3]: Entering directory '/home/pi/ta-lib/src/tools/ta_regtest'
+make[3]: Nothing to be done for 'install-exec-am'.
+make[3]: Nothing to be done for 'install-data-am'.
+make[3]: Leaving directory '/home/pi/ta-lib/src/tools/ta_regtest'
+make[2]: Leaving directory '/home/pi/ta-lib/src/tools/ta_regtest'
+make[2]: Entering directory '/home/pi/ta-lib/src/tools'
+make[3]: Entering directory '/home/pi/ta-lib/src/tools'
+make[3]: Nothing to be done for 'install-exec-am'.
+make[3]: Nothing to be done for 'install-data-am'.
+make[3]: Leaving directory '/home/pi/ta-lib/src/tools'
+make[2]: Leaving directory '/home/pi/ta-lib/src/tools'
+make[1]: Leaving directory '/home/pi/ta-lib/src/tools'
+make[1]: Entering directory '/home/pi/ta-lib'
+make[2]: Entering directory '/home/pi/ta-lib'
+test -z "/usr/bin" || /usr/bin/mkdir -p "/usr/bin"
+ /usr/bin/install -c 'ta-lib-config' '/usr/bin/ta-lib-config'
+make[2]: Nothing to be done for 'install-data-am'.
+make[2]: Leaving directory '/home/pi/ta-lib'
+make[1]: Leaving directory '/home/pi/ta-lib'
+
+
+6. 用 pip3 install Ta-Lib 升至最新版 
+====================================
+
+pi@raspberrypi:~/ta-lib $ sudo pip3 install TA-Lib    
+Looking in indexes: https://pypi.org/simple, https://www.piwheels.org/simple
+Collecting TA-Lib
+  Using cached https://files.pythonhosted.org/packages/78/f5/59f1d7d0c43d3d96e93249ae9d5415b42591362bfcf2f4e50574ad063312/TA-Lib-0.4.24.tar.gz
+Requirement already satisfied: numpy in /usr/lib/python3/dist-packages (from TA-Lib) (1.16.2)
+Building wheels for collected packages: TA-Lib
+  Running setup.py bdist_wheel for TA-Lib ... done
+  Stored in directory: /root/.cache/pip/wheels/14/b3/21/c411da8eb6ed49519862798a2b5cc01add3c1bf7c026ebb005
+Successfully built TA-Lib
+Installing collected packages: TA-Lib
+Successfully installed TA-Lib-0.4.24
+
+
+
