@@ -1,0 +1,126 @@
+D:\test\python>pip install gradio
+Collecting gradio
+  Downloading gradio-3.2-py3-none-any.whl (6.1 MB)
+     ---------------------------------------- 6.1/6.1 MB 1.2 MB/s eta 0:00:00
+Requirement already satisfied: requests in c:\python37\lib\site-packages (from gradio) (2.21.0)
+Requirement already satisfied: pandas in c:\python37\lib\site-packages (from gradio) (1.2.5)
+Collecting python-multipart
+  Downloading python-multipart-0.0.5.tar.gz (32 kB)
+  Preparing metadata (setup.py) ... done
+Requirement already satisfied: numpy in c:\python37\lib\site-packages (from gradio) (1.19.4)
+Collecting ffmpy
+  Downloading ffmpy-0.3.0.tar.gz (4.8 kB)
+  Preparing metadata (setup.py) ... done
+Collecting aiohttp
+  Downloading aiohttp-3.8.1-cp37-cp37m-win_amd64.whl (551 kB)
+     ---------------------------------------- 551.8/551.8 kB 1.3 MB/s eta 0:00:00
+Collecting fsspec
+  Downloading fsspec-2022.8.2-py3-none-any.whl (140 kB)
+     ---------------------------------------- 140.8/140.8 kB 1.7 MB/s eta 0:00:00
+Collecting websockets
+  Downloading websockets-10.3-cp37-cp37m-win_amd64.whl (98 kB)
+     ---------------------------------------- 98.5/98.5 kB 810.1 kB/s eta 0:00:00
+Requirement already satisfied: pillow in c:\python37\lib\site-packages (from gradio) (8.1.0)
+Collecting httpx
+  Downloading httpx-0.23.0-py3-none-any.whl (84 kB)
+     ---------------------------------------- 84.8/84.8 kB 956.5 kB/s eta 0:00:00
+Collecting orjson
+  Downloading orjson-3.8.0-cp37-none-win_amd64.whl (197 kB)
+     ---------------------------------------- 197.3/197.3 kB 1.1 MB/s eta 0:00:00
+Collecting uvicorn
+  Downloading uvicorn-0.18.3-py3-none-any.whl (57 kB)
+     ---------------------------------------- 57.4/57.4 kB 1.5 MB/s eta 0:00:00
+Requirement already satisfied: paramiko in c:\python37\lib\site-packages (from gradio) (2.8.1)
+Collecting analytics-python
+  Downloading analytics_python-1.4.0-py2.py3-none-any.whl (15 kB)
+Collecting pycryptodome
+  Downloading pycryptodome-3.15.0-cp35-abi3-win_amd64.whl (1.9 MB)
+     ---------------------------------------- 1.9/1.9 MB 1.1 MB/s eta 0:00:00
+Requirement already satisfied: matplotlib in c:\python37\lib\site-packages (from gradio) (3.2.1)
+Collecting fastapi
+  Downloading fastapi-0.81.0-py3-none-any.whl (54 kB)
+     ---------------------------------------- 54.9/54.9 kB 1.4 MB/s eta 0:00:00
+Collecting pydub
+  Downloading pydub-0.25.1-py2.py3-none-any.whl (32 kB)
+Requirement already satisfied: pydantic in c:\python37\lib\site-packages (from gradio) (1.8.2)
+Collecting markdown-it-py[linkify,plugins]
+  Downloading markdown_it_py-2.1.0-py3-none-any.whl (84 kB)
+     ---------------------------------------- 84.5/84.5 kB 1.2 MB/s eta 0:00:00
+Requirement already satisfied: Jinja2 in c:\python37\lib\site-packages (from gradio) (3.1.2)
+Collecting h11<0.13,>=0.11
+  Downloading h11-0.12.0-py3-none-any.whl (54 kB)
+     ---------------------------------------- 54.9/54.9 kB 1.4 MB/s eta 0:00:00
+Requirement already satisfied: attrs>=17.3.0 in c:\python37\lib\site-packages (from aiohttp->gradio) (19.3.0)
+Collecting yarl<2.0,>=1.0
+  Downloading yarl-1.8.1-cp37-cp37m-win_amd64.whl (56 kB)
+     ---------------------------------------- 56.3/56.3 kB 1.4 MB/s eta 0:00:00
+Collecting multidict<7.0,>=4.5
+  Downloading multidict-6.0.2-cp37-cp37m-win_amd64.whl (27 kB)
+Collecting charset-normalizer<3.0,>=2.0
+  Downloading charset_normalizer-2.1.1-py3-none-any.whl (39 kB)
+Collecting async-timeout<5.0,>=4.0.0a3
+  Downloading async_timeout-4.0.2-py3-none-any.whl (5.8 kB)
+Collecting asynctest==0.13.0
+  Downloading asynctest-0.13.0-py3-none-any.whl (26 kB)
+Requirement already satisfied: typing-extensions>=3.7.4 in c:\python37\lib\site-packages (from aiohttp->gradio) (4.3.0)
+Collecting aiosignal>=1.1.2
+  Downloading aiosignal-1.2.0-py3-none-any.whl (8.2 kB)
+Collecting frozenlist>=1.1.1
+  Downloading frozenlist-1.3.1-cp37-cp37m-win_amd64.whl (34 kB)
+Collecting backoff==1.10.0
+  Downloading backoff-1.10.0-py2.py3-none-any.whl (31 kB)
+Requirement already satisfied: python-dateutil>2.1 in c:\python37\lib\site-packages (from analytics-python->gradio) (2.7.5)
+Requirement already satisfied: six>=1.5 in c:\python37\lib\site-packages (from analytics-python->gradio) (1.12.0)
+Collecting monotonic>=1.5
+  Downloading monotonic-1.6-py2.py3-none-any.whl (8.2 kB)
+Requirement already satisfied: urllib3<1.25,>=1.21.1 in c:\python37\lib\site-packages (from requests->gradio) (1.24.1)
+Requirement already satisfied: chardet<3.1.0,>=3.0.2 in c:\python37\lib\site-packages (from requests->gradio) (3.0.4)
+Requirement already satisfied: idna<2.9,>=2.5 in c:\python37\lib\site-packages (from requests->gradio) (2.8)
+Requirement already satisfied: certifi>=2017.4.17 in c:\python37\lib\site-packages (from requests->gradio) (2018.11.29)
+Collecting starlette==0.19.1
+  Downloading starlette-0.19.1-py3-none-any.whl (63 kB)
+     ---------------------------------------- 63.3/63.3 kB 1.7 MB/s eta 0:00:00
+Collecting anyio<5,>=3.4.0
+  Downloading anyio-3.6.1-py3-none-any.whl (80 kB)
+     ---------------------------------------- 80.6/80.6 kB 1.5 MB/s eta 0:00:00
+Collecting sniffio
+  Downloading sniffio-1.3.0-py3-none-any.whl (10 kB)
+Collecting httpcore<0.16.0,>=0.15.0
+  Downloading httpcore-0.15.0-py3-none-any.whl (68 kB)
+     ---------------------------------------- 68.4/68.4 kB 1.2 MB/s eta 0:00:00
+Collecting rfc3986[idna2008]<2,>=1.3
+  Downloading rfc3986-1.5.0-py2.py3-none-any.whl (31 kB)
+Requirement already satisfied: MarkupSafe>=2.0 in c:\python37\lib\site-packages (from Jinja2->gradio) (2.1.1)
+Collecting mdurl~=0.1
+  Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+Collecting mdit-py-plugins
+  Downloading mdit_py_plugins-0.3.0-py3-none-any.whl (43 kB)
+     ---------------------------------------- 43.7/43.7 kB 2.1 MB/s eta 0:00:00
+Collecting linkify-it-py~=1.0
+  Downloading linkify_it_py-1.0.3-py3-none-any.whl (19 kB)
+Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in c:\python37\lib\site-packages (from matplotlib->gradio) (2.3.1)
+Requirement already satisfied: cycler>=0.10 in c:\python37\lib\site-packages (from matplotlib->gradio) (0.10.0)
+Requirement already satisfied: kiwisolver>=1.0.1 in c:\python37\lib\site-packages (from matplotlib->gradio) (1.0.1)
+Requirement already satisfied: pytz>=2017.3 in c:\python37\lib\site-packages (from pandas->gradio) (2018.9)
+Requirement already satisfied: pynacl>=1.0.1 in c:\python37\lib\site-packages (from paramiko->gradio) (1.4.0)
+Requirement already satisfied: cryptography>=2.5 in c:\python37\lib\site-packages (from paramiko->gradio) (36.0.0)
+Requirement already satisfied: bcrypt>=3.1.3 in c:\python37\lib\site-packages (from paramiko->gradio) (3.2.0)
+Requirement already satisfied: click>=7.0 in c:\python37\lib\site-packages (from uvicorn->gradio) (8.1.3)
+Requirement already satisfied: cffi>=1.1 in c:\python37\lib\site-packages (from bcrypt>=3.1.3->paramiko->gradio) (1.15.0)
+Requirement already satisfied: importlib-metadata in c:\python37\lib\site-packages (from click>=7.0->uvicorn->gradio) (4.12.0)
+Requirement already satisfied: colorama in c:\python37\lib\site-packages (from click>=7.0->uvicorn->gradio) (0.4.1)
+Requirement already satisfied: setuptools in c:\python37\lib\site-packages (from kiwisolver>=1.0.1->matplotlib->gradio) (51.0.0)
+Collecting uc-micro-py
+  Downloading uc_micro_py-1.0.1-py3-none-any.whl (6.2 kB)
+Requirement already satisfied: pycparser in c:\python37\lib\site-packages (from cffi>=1.1->bcrypt>=3.1.3->paramiko->gradio) (2.21)
+Requirement already satisfied: zipp>=0.5 in c:\python37\lib\site-packages (from importlib-metadata->click>=7.0->uvicorn->gradio) (3.1.0)
+Building wheels for collected packages: ffmpy, python-multipart
+  Building wheel for ffmpy (setup.py) ... done
+  Created wheel for ffmpy: filename=ffmpy-0.3.0-py3-none-any.whl size=4710 sha256=f31d4efd2e7c8ffecc46eb33900b54a7a19c5b056ddf9796ac3aa38ebcb6474b
+  Stored in directory: c:\users\user\appdata\local\pip\cache\wheels\13\e4\6c\e8059816e86796a597c6e6b0d4c880630f51a1fcfa0befd5e6
+  Building wheel for python-multipart (setup.py) ... done
+  Created wheel for python-multipart: filename=python_multipart-0.0.5-py3-none-any.whl size=31669 sha256=af2e4e9ef413f35e108a9f2b41690f6c64f07bd6f9d92490e8b30155926cc21a
+  Stored in directory: c:\users\user\appdata\local\pip\cache\wheels\2c\41\7c\bfd1c180534ffdcc0972f78c5758f89881602175d48a8bcd2c
+Successfully built ffmpy python-multipart
+Installing collected packages: rfc3986, pydub, monotonic, ffmpy, websockets, uc-micro-py, sniffio, python-multipart, pycryptodome, orjson, multidict, mdurl, h11, fsspec, frozenlist, charset-normalizer, backoff, asynctest, async-timeout, yarl, markdown-it-py, linkify-it-py, anyio, analytics-python, aiosignal, uvicorn, starlette, mdit-py-plugins, httpcore, aiohttp, httpx, fastapi, gradio
+Successfully installed aiohttp-3.8.1 aiosignal-1.2.0 analytics-python-1.4.0 anyio-3.6.1 async-timeout-4.0.2 asynctest-0.13.0 backoff-1.10.0 charset-normalizer-2.1.1 fastapi-0.81.0 ffmpy-0.3.0 frozenlist-1.3.1 fsspec-2022.8.2 gradio-3.2 h11-0.12.0 httpcore-0.15.0 httpx-0.23.0 linkify-it-py-1.0.3 markdown-it-py-2.1.0 mdit-py-plugins-0.3.0 mdurl-0.1.2 monotonic-1.6 multidict-6.0.2 orjson-3.8.0 pycryptodome-3.15.0 pydub-0.25.1 python-multipart-0.0.5 rfc3986-1.5.0 sniffio-1.3.0 starlette-0.19.1 uc-micro-py-1.0.1 uvicorn-0.18.3 websockets-10.3 yarl-1.8.1
