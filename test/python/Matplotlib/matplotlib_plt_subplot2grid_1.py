@@ -1,0 +1,15 @@
+import matplotlib.pyplot as plt  
+
+fig=plt.figure(figsize=(8, 6))     
+ax1=plt.subplot2grid((3, 3), (0, 0), colspan=2)
+ax1.text(0.5, 0.5, 'ax1', fontsize=16, ha='center')
+ax2=plt.subplot2grid((3, 3), (0, 2), rowspan=2) 
+ax2.text(0.5, 0.5, 'ax2', fontsize=16, ha='center')
+ax3=plt.subplot2grid((3, 3), (1, 0), rowspan=2) 
+ax3.text(0.5, 0.5, 'ax3', fontsize=16, ha='center')
+ax4=plt.subplot2grid((3, 3), (2, 1), colspan=2)   
+ax4.text(0.5, 0.5, 'ax4', fontsize=16, ha='center')
+ax5=plt.subplot2grid((3, 3), (1, 1)) 
+ax5.text(0.5, 0.5, 'ax5', fontsize=16, ha='center')
+fig.tight_layout()
+plt.show() 
