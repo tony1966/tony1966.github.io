@@ -42,6 +42,16 @@ def connect_wifi_led(ssid=config.SSID, passwd=config.PASSWORD, timeout=15):
         print("network config:", sta.ifconfig())
         return sta.ifconfig()[0] 
 
+def scan_ssid():
+    sta=network.WLAN(network.STA_IF)
+    sta.active(True)
+    aps=sta.scan()
+    for ap in aps:
+        ssid=ap[0].decode()
+        mac=ubinascii.hexlify(ap[1], ':').decode()
+        rssi=str(ap[3]) + 'dBm'
+        print('{:>20} {:>20} {:>10}'.format(ssid, mac, rssi))
+
 def show_error(final_state=0):
     led = Pin(2, Pin.OUT)   # Built-in D4
     for i in range(3):
