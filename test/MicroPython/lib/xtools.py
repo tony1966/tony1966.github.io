@@ -5,6 +5,7 @@ import time, network, urequests
 import ubinascii
 import machine
 import config
+import ntptime
 
 def get_id():
     return ubinascii.hexlify(machine.unique_id())
@@ -112,4 +113,15 @@ def format_datetime(local_time):
     t += pad_zero(m)
     t += ':'
     t += pad_zero(S)
+    return t
+
+def tw_now():
+    try:
+        ntptime.settime()
+    except:
+        pass
+    utc_epoch=time.mktime(time.localtime())
+    Y,M,D,H,m,S,ms,W=time.localtime(utc_epoch + 28800)
+    t='%s-%s-%s %s:%s:%s' % \
+    (Y, pad_zero(M), pad_zero(D), pad_zero(H), pad_zero(m), pad_zero(S))
     return t
