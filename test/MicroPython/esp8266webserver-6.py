@@ -17,10 +17,10 @@ def handleRoot(socket, args):
     if 'led' in args:
         if args['led']=='on':
             state='點亮'
-            led.value(1)
+            led.value(0)  # GPIO2 板載 LED 輸出 low 為亮
         elif args['led']=='off':
             state='熄滅'
-            led.value(0)
+            led.value(1)  # GPIO2 板載 LED 輸出 high 為滅
     response=html.format(state)
     ESP8266WebServer.ok(socket, "200", "text/html", response)
 
