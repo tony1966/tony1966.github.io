@@ -13,19 +13,19 @@ def handleRoot(socket, args):
     print(args)
     with open('./www4/index.p.html', 'r', encoding='utf-8') as f:
         html=f.read()
-    state='º¶·À' 
+    state='ç†„æ»…' 
     if 'led' in args:
-        if args['led']='on':
-            state='ÂI«G'
+        if args['led']=='on':
+            state='é»žäº®'
             led.value(1)
-        elif args['led']='off':
-            state='º¶·À'
+        elif args['led']=='off':
+            state='ç†„æ»…'
             led.value(0)
     response=html.format(state)
     ESP8266WebServer.ok(socket, "200", "text/html", response)
 
 ESP8266WebServer.onPath("/", handleRoot) 
-data={"state": "º¶·À"}
+data={"state": "ç†„æ»…"}
 ESP8266WebServer.setTplData(data)
 
 while True:
