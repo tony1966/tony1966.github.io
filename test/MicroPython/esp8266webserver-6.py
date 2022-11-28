@@ -5,7 +5,7 @@ from machine import Pin
 
 ip=xtools.connect_wifi_led(config.SSID, config.PASSWORD) 
 led=Pin(2, Pin.OUT)
-led.value(0)
+led.value(1)  # 預設狀態: 熄滅
 ESP8266WebServer.begin(80)              
 ESP8266WebServer.setDocPath("/www4")
 
