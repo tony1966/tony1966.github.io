@@ -10,6 +10,11 @@ import ntptime
 def get_id():
     return ubinascii.hexlify(machine.unique_id()).decode('utf8')
 
+def get_mac():
+    sta=network.WLAN(network.STA_IF)
+    mac=sta.config('mac')
+    return ubinascii.hexlify(mac, ':').decode('utf8')
+
 def get_num(x):
     return float("".join(ele for ele in x if ele.isdigit() or ele =="."))
 
@@ -39,7 +44,11 @@ def connect_wifi_led(ssid=config.SSID, passwd=config.PASSWORD, timeout=15):
                 print("Wifi connecting timeout!")
                 break
     if sta.isconnected():
-        wifi_led.value(0)
+        for i in range(25):   # 連線成功 : 快閃 5 秒
+            wifi_led.value(0)
+            time.sleep_ms(100)
+            wifi_led.value(1)
+            time.sleep_ms(100)
         print("network config:", sta.ifconfig())
         return sta.ifconfig()[0] 
 
@@ -117,16 +126,20 @@ def format_datetime(local_time):
 
 def tw_now():
     try:
+        print('Querying NTP server and set RTC time ... ', end='')
         ntptime.settime()
+        print('OK.')
+        delta=28800
     except:
-        pass
+        print('Failed.')
+        delta=0
     utc_epoch=time.mktime(time.localtime())
-    Y,M,D,H,m,S,ms,W=time.localtime(utc_epoch + 28800)
+    Y,M,D,H,m,S,ms,W=time.localtime(utc_epoch + delta)
     t='%s-%s-%s %s:%s:%s' % \
     (Y, pad_zero(M), pad_zero(D), pad_zero(H), pad_zero(m), pad_zero(S))
     return t
 
-def set_ap():
+def set_ap(led=2):
     html='''
     <!DOCTYPE html>
     <html>
@@ -169,10 +182,10 @@ def set_ap():
          <button style="width:100%;font-size: 16px">重新設定</button>
        </a>   
     '''
-    wifi_led=Pin(2, Pin.OUT, value=1)  # 預設熄滅板上 LED
-    ap=network.WLAN(network.AP_IF)     # 開啟 AP 模式
+    wifi_led=Pin(led, Pin.OUT, value=1)  # 預設熄滅板上 LED
+    ap=network.WLAN(network.AP_IF)       # 開啟 AP 模式
     ap.active(True)
-    sta=network.WLAN(network.STA_IF)   # 開啟 STA 模式
+    sta=network.WLAN(network.STA_IF)     # 開啟 STA 模式
     sta.active(True)
     import socket
     addr=socket.getaddrinfo('192.168.4.1', 80)[0][-1] # 傳回 (ip, port)
@@ -200,23 +213,32 @@ def set_ap():
                 wifi_led.value(1)
                 time.sleep_ms(300)                
                 if time.time()-start_time > 15: # 是否超過連線秒數
-                    print('Wifi 連線逾時!')
+                    print('WiFi 連線逾時!')
                     break  # 逾時跳出無限迴圈
             # 確認是否連線成功
             if sta.isconnected():     # WiFi 連線成功
-                wifi_led.value(1)     # 連線成功 : 熄滅 LED
                 print('WiFi 連線成功 : ', sta.ifconfig())
                 ip=sta.ifconfig()[0]  # 取得 ip
                 print('取得 IP : ' + ip)
                 with open('config.py', 'w', encoding='utf-8') as f:
                     f.write(f'SSID="{ssid}"\nPASSWORD="{pwd}"') # 更新設定檔
                 cs.send(html % ok.format(ip))  # 回應連線成功頁面
+                for i in range(25):   # 連線成功 : 快閃 5 秒
+                    wifi_led.value(0)
+                    time.sleep_ms(100)
+                    wifi_led.value(1)
+                    time.sleep_ms(100)
+                cs.close()
+                s.close()
                 return ip
             else:
                 print('WiFi 連線失敗 : 請按 Reset 鈕後重設.')
-                cs.send(html % ng)   # 回應連線失敗頁面
+                wifi_led.value(1)     # 連線失敗 : 熄滅 LED
+                cs.send(html % ng)    # 回應連線失敗頁面
+                cs.close()
+                s.close()
                 return None
         else:  # 顯示設定 WiFi 頁面
             cs.send(html % form)  # 回應設定 WiFi 頁面
         cs.close()
-        del cs, addr, data, request
+        del cs, addr, data, requestxtools
