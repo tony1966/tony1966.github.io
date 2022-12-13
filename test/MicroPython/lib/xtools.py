@@ -241,4 +241,4 @@ def set_ap(led=2):
         else:  # 顯示設定 WiFi 頁面
             cs.send(html % form)  # 回應設定 WiFi 頁面
         cs.close()
-        del cs, addr, data, requestxtools
+        del cs, addr, data, request
