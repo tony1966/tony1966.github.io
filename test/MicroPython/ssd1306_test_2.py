@@ -5,7 +5,7 @@ from machine import Pin, SoftI2C
 import time
 
 ip=xtools.connect_wifi_led()
-i2c=SoftI2C(scl=Pin(22), sda=Pin(21))               
+i2c=SoftI2C(scl=Pin(19), sda=Pin(18))               
 oled=ssd1306.SSD1306_I2C(128, 32, i2c)
 week={0:'Mon',1:'Tue',2:'Wed',3:'Thu',4:'Fri',5:'Sat',6:'Sun'}
 
