@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>檔案寫入 (下載)</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+<body>
+  <input type="file" onchange="read_file(this)"><br><br>
+  <textarea id="content" cols="80" rows="15"></textarea><br><br>
+  <button onclick="write_file()">儲存內容</button>
+  <script>
+    function $(id) {return document.getElementById(id);}
+    function read_file(obj){
+      file=obj.files[0];
+      file_name=file.name;
+      var fr=new FileReader();           
+      fr.onload=function(e) {
+        $('content').value=e.target.result;
+        };
+      fr.readAsText(file);      
+      }
+    function write_file(){
+      data=$('content').value
+      window.location.href="data:application/x-download;charset=utf-8," +
+                           encodeURIComponent(data);    
+      }
+  </script>
+</body>
+</html>
