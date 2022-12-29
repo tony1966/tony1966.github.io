@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>indexedDB 測試</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <div id='output'></div>
+    <script>
+      var request=indexedDB.open("mydb");
+      request.onerror=function(e) {
+        var str="開啟資料庫 mydb 失敗 : " + e.target.errorCode;
+        document.getElementById('output').innerHTML=str;
+        }
+      request.onsuccess=function(e) {
+        var str="開啟資料庫 mydb 成功 : " + e.target.result;
+        document.getElementById('output').innerHTML=str;
+        }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>indexedDB 測試</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <div id='supports'></div>
+    <script>
+      if (window.indexedDB){var str="此瀏覽器支援 indexedDB!"}
+      else {var str="此瀏覽器不支援 indexedDB!"}
+      alert(typeof(window.indexedDB));
+      document.getElementById('supports').innerHTML=str;
+    </script>
+  </body>
+</html>
