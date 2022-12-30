@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="https://code.jquery.com/ui/1.12.1/themes/hot-sneaks/jquery-ui.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.min.js"></script> 
+    <style>
+      body {
+        font-family: 微軟正黑體, Arial, Helvetica, sans-serif;
+        font-size:12px;
+        }
+    </style>
+  </head>
+  <body>
+    <div style="padding: 2px; margin: 3px;">
+      <h3>倒數日數計算</h3>
+      <p><b>請選擇截止日期 :</b></p>
+      <select id="year">
+        <option value="2023">2023 年</option>
+        <option value="2024">2024 年</option>
+        <option value="2025">2025 年</option>
+        <option value="2026">2026 年</option>
+        <option value="2027">2027 年</option>
+        <option value="2028">2028 年</option>
+        <option value="2029">2029 年</option>
+        <option value="2030">2030 年</option>
+        <option value="2031">2031 年</option>
+        <option value="2032">2032 年</option>
+        <option value="2033">2033 年</option>
+        <option value="2034">2034 年</option>
+        <option value="2035">2035 年</option>
+        <option value="2036">2036 年</option>
+        <option value="2037">2037 年</option>
+        <option value="2038">2038 年</option>
+        <option value="2039">2039 年</option>
+        <option value="2040">2040 年</option>
+        <option value="2041">2041 年</option>
+        <option value="2042">2042 年</option>
+        <option value="2043">2043 年</option>
+        <option value="2044">2044 年</option>
+        <option value="2045">2045 年</option>
+        <option value="2046">2046 年</option>
+        <option value="2047">2047 年</option>
+        <option value="2048">2048 年</option>
+        <option value="2049">2049 年</option>
+        <option value="2050">2050 年</option>
+      </select>
+      <select id="month">
+        <option value="Jan">1 月</option>
+        <option value="Feb">2 月</option>
+        <option value="Mar">3 月</option>
+        <option value="Apr">4 月</option>
+        <option value="May">5 月</option>
+        <option value="Jun">6 月</option>
+        <option value="Jul">7 月</option>
+        <option value="Aug">8 月</option>
+        <option value="Sep">9 月</option>
+        <option value="Oct">10 月</option>
+        <option value="Nov">11 月</option>
+        <option value="Dec">12 月</option>
+      </select>
+      <select id="date">
+        <option value="1">1 日</option>
+        <option value="2">2 日</option>
+        <option value="3">3 日</option>
+        <option value="4">4 日</option>
+        <option value="5">5 日</option>
+        <option value="6">6 日</option>
+        <option value="7">7 日</option>
+        <option value="8">8 日</option>
+        <option value="9">9 日</option>
+        <option value="10">10 日</option>
+        <option value="11">11 日</option>
+        <option value="12">12 日</option>
+        <option value="13">13 日</option>
+        <option value="14">14 日</option>
+        <option value="15">15 日</option>
+        <option value="16">16 日</option>
+        <option value="17">17 日</option>
+        <option value="18">18 日</option>
+        <option value="19">19 日</option>
+        <option value="20">20 日</option>
+        <option value="21">21 日</option>
+        <option value="22">22 日</option>
+        <option value="23">23 日</option>
+        <option value="24">24 日</option>
+        <option value="25">25 日</option>
+        <option value="26">26 日</option>
+        <option value="27">27 日</option>
+        <option value="28">28 日</option>
+        <option value="29">29 日</option>
+        <option value="30">30 日</option>
+        <option value="31">31 日</option>
+      </select>
+    </div>
+    <div class="ui-state-highlight ui-corner-all" style="padding: 5px; margin: 5px; width:290px;">
+      <span class="ui-icon ui-icon-info"></span>
+      <span id="msg" style="font-weight: bold; "></span>
+    </div>
+    <input type='hidden' id='year_val' value='2023'>
+    <input type='hidden' id='month_val' value='1'>
+    <input type='hidden' id='date_val' value='1'>
+    <script> 
+      $(function(){
+        function calculate(){
+          var the_end=$("#month_val").val() + ' ' + 
+                      $("#date_val").val() +  ', ' + 
+                      $("#year_val").val();
+          var t=Date.parse(the_end)-new Date().getTime();
+          var total_days=Math.floor(t / (1000 * 60 * 60 * 24));
+          var years=Math.floor(total_days / 365);
+          var days=total_days % 365;
+          var msg="離截止日期還有 " + years + " 年 " + days + " 天 (共 " + 
+                  total_days + " 天)";
+          $("#msg").text(msg);        
+          }
+        $("#year").selectmenu({width: 120});
+        $("#month").selectmenu({width: 80});
+        $("#date").selectmenu({width: 90});
+        $('#year').on('selectmenuchange', function() {
+          $("#year_val").val($(this).val());
+          calculate();
+          });
+        $('#month').on('selectmenuchange', function() {
+          $("#month_val").val($(this).val());
+          calculate();
+          });
+        $('#date').on('selectmenuchange', function() {
+          $("#date_val").val($(this).val());
+          calculate();
+          });
+        calculate();
+        });
+    </script>
+  </body>
+</html>
