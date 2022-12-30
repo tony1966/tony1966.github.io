@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="https://code.jquery.com/ui/1.12.1/themes/hot-sneaks/jquery-ui.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.min.js"></script>
+    <script> 
+      function calculate(e){
+        alert(e.target.value);
+        }
+    </script>
+    <style>
+      body {
+        font-family: 微軟正黑體, Arial, Helvetica, sans-serif;
+        font-size:12px;
+        }
+    </style>
+  </head>
+  <body>
+    <div style="padding: 2px; margin: 3px;">
+      <h3>倒數日數計算</h3>
+      <p><b>請選擇截止日期 :</b></p>
+      <input type="date" id="date" onchange="handler(event)"> 
+    </div>
+    <div class="ui-state-highlight ui-corner-all" style="padding: 5px; margin: 5px; width:290px;">
+      <span class="ui-icon ui-icon-info"></span>
+      <span id="msg" style="font-weight: bold; "></span>
+    </div>
+    <script>
+      function handler(event){
+        var YMD=event.target.value.split("-");
+        var month=['Jan', 'Feb', 'Apr', 'Mar', 'May', 'Jun', 'Jul', 'Aug',
+                   'Sep','Oct', 'Nov', 'Dec'];
+        var the_end=month[parseInt(YMD[1])-1] + ' ' + YMD[2] +  ', ' + YMD[0];
+        var t=Date.parse(the_end)-new Date().getTime();
+        var total_days=Math.floor(t / (1000 * 60 * 60 * 24));
+        var years=Math.floor(total_days / 365);
+        var days=total_days % 365;
+        var msg="離截止日期還有 " + years + " 年 " + days + " 天 (共 " + 
+                total_days + " 天)";
+        $("#msg").text(msg);      
+        }
+    </script>
+  </body>
+</html>
