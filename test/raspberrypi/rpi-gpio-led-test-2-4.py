@@ -11,10 +11,10 @@ n=10
 while n>0:
     for i in led_pins:
         print(f'LED{i} is ON')
-        GPIO.output(LED, GPIO.HIGH)  
+        GPIO.output(i, GPIO.HIGH)  
         time.sleep(0.5)
         print(f'LED{i} is OFF')
-        GPIO.output(LED, GPIO.LOW)    
+        GPIO.output(i, GPIO.LOW)    
         time.sleep(0.5)    
     n -= 1
 GPIO.cleanup()
