@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ExtJS4</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/extjs/4.2.1/resources/css/ext-all.css" />
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/extjs/4.2.1/ext-all.js"></script>
+</head>
+<body>
+  <script type="text/javascript">
+    Ext.onReady(function() {
+      Ext.MessageBox.alert("通知訊息", 
+                           "這是 ExtJS 的訊息框", 
+                           function(btn){
+                             alert("您按了<b> " + btn + " </b>鈕");                       
+                             });        
+      });
+  </script>
+</body>
+</html>
