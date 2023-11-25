@@ -12,18 +12,7 @@
     <script src="locale/easyui-lang-zh_TW.js"></script>
   </head>
   <body>
-    <div class="easyui-tabs" style="width:400px;height:200px">
-      <div title="Tab1" style="padding:10px">
-        <p style="font-size:14px">這是 Tab1</p>
-      </div>
-      <div title="Tab2" style="padding:10px">
-        <p style="font-size:14px">這是 Tab2</p>
-      </div>
-      <div title="Tab3" style="padding:10px">
-        <p style="font-size:14px">這是 Tab3</p>
-      </div>
-    </div><br>
-    <div class="easyui-tabs" style="width:400px;height:200px" data-options="plain:true">
+    <div id="tab1">
       <div title="Tab1" style="padding:10px">
         <p style="font-size:14px">這是 Tab1</p>
       </div>
@@ -36,6 +25,11 @@
     </div>
     <script>
       $(function(){
+        $("#tab1").tabs({
+          width:400,
+          height:200, 
+          plain: true
+          });
         });
     </script>
   </body>
