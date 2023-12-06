@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="themes/default/easyui.css">
+    <link rel="stylesheet" href="themes/icon.css">
+    <script src="jquery.min.js"></script>
+    <script src="jquery.easyui.min.js"></script>
+    <script src="locale/easyui-lang-zh_TW.js"></script>
+  </head>
+  <body>
+    <div style="margin-bottom:10px">
+      <input id="tb1">
+    </div>
+    <div style="margin-bottom:10px">
+      <input id="tb2">
+    </div>
+    <div style="margin-bottom:10px">
+      <input id="tb3">
+    </div>
+    <div style="margin-bottom:10px">
+      <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">登入</a>
+    </div>
+    <script>
+      $(function(){
+        $("#tb1").textbox({
+          width:300, 
+          prompt:'請輸入姓名',
+          label:'姓名',
+          labelPosition:'top'
+          });
+        $("#tb2").textbox({
+          width:300, 
+          prompt:'請輸入 Email 信箱', 
+          label:'Email',
+          labelPosition:'top',
+          value:'@'
+          });
+        $("#tb3").textbox({
+          width:300, 
+          prompt:'請輸入密碼', 
+          label:'密碼', 
+          type:'password',
+          labelPosition:'top'
+          });
+        });
+    </script>
+  </body>
+</html>
