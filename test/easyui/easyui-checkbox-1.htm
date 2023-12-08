@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="themes/default/easyui.css">
+    <link rel="stylesheet" href="themes/icon.css">
+    <script src="jquery.min.js"></script>
+    <script src="jquery.easyui.min.js"></script>
+    <script src="locale/easyui-lang-zh_TW.js"></script>
+  </head>
+  <body>
+    <h2>擅長的程式語言</h2>
+    <div style="margin-bottom:10px">
+      <label>Python</label>
+      <input type="checkbox" name="language" value="Python">
+    </div>
+    <div style="margin-bottom:10px">
+      <label>Java</label>
+      <input type="checkbox" name="language" value="Java">
+    </div>
+    <div style="margin-bottom:10px">
+      <label>C#</label>
+      <input type="checkbox" name="language" value="C#">
+    </div>
+        <div style="margin-bottom:10px">
+        <button id="ok">確定</button>
+    </div>
+    <script>
+      $(function(){
+        $("#ok").on("click", function(){
+          selected=[];
+          $("input[name=language]:checked").each(function(){
+            selected.push($(this).val());        
+            });
+          alert(selected.join());
+          });
+        });
+    </script>
+  </body>
+</html>
