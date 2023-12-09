@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="themes/default/easyui.css">
+    <link rel="stylesheet" href="themes/icon.css">
+    <script src="jquery.min.js"></script>
+    <script src="jquery.easyui.min.js"></script>
+    <script src="locale/easyui-lang-zh_TW.js"></script>
+  </head>
+  <body>
+    <h2>擅長的程式語言</h2>
+    <div id="chkgroup1" style="margin-bottom:10px"></div>
+    <div style="margin-bottom:10px">
+      <a href="#" id="ok" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">確定</a>
+    </div>
+    <script>
+      $(function(){
+        $("#chkgroup1").checkgroup({
+          name: "language",
+          data: [{value:'Python', label:'Python'},
+                 {value:'Java', label:'Java'},
+                 {value:'C#', label:'C#'}],
+          dir: "v"
+          });
+        $("#ok").on("click", function(){
+          selected=[];
+          $("input[name=language]:checked").each(function(){
+            selected.push($(this).val());        
+            });
+          alert(selected.join());
+          });
+        });
+    </script>
+  </body>
+</html>
