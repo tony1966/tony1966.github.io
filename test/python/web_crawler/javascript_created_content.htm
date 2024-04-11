@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title></title>
+ </head>
+ <body>
+  <h3>Javascript 生成的網頁測試</h3>
+  <div id="container"><div>
+  <script>
+    var container=document.getElementById('container');
+    var list=document.createElement('ul');
+    var items=['金智媛', '金秀賢', '孫藝珍'];
+    for (var i=0; i < items.length; i++) {
+      var listItem=document.createElement('li');
+      listItem.textContent=items[i];
+      list.appendChild(listItem);
+      }
+    container.appendChild(list);
+  </script>
+ </body>
+</html>
