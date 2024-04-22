@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<顯示卡>
+  <型號>NVidia GTX3060
+    <GPU核心編號>GA106-300</GPU核心編號>
+	<CUDA核心數>3584</CUDA核心數>
+	<TensorCores>112</TensorCores>
+	<VRAM 單位="GB" DDR="DDR6">12G</VRAM>
+	<ResizableBAR支援>有</ResizableBAR支援>
+  </型號>
+</顯示卡>
