@@ -27,7 +27,7 @@ def get_today_66():
         return None
 
 if __name__ == '__main__':
-    token='lKrAsAlXZDY5I4nrdEr86fTFSIC2ershE6o9bI5ciye'
+    token='ud7PaDL45fz849A0e1f5oaMCbRIkxMXapQCt7PfNkzz'
     msg=get_today_66()
     if msg:  
         code=line_notify(msg, token)
