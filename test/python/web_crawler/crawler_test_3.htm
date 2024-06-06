@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <title></title>
+  </head>
+  <body>    
+    <form action="" id="poll_form">
+      <p>最喜歡的韓星 :</p>
+      <input type="radio" value="金智媛" name="idol">
+      <label for="idol-1">金智媛</label>
+      <input type="radio" value="朴恩斌" name="idol">
+      <label for="idol-2">朴恩斌</label>
+      <input type="radio" value="孫藝珍" name="idol">
+      <label for="idol-3">孫藝珍</label>
+      <input type="radio" value="李世榮" name="idol">
+      <label for="idol-4">李世榮</label>
+      <input type="radio" value="金裕貞" name="idol">
+      <label for="idol-5">金裕貞</label><br>
+      <p>推薦的韓劇 :</p>
+      <input type="checkbox" name="drama" value="揹著善宰跑">
+      <label for="drama-1">揹著善宰跑</label>
+      <input type="checkbox" name="drama" value="淚之女王">
+      <label for="drama-2">淚之女王</label>
+      <input type="checkbox" name="drama" value="寄生獸">
+      <label for="drama-3">寄生獸</label>
+      <input type="checkbox" name="drama" value="低谷醫生">
+      <label for="drama-4">低谷醫生</label>
+      <p>最喜歡的平台 :</p>
+      <select id="platform">
+        <option value="Netflix">Netflix</option>
+        <option value="Disney">Disney</option>
+        <option value="愛奇藝">愛奇藝</option>
+        <option value="Line TV">Line TV</option>
+      </select>
+      <input type="button" value="提交" id="ok">
+    </form>
+    <script>
+      $(function(){
+        $("#ok").click(function(){
+          idol=$("input[name='idol']:checked").val()
+          var drama=[];
+          $("[name=drama]:checkbox:checked").each(function(){
+            drama.push($(this).val());
+            });
+          platform=$("#platform").val();
+          msg="最喜歡的韓星: " + idol + "\n" + 
+              "推薦的韓劇: " + drama.join() + "\n" +
+              "最喜歡的平台: " + platform;
+          alert(msg);
+          });
+        });
+    </script>
+  </body>
+</html>
