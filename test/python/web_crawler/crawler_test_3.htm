@@ -37,6 +37,7 @@
         <option value="Line TV">Line TV</option>
       </select>
       <input type="button" value="提交" id="ok">
+      <div id="result"></div>
     </form>
     <script>
       $(function(){
@@ -50,7 +51,9 @@
           msg="最喜歡的韓星: " + idol + "\n" + 
               "推薦的韓劇: " + drama.join() + "\n" +
               "最喜歡的平台: " + platform;
-          alert(msg);
+          alert(msg);    
+          msg=msg.replace(/\n/g, "<br>");
+          $("#result").html(msg);
           });
         });
     </script>
