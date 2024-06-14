@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <title></title>
+  </head>
+  <body>    
+    <form action="" id="poll_form">
+      <span>最喜歡的韓星 :</span>
+      <select id="idol">
+        <option value="金智媛">金智媛</option>
+        <option value="朴恩斌">朴恩斌</option>
+        <option value="孫藝珍">孫藝珍</option>
+        <option value="李世榮">李世榮</option>
+        <option value="金裕貞">金裕貞</option>
+      </select><br>
+      <span>推薦的韓劇 :</span>
+      <select id="drama" multiple>
+        <option value="揹著善宰跑">揹著善宰跑</option>
+        <option value="淚之女王">淚之女王</option>
+        <option value="寄生獸">寄生獸</option>
+        <option value="低谷醫生">低谷醫生</option>
+      </select><br>
+      <input type="button" value="提交" id="ok">
+      <div id="result"></div>
+    </form>
+    <script>
+      $(document).ready(function(){
+        $("#ok").click(function(){
+          idol=$("input[name='idol']:checked").val()
+          var drama=[];
+          $("[name=drama]:checkbox:checked").each(function(){
+            drama.push($(this).val());
+            });
+          platform=$("#platform").val();
+          msg="最喜歡的韓星: " + idol + "\n" + 
+              "推薦的韓劇: " + drama.join() + "\n" +
+              "最喜歡的平台: " + platform;
+          alert(msg);    
+          msg=msg.replace(/\n/g, "<br>");
+          $("#result").html(msg);
+          });
+        });
+    </script>
+  </body>
+</html>
