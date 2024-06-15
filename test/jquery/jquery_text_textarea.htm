@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <title>jQuery & Form</title>
+    <style>
+      div {margin-top: 8px;}
+    </style>
+  </head>
+  <body>    
+    <form action="" id="poll_form">
+      <div>
+        <label for="name">姓名</label>
+        <input type="text" id="name" value="請輸入姓名">
+      </div>
+      <div>
+        <label for="comment">留言</label>
+        <textarea id="comment">請輸入留言</textarea>
+      </div>
+      <div>
+        <input type="button" value="清除" id="clear">
+        <input type="button" value="預設" id="default">
+        <input type="button" value="確定" id="ok">
+      </div>
+      <div id="result"></div>
+    </form>
+    <script>
+      $(document).ready(function(){
+        $("#clear").click(function(){
+          $("#name").val("");
+          $("#comment").val("");
+          });
+        $("#default").click(function(){
+          $("#name").val("請輸入姓名");
+          $("#comment").val("請輸入留言");
+          });
+        $("#ok").click(function(){
+          var name=$("#name").val()
+          var comment=$("#comment").val();
+          msg="姓名: " + name + "\n" + 
+              "評論: " + comment + "\n";
+          msg=msg.replace(/\n/g, "<br>");
+          $("#result").html(msg);
+          });
+        });
+    </script>
+  </body>
+</html>
