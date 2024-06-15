@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <title>jQuery & Form</title>
+    <style>
+      div {margin-top: 8px;}
+    </style>
+  </head>
+  <body>    
+    <form action="" id="form1">
+      <div>
+        <p>最喜歡的韓星 :</p>
+        <input type="radio" value="金智媛" name="idol" id="idol-1">
+        <label for="idol-1">金智媛</label>
+        <input type="radio" value="朴恩斌" name="idol" id="idol-2">
+        <label for="idol-2">朴恩斌</label>
+        <input type="radio" value="孫藝珍" name="idol" id="idol-3" checked>
+        <label for="idol-3">孫藝珍</label>
+        <input type="radio" value="李世榮" name="idol" id="idol-4">
+        <label for="idol-4">李世榮</label>
+        <input type="radio" value="金裕貞" name="idol" id="idol-5">
+        <label for="idol-5">金裕貞</label>
+      </div>
+      <div>
+        <input type="button" value="清除勾選" id="clear">
+        <input type="button" value="選擇金智媛" id="check_idol_1">
+        <input type="button" value="確定" id="ok">
+      </div>
+      <div id="result"></div>
+    </form>
+    <script>
+      $(document).ready(function(){
+        $("#clear").click(function(){
+          $("input[name='idol']").each(function(){
+            $(this).prop("checked", false);
+            });
+          });
+        $("#check_idol_1").click(function(){
+          $("#idol-1").prop("checked", true);
+          });
+        $("#ok").click(function(){
+          var idol=$("input[name='idol']:checked").val()
+          msg="最喜歡的韓星: " + idol;
+          $("#result").html(msg);
+          });
+        });
+    </script>
+  </body>
+</html>
