@@ -35,15 +35,14 @@
     <script>
       $(document).ready(function(){
         $("#clear").click(function(){
-          $("input[name='idol']").each(function(){
-            $(this).prop("checked", false);
-            });
+          $("input[name='idol']:checked").prop("checked", false);
           });
         $("#check_idol_1").click(function(){
           $("#idol-1").prop("checked", true);
           });
         $("#ok").click(function(){
-          var idol=$("input[name='idol']:checked").val()
+          var idol=$("input[name='idol']:checked").val();
+          if (idol==undefined) {idol="未勾選";}
           msg="最喜歡的韓星: " + idol;
           $("#result").html(msg);
           });
