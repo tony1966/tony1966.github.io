@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <title>jQuery & Form</title>
+    <style>
+      div {margin-top: 8px;}
+    </style>
+  </head>
+  <body>    
+    <form action="" id="form1">
+      <div>
+        <p>推薦的韓劇 :</p>
+        <input type="checkbox" name="drama" value="揹著善宰跑">
+        <label for="drama-1">揹著善宰跑</label>
+        <input type="checkbox" name="drama" value="淚之女王">
+        <label for="drama-2">淚之女王</label>
+        <input type="checkbox" name="drama" value="寄生獸">
+        <label for="drama-3">寄生獸</label>
+        <input type="checkbox" name="drama" value="低谷醫生">
+        <label for="drama-4">低谷醫生</label>
+        </div>
+      <div>
+        <input type="button" value="清除勾選" id="clear">
+        <input type="button" value="選擇全部" id="check_all">
+        <input type="button" value="確定" id="ok">
+      </div>
+      <div id="result"></div>
+    </form>
+    <script>
+      $(document).ready(function(){
+        $("#clear").click(function(){
+          $("[name='drama']:checked").each(function(){
+            $(this).prop("checked", false);
+            });
+          });
+        $("#check_all").click(function(){
+          $("[name='drama']").each(function(){
+            $(this).prop("checked", true);
+            });
+          });
+        $("#ok").click(function(){
+          var drama=[];
+          $("[name=drama]:checked").each(function(){
+            drama.push($(this).val());
+            });
+          msg="推薦的韓劇: " + drama.join(",");
+          $("#result").html(msg);
+          });
+        });
+    </script>
+  </body>
+</html>
