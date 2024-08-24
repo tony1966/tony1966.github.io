@@ -26,11 +26,11 @@ class KBar():
     def __init__(self, df):
         self.df=df
         self.addplots=[]
-    def addplot(self, data, panel=0, type='line', marker='.', color='black', scatter=False, ylabel=''):
-        plot=mpf.make_addplot(data, panel=panel, type=type, marker=marker, color=color, scatter=scatter, ylabel=ylabel, secondary_y=False)
+    def addplot(self, data, **kwargs):
+        plot=mpf.make_addplot(data, **kwargs)
         self.addplots.append(plot)
-    def plot(self, title='K 線圖'):
+    def plot(self, title='K 線圖', mav=[]):
         color=mpf.make_marketcolors(up='red', down='green', inherit=True)   
         font={'font.family': 'Microsoft JhengHei'}   
         style=mpf.make_mpf_style(base_mpf_style='default', marketcolors=color, rc=font)        
-        mpf.plot(self.df, type='candle', title=title, style=style, volume=True, addplot=self.addplots)
+        mpf.plot(self.df, type='candle', title=title, style=style, volume=True, mav=mav, addplot=self.addplots)
