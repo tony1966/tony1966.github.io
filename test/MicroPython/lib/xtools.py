@@ -6,6 +6,7 @@ import ubinascii
 import machine
 import config
 import ntptime
+from xrequests import post
 
 def get_id():
     return ubinascii.hexlify(machine.unique_id()).decode('utf8')
@@ -73,7 +74,6 @@ def show_error(final_state=0):
 
 def webhook_post(url, value):
     print("invoking webhook")
-    from xrequests import post
     r = post(url, data=value)
     if r is not None and r.status_code == 200:
         print("Webhook invoked")
@@ -96,14 +96,36 @@ def line_msg(token, message):
         "Content-Type": "application/x-www-form-urlencoded"
     } 
     params = {"message": message}
-    from xrequests import post
     r = post("https://notify-api.line.me/api/notify",
                     params=params, headers=headers)  
     if r is not None and r.status_code == 200:
         print("Message sent...")
     else:
         print("Error! Failed to send notification message...")  
-     
+
+def line_sticker(token, message, stickerPackageId, stickerId):    
+    url="https://notify-api.line.me/api/notify"   
+    headers={"Authorization": "Bearer " + token}     
+    payload={"message": message,      
+             "stickerPackageId" : stickerPackageId,      
+             "stickerId": stickerId}   
+    r=post(url, headers=headers, params=payload)   
+    if r is not None and r.status_code == 200:    
+        return "The sticker has been sent."      
+    else:     
+        return "Error! Failed to send the sticker."
+
+def line_image(token, message, image):    
+    url="https://notify-api.line.me/api/notify"
+    headers={"Authorization": "Bearer " + token}
+    payload={"message": message, 
+             "imageFile" : open(image, 'rb')}    
+    r=post(url, headers=headers, params=payload)
+    if r is not None and r.status_code == 200:    
+        return "The image has been sent."      
+    else:     
+        return "Error! Failed to send the image."
+
 def pad_zero(v):
     if v < 10:
         return '0' + str(v)
