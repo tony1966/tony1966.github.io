@@ -6,7 +6,7 @@ import ubinascii
 import machine
 import config
 import ntptime
-from xrequests import post
+import xrequests
 
 def get_id():
     return ubinascii.hexlify(machine.unique_id()).decode('utf8')
@@ -27,7 +27,7 @@ def random_in_range(low=0, high=1000):
 def map_range(x, in_min, in_max, out_min, out_max):
    return int((x-in_min) * (out_max-out_min) / (in_max-in_min) + out_min)
    
-def connect_wifi_led(ssid=config.SSID, passwd=config.PASSWORD, timeout=15):
+def connect_wifi(ssid=config.SSID, passwd=config.PASSWORD, timeout=20):
     wifi_led=Pin(2, Pin.OUT, value=1)
     sta=network.WLAN(network.STA_IF)
     sta.active(True)
@@ -74,7 +74,7 @@ def show_error(final_state=0):
 
 def webhook_post(url, value):
     print("invoking webhook")
-    r = post(url, data=value)
+    r = xrequests.post(url, data=value)
     if r is not None and r.status_code == 200:
         print("Webhook invoked")
     else:
@@ -89,42 +89,73 @@ def webhook_get(url):
     else:
         print("Webhook failed")
         show_error()
-        
+
+def urlencode(params):
+    # 將字典的鍵值對轉換為 URL 編碼的字串 (k=v) 並以 & 連接多個鍵值對
+    kv=['{}={}'.format(k, v) for k, v in params.items()]
+    return '&'.join(kv)
+
 def line_msg(token, message):
-    headers = {
+    url="https://notify-api.line.me/api/notify"
+    headers={
         "Authorization": "Bearer " + token,
         "Content-Type": "application/x-www-form-urlencoded"
-    } 
-    params = {"message": message}
-    r = post("https://notify-api.line.me/api/notify",
-                    params=params, headers=headers)  
+        }     
+    params={"message": message}  # 參數字典
+    # 呼叫自訂的 URL 編碼函式將字典轉成 URL 字串, 再轉成 utf-8 編碼的 bytes 
+    payload=urlencode(params).encode('utf-8')
+    # 用編碼後的 payload 傳給 data 參數發送 POST 請求
+    r=urequests.post(url, headers=headers, data=payload)  
     if r is not None and r.status_code == 200:
-        print("Message sent...")
+        print("Message has been sent.")
     else:
-        print("Error! Failed to send notification message...")  
+        print("Error! Failed to send notification message.")  
+    r.close()  # 關閉連線
 
-def line_sticker(token, message, stickerPackageId, stickerId):    
-    url="https://notify-api.line.me/api/notify"   
-    headers={"Authorization": "Bearer " + token}     
-    payload={"message": message,      
-             "stickerPackageId" : stickerPackageId,      
-             "stickerId": stickerId}   
-    r=post(url, headers=headers, params=payload)   
-    if r is not None and r.status_code == 200:    
-        return "The sticker has been sent."      
-    else:     
+def line_sticker(token, message, stickerPackageId, stickerId):
+    url="https://notify-api.line.me/api/notify"
+    headers={ # 加入正確的 Content-Type
+        "Authorization": "Bearer " + token,
+        "Content-Type": "application/x-www-form-urlencoded"  
+        }
+    # 設定正確的 payload
+    params={
+        "message": message,
+        "stickerPackageId": stickerPackageId,
+        "stickerId": stickerId
+        }
+    # 使用自訂的 urlencode 函數將參數編碼，並轉換成 UTF-8 的字節串
+    payload=urlencode(params).encode('utf-8')
+    # 發送 POST 請求
+    r=urequests.post(url, headers=headers, data=payload)
+    # 判斷是否成功
+    if r is not None and r.status_code == 200:
+        return "The sticker has been sent."
+    else:
         return "Error! Failed to send the sticker."
 
-def line_image(token, message, image):    
+def line_image_url(token, message, image_url):
+    # 透過 LINE Notify 發送雲端圖片
     url="https://notify-api.line.me/api/notify"
-    headers={"Authorization": "Bearer " + token}
-    payload={"message": message, 
-             "imageFile" : open(image, 'rb')}    
-    r=post(url, headers=headers, params=payload)
-    if r is not None and r.status_code == 200:    
-        return "The image has been sent."      
-    else:     
-        return "Error! Failed to send the image."
+    headers={
+        "Authorization": "Bearer " + token,
+        "Content-Type": "application/x-www-form-urlencoded"
+        }
+    # 構造請求的數據，包含圖片的 URL
+    params={
+        "message": message,
+        "imageFullsize": image_url,  # 完整圖片的 URL
+        "imageThumbnail": image_url  # 縮略圖圖片 URL，可與完整圖片相同
+        }
+    # 轉成 URL 字串並用 utf-8 編碼為 bytes 
+    payload=urlencode(params).encode('utf-8')
+    # 發送 POST 請求
+    r=urequests.post(url, headers=headers, data=payload)
+    # 判斷是否成功
+    if r is not None and r.status_code == 200:
+        return "The image URL has been sent."
+    else:
+        return "Error! Failed to send the image URL."
 
 def pad_zero(v):
     if v < 10:
