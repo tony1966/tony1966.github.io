@@ -7,6 +7,7 @@ import machine
 import config
 import ntptime
 import xrequests
+import ujson
 
 def get_id():
     return ubinascii.hexlify(machine.unique_id()).decode('utf8')
@@ -156,6 +157,27 @@ def line_image_url(token, message, image_url):
         return "The image URL has been sent."
     else:
         return "Error! Failed to send the image URL."
+
+def ask_gpt(prompt, api_key, model='gpt-4o-mini'):
+    url='https://api.openai.com/v1/chat/completions'
+    headers = {
+        'Content-Type': 'application/json',  
+        'Authorization': f'Bearer {api_key}'
+        }
+    # 建立 data 參數字典
+    data={
+        'model': model,
+        'messages': [{'role': 'user', 'content': prompt}]
+        }
+    # 將字典轉成字串後再編碼成 UTF-8
+    payload=ujson.dumps(data).encode('utf-8')
+    # 發送 POST 請求
+    response=urequests.post(url, headers=headers, data=payload)
+    if response.status_code == 200:
+        reply=response.json() # 轉成字典
+        return reply['choices'][0]['message']['content']
+    else:
+        return response.json()  # 返回錯誤信息
 
 def pad_zero(v):
     if v < 10:
