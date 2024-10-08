@@ -6,7 +6,6 @@ import ubinascii
 import machine
 import config
 import ntptime
-import xrequests
 import ujson
 
 def get_id():
@@ -28,8 +27,8 @@ def random_in_range(low=0, high=1000):
 def map_range(x, in_min, in_max, out_min, out_max):
    return int((x-in_min) * (out_max-out_min) / (in_max-in_min) + out_min)
    
-def connect_wifi(ssid=config.SSID, passwd=config.PASSWORD, timeout=20):
-    wifi_led=Pin(2, Pin.OUT, value=1)
+def connect_wifi(ssid=config.SSID, passwd=config.PASSWORD, led=2, timeout=20):
+    wifi_led=Pin(led, Pin.OUT, value=1)
     sta=network.WLAN(network.STA_IF)
     sta.active(True)
     start_time=time.time() # 記錄時間判斷是否超時
@@ -75,12 +74,13 @@ def show_error(final_state=0):
 
 def webhook_post(url, value):
     print("invoking webhook")
-    r = xrequests.post(url, data=value)
+    r = urequests.post(url, data=value)
     if r is not None and r.status_code == 200:
         print("Webhook invoked")
     else:
         print("Webhook failed")
         show_error()
+    return r
 
 def webhook_get(url):
     print("invoking webhook")
@@ -90,6 +90,7 @@ def webhook_get(url):
     else:
         print("Webhook failed")
         show_error()
+    return r
 
 def urlencode(params):
     # 將字典的鍵值對轉換為 URL 編碼的字串 (k=v) 並以 & 連接多個鍵值對
@@ -317,3 +318,26 @@ def set_ap(led=2):
             cs.send(html % form)  # 回應設定 WiFi 頁面
         cs.close()
         del cs, addr, data, request
+
+def strptime(dt_str, format_str="%Y-%m-%d %H:%M:%S"):
+    if format_str=="%Y-%m-%d %H:%M:%S":
+        year=int(dt_str[0:4])
+        month=int(dt_str[5:7])
+        day=int(dt_str[8:10])
+        hour=int(dt_str[11:13])
+        minute=int(dt_str[14:16])
+        second=int(dt_str[17:19])
+        return (year, month, day, hour, minute, second, 0, 0, 0)
+    else:
+        raise ValueError("Unsupported format string")
+    
+def strftime(dt=None, format_str="%Y-%m-%d %H:%M:%S"):
+    if dt is None:
+        dt=time.localtime()
+    return format_str.replace("%Y", str(dt[0])) \
+                     .replace("%m", "{:02d}".format(dt[1])) \
+                     .replace("%d", "{:02d}".format(dt[2])) \
+                     .replace("%H", "{:02d}".format(dt[3])) \
+                     .replace("%M", "{:02d}".format(dt[4])) \
+                     .replace("%S", "{:02d}".format(dt[5]))
+
