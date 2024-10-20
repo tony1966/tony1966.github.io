@@ -1,9 +1,8 @@
 # xtools.py
-from machine import Pin
+from machine import Pin, RTC
 import urandom, math
 import time, network, urequests
 import ubinascii
-import machine
 import config
 import ntptime
 import ujson
@@ -180,40 +179,17 @@ def ask_gpt(prompt, api_key, model='gpt-4o-mini'):
     else:
         return response.json()  # 返回錯誤信息
 
-def pad_zero(v):
-    if v < 10:
-        return '0' + str(v)
-    else:
-        return str(v)
-     
-def format_datetime(local_time):
-    Y,M,D,H,m,S,W,ds = local_time
-    t = str(Y) + '-'
-    t += pad_zero(M)
-    t += '-'
-    t += pad_zero(D)
-    t += ' '
-    t += pad_zero(H)
-    t += ':'
-    t += pad_zero(m)
-    t += ':'
-    t += pad_zero(S)
-    return t
-
 def tw_now():
-    try:
+    try: # 從 NTP 取得 UTC 時戳加 8 為台灣時間, 若成功設定 RTC
         print('Querying NTP server and set RTC time ... ', end='')
-        ntptime.settime()
+        utc=ntptime.time() # 取得 UTC 時戳
         print('OK.')
-        delta=28800
-    except:
+        t=time.localtime(utc + 28800) # 傳回台灣時間的元組
+        rtc=RTC() # RTC 物件
+        rtc.datetime(t[0:3] + (0,) + t[3:6] + (0,)) # 設定 RTC
+    except:  # 查詢 NTP 失敗不設定 RTC 
         print('Failed.')
-        delta=0
-    utc_epoch=time.mktime(time.localtime())
-    Y,M,D,H,m,S,ms,W=time.localtime(utc_epoch + delta)
-    t='%s-%s-%s %s:%s:%s' % \
-    (Y, pad_zero(M), pad_zero(D), pad_zero(H), pad_zero(m), pad_zero(S))
-    return t
+    return strftime()  # 傳回目前之日期時間字串 YYYY-mm-dd HH:MM:SS 
 
 def set_ap(led=2):
     html='''
