@@ -1,5 +1,5 @@
 # xtools.py
-from machine import Pin, RTC
+from machine import Pin, RTC, unique_id
 import urandom, math
 import time, network, urequests
 import ubinascii
@@ -8,7 +8,7 @@ import ntptime
 import ujson
 
 def get_id():
-    return ubinascii.hexlify(machine.unique_id()).decode('utf8')
+    return ubinascii.hexlify(unique_id()).decode('utf8')
 
 def get_mac():
     sta=network.WLAN(network.STA_IF)
