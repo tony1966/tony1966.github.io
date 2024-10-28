@@ -16,15 +16,15 @@ def get_mac():
     return ubinascii.hexlify(mac, ':').decode('utf8')
 
 def get_num(x):
-    return float("".join(ele for ele in x if ele.isdigit() or ele =="."))
+    return float("".join(c for c in x if c.isdigit() or c =="."))
 
 def random_in_range(low=0, high=1000):
-    r1 = urandom.getrandbits(32)
-    r2 = r1 % (high-low) + low
+    r1=urandom.getrandbits(32)
+    r2=r1 % (high-low) + low
     return math.floor(r2)
 
 def map_range(x, in_min, in_max, out_min, out_max):
-   return int((x-in_min) * (out_max-out_min) / (in_max-in_min) + out_min)
+    return int((x-in_min) * (out_max-out_min) / (in_max-in_min) + out_min)
    
 def connect_wifi(ssid=config.SSID, passwd=config.PASSWORD, led=2, timeout=20):
     wifi_led=Pin(led, Pin.OUT, value=1)
@@ -63,7 +63,7 @@ def scan_ssid():
         print('{:>20} {:>20} {:>10}'.format(ssid, mac, rssi))
 
 def show_error(final_state=0):
-    led = Pin(2, Pin.OUT)   # Built-in D4
+    led=Pin(2, Pin.OUT)   # D1 mini built-in D4
     for i in range(3):
         led.value(1)
         time.sleep(0.5)
@@ -73,7 +73,7 @@ def show_error(final_state=0):
 
 def webhook_post(url, value):
     print("invoking webhook")
-    r = urequests.post(url, data=value)
+    r=urequests.post(url, data=value)
     if r is not None and r.status_code == 200:
         print("Webhook invoked")
     else:
@@ -83,7 +83,7 @@ def webhook_post(url, value):
 
 def webhook_get(url):
     print("invoking webhook")
-    r = urequests.get(url)
+    r=urequests.get(url)
     if r is not None and r.status_code == 200:
         print("Webhook invoked")
     else:
