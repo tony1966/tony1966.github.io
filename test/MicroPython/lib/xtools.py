@@ -1,11 +1,8 @@
-# xtools.py
+# xtools.py for ESP32
 from machine import Pin, RTC, unique_id
-import urandom, math
-import time, network, urequests
-import ubinascii
+import urandom, time, network, urequests, ubinascii
+import ntptime, ujson
 import config
-import ntptime
-import ujson
 
 def get_id():
     return ubinascii.hexlify(unique_id()).decode('utf8')
@@ -16,12 +13,10 @@ def get_mac():
     return ubinascii.hexlify(mac, ':').decode('utf8')
 
 def get_num(x):
-    return float("".join(c for c in x if c.isdigit() or c =="."))
+    return float(''.join(filter(lambda c: c.isdigit() or c == ".", x)))
 
 def random_in_range(low=0, high=1000):
-    r1=urandom.getrandbits(32)
-    r2=r1 % (high-low) + low
-    return math.floor(r2)
+    return urandom.getrandbits(32) % (high - low) + low
 
 def map_range(x, in_min, in_max, out_min, out_max):
     return int((x-in_min) * (out_max-out_min) / (in_max-in_min) + out_min)
@@ -29,22 +24,22 @@ def map_range(x, in_min, in_max, out_min, out_max):
 def connect_wifi(ssid=config.SSID, passwd=config.PASSWORD, led=2, timeout=20):
     wifi_led=Pin(led, Pin.OUT, value=1)
     sta=network.WLAN(network.STA_IF)
-    sta.active(True)
+    if not sta.active():
+        sta.active(True)   # 確保已啟動 WiFi
     start_time=time.time() # 記錄時間判斷是否超時
     if not sta.isconnected():
         print("Connecting to network...")
         sta.connect(ssid, passwd)
-        while not sta.isconnected():
+        while not sta.isconnected() and time.time() - start_time <= timeout:
             wifi_led.value(0)
             time.sleep_ms(300)
             wifi_led.value(1)
             time.sleep_ms(300)
-            # 判斷是否超過timeout秒數
-            if time.time()-start_time > timeout:
-                print("Wifi connecting timeout!")
-                break
+        if not sta.isconnected():
+            print("Wifi connecting timeout!")
+            return None
     if sta.isconnected():
-        for i in range(25):   # 連線成功 : 快閃 5 秒
+        for _ in range(25):  # 連線成功 : 快閃 5 秒
             wifi_led.value(0)
             time.sleep_ms(100)
             wifi_led.value(1)
@@ -60,7 +55,7 @@ def scan_ssid():
         ssid=ap[0].decode()
         mac=ubinascii.hexlify(ap[1], ':').decode()
         rssi=str(ap[3]) + 'dBm'
-        print('{:>20} {:>20} {:>10}'.format(ssid, mac, rssi))
+        print(f'{ssid} {mac} {rssi}')
 
 def show_error(final_state=0):
     led=Pin(2, Pin.OUT)   # D1 mini built-in D4
@@ -72,23 +67,27 @@ def show_error(final_state=0):
     led.value(final_state)    
 
 def webhook_post(url, value):
-    print("invoking webhook")
-    r=urequests.post(url, data=value)
-    if r is not None and r.status_code == 200:
-        print("Webhook invoked")
-    else:
-        print("Webhook failed")
-        show_error()
+    try:
+        r=urequests.post(url, data=value)
+        if r.status_code == 200:
+            print("Webhook invoked")
+        else:
+            print("Webhook failed")
+            show_error()
+    finally:
+        r.close()  # 釋放資源
     return r
 
 def webhook_get(url):
-    print("invoking webhook")
-    r=urequests.get(url)
-    if r is not None and r.status_code == 200:
-        print("Webhook invoked")
-    else:
-        print("Webhook failed")
-        show_error()
+    try:
+        r=urequests.get(url)
+        if r.status_code == 200:
+            print("Webhook invoked")
+        else:
+            print("Webhook failed")
+            show_error()
+    finally:
+        r.close()  # 釋放資源
     return r
 
 def urlencode(params):
@@ -96,14 +95,22 @@ def urlencode(params):
     kv=['{}={}'.format(k, v) for k, v in params.items()]
     return '&'.join(kv)
 
+def get_headers(service, token=None, api_key=None):
+    headers={
+        "Content-Type": "application/x-www-form-urlencoded"
+        } # 須有初始值 
+    if service == 'line' and token: # 根據服務類型返回標頭
+        headers["Authorization"]="Bearer " + token
+    elif service == 'openai' and api_key:
+        headers["Authorization"]="Bearer " + api_key
+        headers["Content-Type"]="application/json"
+    return headers
+
 def line_msg(token, message):
     url="https://notify-api.line.me/api/notify"
-    headers={
-        "Authorization": "Bearer " + token,
-        "Content-Type": "application/x-www-form-urlencoded"
-        }     
+    headers=get_headers('line', token=token)    
     params={"message": message}  # 參數字典
-    # 呼叫自訂的 URL 編碼函式將字典轉成 URL 字串, 再轉成 utf-8 編碼的 bytes 
+    # 將參數字典轉成 URL 字串, 再轉成 utf-8 編碼的 bytes 
     payload=urlencode(params).encode('utf-8')
     # 用編碼後的 payload 傳給 data 參數發送 POST 請求
     r=urequests.post(url, headers=headers, data=payload)  
@@ -115,10 +122,7 @@ def line_msg(token, message):
 
 def line_sticker(token, message, stickerPackageId, stickerId):
     url="https://notify-api.line.me/api/notify"
-    headers={ # 加入正確的 Content-Type
-        "Authorization": "Bearer " + token,
-        "Content-Type": "application/x-www-form-urlencoded"  
-        }
+    headers=get_headers('line', token=token)
     # 設定正確的 payload
     params={
         "message": message,
@@ -138,10 +142,7 @@ def line_sticker(token, message, stickerPackageId, stickerId):
 def line_image_url(token, message, image_url):
     # 透過 LINE Notify 發送雲端圖片
     url="https://notify-api.line.me/api/notify"
-    headers={
-        "Authorization": "Bearer " + token,
-        "Content-Type": "application/x-www-form-urlencoded"
-        }
+    headers=get_headers('line', token=token)
     # 構造請求的數據，包含圖片的 URL
     params={
         "message": message,
@@ -160,10 +161,7 @@ def line_image_url(token, message, image_url):
 
 def ask_gpt(prompt, api_key, model='gpt-4o-mini'):
     url='https://api.openai.com/v1/chat/completions'
-    headers = {
-        'Content-Type': 'application/json',  
-        'Authorization': f'Bearer {api_key}'
-        }
+    headers=get_headers('openai', api_key=api_key)
     # 建立 data 參數字典
     data={
         'model': model,
@@ -185,10 +183,9 @@ def tw_now():
         utc=ntptime.time() # 取得 UTC 時戳
         print('OK.')
         t=time.localtime(utc + 28800) # 傳回台灣時間的元組
-        rtc=RTC() # RTC 物件
-        rtc.datetime(t[0:3] + (0,) + t[3:6] + (0,)) # 設定 RTC
-    except:  # 查詢 NTP 失敗不設定 RTC 
-        print('Failed.')
+        RTC().datetime(t[0:3] + (0,) + t[3:6] + (0,))
+    except Exception as e:  # 加入例外處理
+        print(f'Failed. {e}')
     return strftime()  # 傳回目前之日期時間字串 YYYY-mm-dd HH:MM:SS 
 
 def set_ap(led=2):
@@ -252,6 +249,7 @@ def set_ap(led=2):
         data=cs.recv(1024)      
         request=str(data, 'utf8')   
         print(request, end='\n')
+        del data, addr
         if request.find('update_ap?') == 5:  # 檢查是否為更新之 URL 
             # 擷取請求參數中的 SSID 與密碼
             para=request[request.find('ssid='):request.find(' HTTP/')]
@@ -293,7 +291,7 @@ def set_ap(led=2):
         else:  # 顯示設定 WiFi 頁面
             cs.send(html % form)  # 回應設定 WiFi 頁面
         cs.close()
-        del cs, addr, data, request
+        del cs, request
 
 def strptime(dt_str, format_str="%Y-%m-%d %H:%M:%S"):
     if format_str=="%Y-%m-%d %H:%M:%S":
