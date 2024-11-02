@@ -1,11 +1,7 @@
-# xtools.py for ESP8266
+# xtools.py for ESP8266 (optimized)
 from machine import Pin, RTC, unique_id
-import urandom, math
-import time, network, urequests
-import ubinascii
+import urandom, time, network, urequests, ubinascii, ntptime
 import config
-import ntptime
-import ujson
 
 def get_id():
     return ubinascii.hexlify(unique_id()).decode('utf8')
@@ -16,41 +12,39 @@ def get_mac():
     return ubinascii.hexlify(mac, ':').decode('utf8')
 
 def get_num(x):
-    return float("".join(ele for ele in x if ele.isdigit() or ele =="."))
+    return float(''.join(filter(lambda c: c.isdigit() or c == ".", x)))
 
 def random_in_range(low=0, high=1000):
-    r1 = urandom.getrandbits(32)
-    r2 = r1 % (high-low) + low
-    return math.floor(r2)
+    return urandom.getrandbits(32) % (high - low) + low
 
 def map_range(x, in_min, in_max, out_min, out_max):
-   return int((x-in_min) * (out_max-out_min) / (in_max-in_min) + out_min)
+    return int((x-in_min) * (out_max-out_min) / (in_max-in_min) + out_min)
    
 def connect_wifi(ssid=config.SSID, passwd=config.PASSWORD, led=2, timeout=20):
     wifi_led=Pin(led, Pin.OUT, value=1)
     sta=network.WLAN(network.STA_IF)
-    sta.active(True)
+    if not sta.active():
+        sta.active(True)   # 確保已啟動 WiFi
     start_time=time.time() # 記錄時間判斷是否超時
     if not sta.isconnected():
         print("Connecting to network...")
         sta.connect(ssid, passwd)
-        while not sta.isconnected():
+        while not sta.isconnected() and time.time() - start_time <= timeout:
             wifi_led.value(0)
             time.sleep_ms(300)
             wifi_led.value(1)
             time.sleep_ms(300)
-            # 判斷是否超過timeout秒數
-            if time.time()-start_time > timeout:
-                print("Wifi connecting timeout!")
-                break
+        if not sta.isconnected():
+            print("Wifi connecting timeout!")
+            return None
     if sta.isconnected():
-        for i in range(25):   # 連線成功 : 快閃 5 秒
+        for _ in range(25):  # 連線成功 : 快閃 5 秒
             wifi_led.value(0)
             time.sleep_ms(100)
             wifi_led.value(1)
             time.sleep_ms(100)
         print("network config:", sta.ifconfig())
-        return sta.ifconfig()[0] 
+        return sta.ifconfig()[0]
 
 def scan_ssid():
     sta=network.WLAN(network.STA_IF)
@@ -60,7 +54,7 @@ def scan_ssid():
         ssid=ap[0].decode()
         mac=ubinascii.hexlify(ap[1], ':').decode()
         rssi=str(ap[3]) + 'dBm'
-        print('{:>20} {:>20} {:>10}'.format(ssid, mac, rssi))
+        print(f'{ssid} {mac} {rssi}')
 
 def show_error(final_state=0):
     led = Pin(2, Pin.OUT)   # Built-in D4
@@ -72,23 +66,27 @@ def show_error(final_state=0):
     led.value(final_state)    
 
 def webhook_post(url, value):
-    print("invoking webhook")
-    r = urequests.post(url, data=value)
-    if r is not None and r.status_code == 200:
-        print("Webhook invoked")
-    else:
-        print("Webhook failed")
-        show_error()
+    try:
+        r=urequests.post(url, data=value)
+        if r.status_code == 200:
+            print("Webhook invoked")
+        else:
+            print("Webhook failed")
+            show_error()
+    finally:
+        r.close()  # 釋放資源
     return r
 
 def webhook_get(url):
-    print("invoking webhook")
-    r = urequests.get(url)
-    if r is not None and r.status_code == 200:
-        print("Webhook invoked")
-    else:
-        print("Webhook failed")
-        show_error()
+    try:
+        r=urequests.get(url)
+        if r.status_code == 200:
+            print("Webhook invoked")
+        else:
+            print("Webhook failed")
+            show_error()
+    finally:
+        r.close()  # 釋放資源
     return r
 
 def urlencode(params):
@@ -119,10 +117,9 @@ def tw_now():
         utc=ntptime.time() # 取得 UTC 時戳
         print('OK.')
         t=time.localtime(utc + 28800) # 傳回台灣時間的元組
-        rtc=RTC() # RTC 物件
-        rtc.datetime(t[0:3] + (0,) + t[3:6] + (0,)) # 設定 RTC
-    except:  # 查詢 NTP 失敗不設定 RTC 
-        print('Failed.')
+        RTC().datetime(t[0:3] + (0,) + t[3:6] + (0,))
+    except Exception as e:  # 加入例外處理
+        print(f'Failed. {e}')
     return strftime()  # 傳回目前之日期時間字串 YYYY-mm-dd HH:MM:SS 
 
 def strptime(dt_str, format_str="%Y-%m-%d %H:%M:%S"):
