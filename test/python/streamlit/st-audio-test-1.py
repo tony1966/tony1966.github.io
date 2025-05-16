@@ -2,6 +2,4 @@
 import streamlit as st
 
 st.subheader('播放本機 mp3 檔案')
-with open('your_answer_clip.mp3', 'rb') as f:
-    audio_bytes=f.read()
-st.audio(audio_bytes, format='audio/mp3')
+st.audio('your_answer_clip.mp3', format='audio/mp3')
