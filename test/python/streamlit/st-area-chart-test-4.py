@@ -8,7 +8,14 @@ data=pd.DataFrame({
     '營收': [120000, 135000, 95000, 150000, 170000]
     })
 st.subheader('今年前五月月營收區域圖')
-st.area_chart(data, x='月份', y='營收')
+st.area_chart(
+    data,
+    x='月份',
+    y='營收',
+    color='#FF6B6B',
+    x_label='2025 年前五月',
+    y_label='營收 (單位: 元)'
+    )
 
 
 
