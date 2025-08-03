@@ -23,7 +23,7 @@ PROTECTED_FUNCTIONS=['list_functions',
                      'add_function',
                      'save_function',
                      'edit_function',
-                     'update_function,
+                     'update_function',
                      'delete_function'
                      ]
 # 登入管理功能
